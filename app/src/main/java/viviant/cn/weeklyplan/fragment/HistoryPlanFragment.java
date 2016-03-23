@@ -1,6 +1,8 @@
 package viviant.cn.weeklyplan.fragment;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.fragment.dummy.DummyContent;
@@ -43,7 +50,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
     /**
      * The fragment's ListView/GridView.
      */
-    private AbsListView mListView;
+    private SwipeMenuListView swipeMenuListView;
 
     /**
      * The Adapter which will be used to populate the ListView/GridView with
@@ -85,18 +92,26 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         // Set the adapter
-//        mListView = (AbsListView) view.findViewById(android.R.id.list);
-//        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+        swipeMenuListView = (SwipeMenuListView) view.findViewById(R.id.swipe_listview);
+
+
+        ((AdapterView<ListAdapter>) swipeMenuListView).setAdapter(mAdapter);
 //
 //        // Set OnItemClickListener so we can be notified on item clicks
 //        mListView.setOnItemClickListener(this);
+
+        showSwipeListView();
+
+
         //weiwei
 
+
+
         final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-        final TextView rndNum = (TextView) view.findViewById(R.id.rndNum);
+//        final TextView rndNum = (TextView) view.findViewById(R.id.rndNum);
 //        swipeView.setColorScheme(getResources().getColor(android.R.color.holo_blue_dark), android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_green_light);
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -107,14 +122,78 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
                     @Override
                     public void run() {
                         swipeView.setRefreshing(false);
-                        double f = Math.random();
-                        rndNum.setText(String.valueOf(f));
+//                        double f = Math.random();
+//                        rndNum.setText(String.valueOf(f));
                     }
                 }, 3000);
             }
         });
         //weiwei
         return view;
+    }
+
+    private void showSwipeListView() {
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem openItem = new SwipeMenuItem(
+                        getContext());
+                // set item background
+                openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
+                        0xCE)));
+                // set item width
+                openItem.setWidth(90);
+                // set item title
+                openItem.setTitle("Open");
+                // set item title fontsize
+                openItem.setTitleSize(18);
+                // set item title font color
+                openItem.setTitleColor(Color.WHITE);
+                // add to menu
+                menu.addMenuItem(openItem);
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getContext());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                deleteItem.setWidth(90);
+                // set a icon
+                deleteItem.setIcon(R.drawable.side_nav_bar);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+// set creator
+        swipeMenuListView.setMenuCreator(creator);
+
+        swipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        // open
+                        break;
+                    case 1:
+                        // delete
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
+
+        // Right
+        swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+
+        // Left
+        swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+
     }
 
     @Override
@@ -149,7 +228,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
      * to supply the text it should use.
      */
     public void setEmptyText(CharSequence emptyText) {
-        View emptyView = mListView.getEmptyView();
+        View emptyView = swipeMenuListView.getEmptyView();
 
         if (emptyView instanceof TextView) {
             ((TextView) emptyView).setText(emptyText);
