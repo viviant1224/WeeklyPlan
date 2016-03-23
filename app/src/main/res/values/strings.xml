@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">WeeklyPlan</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="setting">Setting</string>
+    <string name="databases">The History Plan List</string>
+    <string name="analysis_plan">Analysis on schedule</string>
+    <string name="tag_lib">Tags</string>
+    <string name="role_lib">Roles</string>
+    <string name="trash">Trash</string>
+    <string name="others">Others</string>
+    <string name="share">Share</string>
+
+    <string-array name="week">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tues</item>
+        <item>Wed</item>
+        <item>Thur</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+</resources>
