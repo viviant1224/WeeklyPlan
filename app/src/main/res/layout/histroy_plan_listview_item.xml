@@ -10,18 +10,26 @@
         android:layout_marginRight="16dip"
         android:orientation="horizontal">
 
-    <View
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/plan_state"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dip" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:src="@color/colorPrimary"
+        app:border_width="2dp"
+        app:border_color="@color/colorPrimaryDark">
+    </de.hdodenhof.circleimageview.CircleImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginStart="5dip"
-        android:layout_marginTop="5dip">
+        android:layout_marginStart="20dip"
+        android:layout_marginTop="10dip">
 
         <TextView
             android:id="@+id/plan_time"

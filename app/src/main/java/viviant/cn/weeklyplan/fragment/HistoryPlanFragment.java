@@ -120,11 +120,6 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
 
         swipeMenuListView.setAdapter(mAdapter);
 
-
-        //weiwei
-
-
-
         final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
         swipeView.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark), getResources().getColor(android.R.color.holo_blue_light), getResources().getColor(android.R.color.holo_green_light), getResources().getColor(android.R.color.holo_green_light));
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -142,7 +137,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
                 }, 3000);
             }
         });
-        //weiwei
+
         return view;
     }
 

@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import viviant.cn.weeklyplan.R;
 
 /**
@@ -25,7 +25,7 @@ public class HistroyPlanListViewAdapter extends BaseAdapter {
     public final class ListItemView{                //自定义控件集合
         public TextView timeText;
         public TextView descText;
-        public View planState;
+        public CircleImageView planState;
     }
 
     public HistroyPlanListViewAdapter(Context context, List<Map<String, Object>> listItems) {
@@ -60,7 +60,7 @@ public class HistroyPlanListViewAdapter extends BaseAdapter {
             view = listContainer.inflate(R.layout.histroy_plan_listview_item,null);
             listItemView.timeText = (TextView)view.findViewById(R.id.plan_time);
             listItemView.descText = (TextView)view.findViewById(R.id.plan_desc);
-            listItemView.planState = (View)view.findViewById(R.id.plan_time);
+            listItemView.planState = (CircleImageView)view.findViewById(R.id.plan_state);
 
             view.setTag(listItemView);
         } else {
