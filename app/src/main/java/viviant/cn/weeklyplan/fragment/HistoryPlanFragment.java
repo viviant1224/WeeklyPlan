@@ -22,7 +22,13 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import viviant.cn.weeklyplan.R;
+import viviant.cn.weeklyplan.adapter.HistroyPlanListViewAdapter;
 import viviant.cn.weeklyplan.fragment.dummy.DummyContent;
 
 /**
@@ -56,7 +62,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private HistroyPlanListViewAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static HistoryPlanFragment newInstance(String param1, String param2) {
@@ -85,8 +91,21 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+//        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+//                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        List<Map<String,Object>> listItems  = getListItems();
+        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
+    }
+
+    private List<Map<String, Object>> getListItems() {
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        for(int i = 0; i < 20; i++) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("timeText", "2017-4-3");
+            map.put("descText", "物品名称：ssss");
+            listItems.add(map);
+        }
+        return listItems;
     }
 
     @Override
@@ -97,13 +116,9 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         // Set the adapter
         swipeMenuListView = (SwipeMenuListView) view.findViewById(R.id.swipe_listview);
 
-
-        ((AdapterView<ListAdapter>) swipeMenuListView).setAdapter(mAdapter);
-//
-//        // Set OnItemClickListener so we can be notified on item clicks
-//        mListView.setOnItemClickListener(this);
-
         showSwipeListView();
+
+        swipeMenuListView.setAdapter(mAdapter);
 
 
         //weiwei
