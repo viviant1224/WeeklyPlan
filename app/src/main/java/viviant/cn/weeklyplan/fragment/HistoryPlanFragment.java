@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -52,6 +53,8 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private LinearLayout histroyPlanListFootView;
 
     /**
      * The fragment's ListView/GridView.
@@ -119,6 +122,8 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         showSwipeListView();
 
         swipeMenuListView.setAdapter(mAdapter);
+        histroyPlanListFootView = (LinearLayout)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
+        swipeMenuListView.addFooterView(histroyPlanListFootView);
 
         final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
         swipeView.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark), getResources().getColor(android.R.color.holo_blue_light), getResources().getColor(android.R.color.holo_green_light), getResources().getColor(android.R.color.holo_green_light));
@@ -198,7 +203,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         });
 
         // Right
-        swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+//        swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
 
         // Left
         swipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
