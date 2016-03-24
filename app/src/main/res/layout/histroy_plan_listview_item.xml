@@ -14,14 +14,12 @@
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/plan_state"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="10dip"
         android:layout_marginTop="10dip"
         android:layout_marginBottom="10dip"
-        android:src="@color/colorPrimary"
-        app:border_width="2dp"
-        app:border_color="@color/colorPrimaryDark">
+        android:src="@color/colorPrimary">
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <LinearLayout
