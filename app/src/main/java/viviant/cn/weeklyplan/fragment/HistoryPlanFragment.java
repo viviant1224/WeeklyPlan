@@ -126,8 +126,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
 
 
         final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-//        final TextView rndNum = (TextView) view.findViewById(R.id.rndNum);
-//        swipeView.setColorScheme(getResources().getColor(android.R.color.holo_blue_dark), android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_green_light);
+        swipeView.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark), getResources().getColor(android.R.color.holo_blue_light), getResources().getColor(android.R.color.holo_green_light), getResources().getColor(android.R.color.holo_green_light));
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
