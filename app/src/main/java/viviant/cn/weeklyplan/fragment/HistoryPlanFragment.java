@@ -120,10 +120,10 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         swipeMenuListView = (SwipeMenuListView) view.findViewById(R.id.swipe_listview);
 
         showSwipeListView();
-
-        swipeMenuListView.setAdapter(mAdapter);
         histroyPlanListFootView = (LinearLayout)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
         swipeMenuListView.addFooterView(histroyPlanListFootView);
+        swipeMenuListView.setAdapter(mAdapter);
+
 
         final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
         swipeView.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark), getResources().getColor(android.R.color.holo_blue_light), getResources().getColor(android.R.color.holo_green_light), getResources().getColor(android.R.color.holo_green_light));
