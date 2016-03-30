@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -31,6 +32,7 @@ import java.util.Map;
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.adapter.HistroyPlanListViewAdapter;
 import viviant.cn.weeklyplan.fragment.dummy.DummyContent;
+import viviant.cn.weeklyplan.ui.ListFooterViewWeekPlan;
 
 /**
  * A fragment representing a list of Items.
@@ -54,7 +56,8 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
 
     private OnFragmentInteractionListener mListener;
 
-    private LinearLayout histroyPlanListFootView;
+    private ListFooterViewWeekPlan histroyPlanListFootView;
+
 
     /**
      * The fragment's ListView/GridView.
@@ -120,9 +123,18 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         swipeMenuListView = (SwipeMenuListView) view.findViewById(R.id.swipe_listview);
 
         showSwipeListView();
-        histroyPlanListFootView = (LinearLayout)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
+        histroyPlanListFootView = (ListFooterViewWeekPlan)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
         swipeMenuListView.addFooterView(histroyPlanListFootView);
         swipeMenuListView.setAdapter(mAdapter);
+
+        swipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(),"onItemclick",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
 
         final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
@@ -138,12 +150,32 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
                         swipeView.setRefreshing(false);
 //                        double f = Math.random();
 //                        rndNum.setText(String.valueOf(f));
+                        getLastHistoryPlanItem();
                     }
                 }, 3000);
             }
         });
 
         return view;
+    }
+
+    //
+    private void getLastHistoryPlanItem () {
+
+        List<Map<String,Object>> listItems  = getListItems();
+        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
+
+    }
+
+    private List<Map<String, Object>> getLastListItems() {
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        for(int i = 0; i < 20; i++) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("timeText", "2017-4-3");
+            map.put("descText", "物品名称：ssss");
+            listItems.add(map);
+        }
+        return listItems;
     }
 
     private void showSwipeListView() {
@@ -192,9 +224,11 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
                 switch (index) {
                     case 0:
                         // open
+                        Toast.makeText(getContext(),"open",Toast.LENGTH_LONG).show();
                         break;
                     case 1:
                         // delete
+                        Toast.makeText(getContext(),"delete",Toast.LENGTH_LONG).show();
                         break;
                 }
                 // false : close the menu; true : not close the menu

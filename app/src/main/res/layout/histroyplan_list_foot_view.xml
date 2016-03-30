@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<viviant.cn.weeklyplan.ui.ListFooterViewWeekPlan
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:indeterminate="true"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+
+    </LinearLayout>
     <LinearLayout android:id="@+id/load_more"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:gravity="center"
+        android:visibility="gone"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground">
 
@@ -19,4 +36,4 @@
             android:text="Load More"/>
     </LinearLayout>
 
-</LinearLayout>
+</viviant.cn.weeklyplan.ui.ListFooterViewWeekPlan>
