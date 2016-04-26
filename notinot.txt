@@ -1,0 +1,154 @@
+--------- beginning of system
+--------- beginning of main
+D/Email   (24688): Insert: content://com.tct.email.provider/message
+D/Email   (24688): Insert: content://com.tct.email.provider/recipient
+D/Email   (24688): Insert: content://com.tct.email.provider/recipient
+I/Email   (24688): key=65537 unseenCount=1 unreadCount=7 lastMostRecentUnreadMsgId = 145 mostRecentUnreadMsgId=146
+I/Email   (24688): Show images value from account setting : 0
+I/Email   (24688): Show images value from account setting : 0
+D/Email   (24688): Insert: content://com.tct.email.provider/body
+D/Email   (24688): Delete: content://com.tct.email.provider/attachment
+I/Email   (24688): update float compose button visibility as 8
+I/Email   (24688): update float compose button visibility as 0
+I/Email   (24688): in AAC.setCurrentConversation() conversation [ 146, false ]
+I/Email   (24688): IN TPC.showConv, oldMode=2 conv=[conversation id=146]
+I/Email   (24688): update float compose button visibility as 8
+I/Email   (24688): in ABC.setConversationModeOptions() conversation [ 146, false ]
+I/Email   (24688): Show images value from account setting : 0
+I/Email   (24688): Show images value from account setting : 0
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:null
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:0
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:0
+I/Email   (24688): in ABC.setConversationModeOptions() conversation [ 146, false ]
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:{com.tct.mail.browse.ConversationCursor@256e5584 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false mDeletedCount=0 mUnderlying=com.tct.mail.browse.ConversationCursor$UnderlyingCursorWrapper@3620d16d}
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:0
+I/Email   (24688): in AAC.setCurrentConversation() conversation [ 146, false ]
+I/Email   (24688): SHOWCONV: CVF is user-visible, immediately loading conversation (ConversationViewFragment{1a96cc0d #2 id=0x7f12016e})
+I/Email   (24688): in ABC.setConversationModeOptions() conversation [ 146, false ]
+I/Email   (24688): SHOWCONV: CVF waiting for initial to finish (ConversationViewFragment{2d89f02b #3 id=0x7f12016e})
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoadFinished      data:com.tct.mail.browse.MessageCursor@3dc535d
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoadFinished     messageCursor.isLoaded():true
+I/Email   (24688): CONV RENDER: initial render. (ConversationViewFragment{1a96cc0d #2 id=0x7f12016e})
+I/Email   (24688): IN CVF.onContentReady, f=ConversationViewFragment{1a96cc0d #2 id=0x7f12016e} vis=true t=340ms
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:{com.tct.mail.browse.ConversationCursor@256e5584 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false mDeletedCount=0 mUnderlying=com.tct.mail.browse.ConversationCursor$UnderlyingCursorWrapper@3620d16d}
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): in AAC.setCurrentConversation() conversation [ 146, false ]
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): in ABC.setConversationModeOptions() conversation [ 146, false ]
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoadFinished      data:com.tct.mail.browse.MessageCursor@15b20967
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoadFinished     messageCursor.isLoaded():true
+I/Email   (24688): CONV RENDER: initial render. (ConversationViewFragment{2d89f02b #3 id=0x7f12016e})
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoadFinished      data:com.tct.mail.browse.MessageCursor@39ba013b
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoadFinished     messageCursor.isLoaded():true
+I/Email   (24688): CONV RENDER: uninteresting update, ignoring this conversation update (ConversationViewFragment{1a96cc0d #2 id=0x7f12016e})
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): in AAC.setCurrentConversation() conversation [ 146, false ]
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:{com.tct.mail.browse.ConversationCursor@256e5584 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false mDeletedCount=0 mUnderlying=com.tct.mail.browse.ConversationCursor$UnderlyingCursorWrapper@2e6d266e}
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): in AAC.setCurrentConversation() conversation [ 146, false ]
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): in ABC.setConversationModeOptions() conversation [ 146, false ]
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:{com.tct.mail.browse.ConversationCursor@256e5584 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false mDeletedCount=0 mUnderlying=com.tct.mail.browse.ConversationCursor$UnderlyingCursorWrapper@2e6d266e}
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoaderReset      
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=145 col=starred val=0
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:{com.tct.mail.browse.ConversationCursor@256e5584 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false mDeletedCount=0 mUnderlying=com.tct.mail.browse.ConversationCursor$UnderlyingCursorWrapper@2e6d266e}
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=145 col=starred val=0
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=145 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=145 col=starred val=0
+W/Email   (24688): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoaderReset      
+I/Email   (24688): update float compose button visibility as 0
+E/Email   (24688):  get SearchView mQueryTextView field failded due to NoSuchFieldException
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursor:{com.tct.mail.browse.ConversationCursor@256e5584 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false mDeletedCount=0 mUnderlying=com.tct.mail.browse.ConversationCursor$UnderlyingCursorWrapper@3d7f9ca4}
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=145 col=starred val=0
+W/Email   (24688): ConversationListFragment           onCursorUpdated          newCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          mConversationCursorHash:627987844
+W/Email   (24688): ConversationListFragment           onCursorUpdated          
+I/Email   (24688): Conversation: applying cached value to conId=146 col=starred val=0
+I/Email   (24688): Conversation: applying cached value to conId=146 col=seen val=1
+I/Email   (24688): Conversation: applying cached value to conId=146 col=conversationInfo val=[B@326aab4
+I/Email   (24688): Conversation: applying cached value to conId=146 col=read val=1
+I/Email   (24688): Conversation: applying cached value to conId=145 col=starred val=0

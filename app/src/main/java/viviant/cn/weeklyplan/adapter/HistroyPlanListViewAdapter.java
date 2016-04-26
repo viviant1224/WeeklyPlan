@@ -13,6 +13,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import viviant.cn.weeklyplan.R;
+import viviant.cn.weeklyplan.model.WeekPlan;
 
 /**
  * Created by weiwei.huang on 16-3-24.
@@ -20,15 +21,10 @@ import viviant.cn.weeklyplan.R;
 public class HistroyPlanListViewAdapter extends BaseAdapter {
     private LayoutInflater listContainer;//视图容器
     private Context context;
-    private List<Map<String, Object>> listItems;
+    private List<WeekPlan> listItems;
 
-    public final class ListItemView{                //自定义控件集合
-        public TextView timeText;
-        public TextView descText;
-        public CircleImageView planState;
-    }
 
-    public HistroyPlanListViewAdapter(Context context, List<Map<String, Object>> listItems) {
+    public HistroyPlanListViewAdapter(Context context, List<WeekPlan> listItems) {
         this.context = context;
         listContainer = LayoutInflater.from(context);
         this.listItems = listItems;
@@ -37,35 +33,48 @@ public class HistroyPlanListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return listItems.size();
+        return (listItems == null ? 0 : listItems.size());
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return listItems.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
+    }
+
+    public class  ViewHolder{ //自定义控件集合
+        TextView timeText;
+        TextView descText;
+        CircleImageView planState;
+
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         Log.d("weiwei", "getView--");
-        ListItemView  listItemView = null;
+        final WeekPlan weekPlan = (WeekPlan)getItem(i);
+        ViewHolder  viewHolder = null;
         if (view == null) {
-            listItemView = new ListItemView();
+            viewHolder = new ViewHolder();
             Log.d("weiwei", "getView");
             view = listContainer.inflate(R.layout.histroy_plan_listview_item,null);
-            listItemView.timeText = (TextView)view.findViewById(R.id.plan_time);
-            listItemView.descText = (TextView)view.findViewById(R.id.plan_desc);
-            listItemView.planState = (CircleImageView)view.findViewById(R.id.plan_state);
+            viewHolder.timeText = (TextView)view.findViewById(R.id.plan_time);
+            viewHolder.descText = (TextView)view.findViewById(R.id.plan_desc);
+            viewHolder.planState = (CircleImageView)view.findViewById(R.id.plan_state);
 
-            view.setTag(listItemView);
+            view.setTag(viewHolder);
         } else {
-            listItemView = (ListItemView)view.getTag();
+            viewHolder = (ViewHolder)view.getTag();
         }
+
+        viewHolder.timeText.setText(weekPlan.getTimeText());
+        viewHolder.descText.setText(weekPlan.getDesctext());
         return view;
     }
+
+
 }

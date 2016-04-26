@@ -32,6 +32,7 @@ import java.util.Map;
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.adapter.HistroyPlanListViewAdapter;
 import viviant.cn.weeklyplan.fragment.dummy.DummyContent;
+import viviant.cn.weeklyplan.model.WeekPlan;
 import viviant.cn.weeklyplan.ui.ListFooterViewWeekPlan;
 
 /**
@@ -70,6 +71,8 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
      */
     private HistroyPlanListViewAdapter mAdapter;
 
+    private List<WeekPlan> listItems = null;
+
     // TODO: Rename and change types of parameters
     public static HistoryPlanFragment newInstance(String param1, String param2) {
         HistoryPlanFragment fragment = new HistoryPlanFragment();
@@ -95,21 +98,15 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        // TODO: Change Adapter to display your content
-//        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-//                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
-        List<Map<String,Object>> listItems  = getListItems();
-        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
     }
 
-    private List<Map<String, Object>> getListItems() {
-        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+
+    private List<WeekPlan> getListItems() {
+
+        listItems = new ArrayList<WeekPlan>();
         for(int i = 0; i < 20; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("timeText", "2017-4-3");
-            map.put("descText", "物品名称：ssss");
-            listItems.add(map);
+
+            listItems.add(new WeekPlan("time" + i, "desc" + i));
         }
         return listItems;
     }
@@ -125,6 +122,10 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         showSwipeListView();
         histroyPlanListFootView = (ListFooterViewWeekPlan)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
         swipeMenuListView.addFooterView(histroyPlanListFootView);
+        // TODO: Change Adapter to display your content
+        List<WeekPlan> listItems  = getListItems();
+        Log.d("weiwei","---" + listItems.size());
+        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
         swipeMenuListView.setAdapter(mAdapter);
 
         swipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -150,7 +151,9 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
                         swipeView.setRefreshing(false);
 //                        double f = Math.random();
 //                        rndNum.setText(String.valueOf(f));
-                        getLastHistoryPlanItem();
+                        mAdapter = new HistroyPlanListViewAdapter(getContext(),getLastHistoryPlanItem());
+                        swipeMenuListView.setAdapter(mAdapter);
+                        mAdapter.notifyDataSetChanged();
                     }
                 }, 3000);
             }
@@ -159,24 +162,17 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         return view;
     }
 
-    //
-    private void getLastHistoryPlanItem () {
 
-        List<Map<String,Object>> listItems  = getListItems();
-        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
+    private List<WeekPlan> getLastHistoryPlanItem() {
 
-    }
+        listItems = getListItems();
+        for(int i = 0; i < 5; i++) {
 
-    private List<Map<String, Object>> getLastListItems() {
-        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-        for(int i = 0; i < 20; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("timeText", "2017-4-3");
-            map.put("descText", "物品名称：ssss");
-            listItems.add(map);
+            listItems.add(new WeekPlan("$" + i, "%" + i));
         }
         return listItems;
     }
+
 
     private void showSwipeListView() {
         SwipeMenuCreator creator = new SwipeMenuCreator() {

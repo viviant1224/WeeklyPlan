@@ -1,0 +1,548 @@
+--------- beginning of system
+--------- beginning of main
+D/Email   (24393): Notifying conversation Uri 133 twice
+W/Email   ( 8125): AbstractConversationViewFragment              MessageLoaderCallbacks       onLoaderReset      
+D/Email   (24393): IN unregister(RecentFolder)Observer: com.android.mail.ui.FolderListFragment$FolderAdapter$1@c4965a7 before=1 after=0
+D/Email   (24393): IN unregister(CurrentFolder)Observer: com.android.mail.ui.FolderListFragment$1@2d6c0e66 before=3 after=2
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.FolderListFragment$2@1e635a54 before=7 after=6
+D/Email   (24393): IN unregister(AllAccounts)Observer: com.android.mail.ui.FolderListFragment$3@26cb3dfd before=1 after=0
+D/Email   (24393): IN unregister(FolderOrAccount)Observer: com.android.mail.ui.FolderListFragment$FolderOrAccountListener@201aaaf2 before=1 after=0
+D/Email   (24393): recalculateListFolders current size [0], cursor.size [16] 
+D/Email   (24393): Add inboxes heads, inbox size [1]
+D/Email   (24393): Add remaining heads, folder size [15]
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.AnimatedAdapter$3@4365395 before=6 after=5
+D/Email   (24393): IN unregister(CurrentFolder)Observer: com.android.mail.ui.ConversationListFragment$4@168fac38 before=2 after=1
+D/Email   (24393): IN unregister(List)Observer: com.android.mail.ui.ConversationListFragment$ConversationCursorObserver@cf59411 before=1 after=0
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.ConversationListFragment$1@133d27bf before=5 after=4
+D/Email   (24393): IN unregister(CurrentFolder)Observer: com.android.mail.ui.ActionBarController$2@26692faf before=1 after=0
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.ActionBarController$1@37aacfbc before=4 after=3
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.RecentFolderList$1@266deb45 before=3 after=2
+D/Email   (24393): Clear and re-cache the states
+D/Email   (24393): Settings.equals(com.android.mail.providers.Settings@59b508e1)
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.CustomViewToolbar$1@b6cd153 before=2 after=1
+D/Email   (24393): IN AAC.ConversationCursor.onLoaderReset, data={com.android.mail.browse.ConversationCursor@35230296 mName=Inbox mDeferSync=false mRefreshRequired=true mRefreshReady=false mRefreshTask=null mPaused=true count=70 mDeletedCount=0 mUnderlying=com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper@678caf3 mCacheMap={}} loader=ConversationCursorLoader{56c145a id=10} this=com.android.mail.ui.AbstractActivityController$ConversationListLoaderCallbacks@14d4468b
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.CustomViewToolbar$1@235384eb before=0 after=1
+D/Email   (24393): IN register(CurrentFolder)Observer: com.android.mail.ui.ActionBarController$2@356384c7 before=0 after=1
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.ActionBarController$1@6be5af4 before=1 after=2
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.RecentFolderList$1@2b7b421d before=2 after=3
+D/Email   (24393): IN register(Account)Observer: com.android.mail.utils.VeiledAddressMatcher$1@110e2c92 before=3 after=4
+D/Email   (24393): [SearchMail] onQueryTextChange []
+D/Email   (24393): IN AAC.handleIntent. action=android.intent.action.VIEW
+D/Email   (24393): AbstractActivityController.setAccount(): account = content://com.android.email.provider/uiaccount/21
+D/Email   (24393): [BackgroundAsyncTask] >>> [220ee319#com.android.emailcommon.utility.DataCollectUtils.stopRecord[78]#com.android.mail.ui.AbstractActivityController.setAccount[2854]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [220ee319#com.android.emailcommon.utility.DataCollectUtils.stopRecord[78]#com.android.mail.ui.AbstractActivityController.setAccount[2854]]
+D/Email   (24393): Postpone the LOADER_RECENT_FOLDERS
+D/Email   (24393): Postpone the LOADER_ACCOUNT_UPDATE_CURSOR
+D/Email   (24393): AAC.perhapsEnterWaitMode inWaitingMode [false], isSyncRequired [false], inbox [null]
+D/Email   (24393): LOADER_FIRST_FOLDER created
+D/Email   (24393): LOADER_ACCOUNT_UPDATE_CURSOR created
+D/Email   (24393): Start the LOADER_ACCOUNT_CURSOR
+D/Email   (24393): LOADER_ACCOUNT_CURSOR created
+D/Email   (24393): [BackgroundAsyncTask] >>> [7de7fde#com.android.emailcommon.utility.DataCollectUtils.startRecord[36]#com.android.mail.ui.AbstractActivityController.setAccount[2855]]
+D/Email   (24393): IN register(CurrentFolder)Observer: com.android.mail.ui.FolderListFragment$1@ca197d5 before=1 after=2
+D/Email   (24393): IN register(RecentFolder)Observer: com.android.mail.ui.FolderListFragment$FolderAdapter$1@20cebbea before=0 after=1
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.FolderListFragment$2@36437edb before=4 after=5
+D/Email   (24393): [BackgroundAsyncTask] >>> [d86148c#com.android.email.provider.EmailProvider.setServicesEnabledAsync[7573]#com.android.email2.ui.MailActivityEmail.onCreate[116]]
+D/Email   (24393): ContactResolver  > batch   1
+D/Email   (24393): Start the FOLDER_LIST_LOADERs
+D/Email   (24393): onCreateLoader Loader Uri [content://com.android.email.provider/uifolders/21]
+D/Email   (24393): onCreateLoader Loader Uri [content://com.android.email.provider/uiallfolders/21]
+D/Email   (24393): ContactResolver  > batch   2
+D/Email   (24393): IN register(AllAccounts)Observer: com.android.mail.ui.FolderListFragment$3@6d4acb6 before=0 after=1
+D/Email   (24393): IN register(FolderOrAccount)Observer: com.android.mail.ui.FolderListFragment$FolderOrAccountListener@3ff12db7 before=0 after=1
+D/Email   (24393): ContactResolver >> batch start
+D/Email   (24393): updateAccounts({"name":"tclval001@163.com","type":"com.android.email","senderName":"tclval001","accountManagerName":"tclval001@163.com","accountId":"tclval001@163.com","providerVersion":1,"accountUri":"content:\/\/com.android.email.provider\/uiaccount\/21","capabilities":28328033,"folderListUri":"content:\/\/com.android.email.provider\/uifolders\/21","fullFolderListUri":"content:\/\/com.android.email.provider\/uifullfolders\/21","allFolderListUri":"content:\/\/com.android.email.provider\/uiallfolders\/21","searchUri":"content:\/\/com.android.email.provider\/uisearch\/21","accountFromAddresses":"","expungeMessageUri":"","undoUri":"content:\/\/com.android.email.provider\/uiundo","accountSettingsIntentUri":"content:\/\/ui.email.android.com\/settings?account=21","helpIntentUri":"","sendFeedbackIntentUri":"","reauthenticationUri":"auth:\/\/com.android.email.ACCOUNT_SETTINGS\/incoming\/?ACCOUNT_ID=21","syncStatus":0,"composeUri":"content:\/\/ui.email2.android.com\/compose?account=21","mimeType":"application\/email-ls","recentFolderListUri":"content:\/\/com.android.email.provider\/uirecentfolders\/21","color":-15186385,"defaultRecentFolderListUri":"content:\/\/com.android.email.provider\/uidefaultrecentfolders\/21","manualSyncUri":"","viewProxyUri":"","accountCookieUri":"","updateSettingsUri":"content:\/\/com.android.email.provider\/uiacctsettings","enableMessageTransforms":1,"syncAuthority":"com.android.email.provider","quickResponseUri":"content:\/\/com.android.email.provider\/quickresponse\/account\/21","settingsFragmentClass":"com.android.email.activity.setup.AccountSettingsFragment","securityHold":0,"accountSecurityUri":"auth:\/\/com.android.email.ACCOUNT_SECURITY\/?ACCOUNT_ID=21&SHOW_DIALOG=true","settings":{"signature":"Sent from my Vodacom Tab","auto_advance":3,"snap_headers":0,"reply_behavior":0,"conversation_list_icon":1,"confirm_delete":false,"confirm_archive":false,"confirm_send":false,"default_inbox":"content:\/\/com.android.email.provider\/uifolder\/133","default_inbox_name":"INBOX","force_reply_from_default":false,"max_attachment_size":0,"swipe":1,"importance_markers_enabled":false,"show_chevrons_enabled":false,"setup_intent_uri":"","conversation_view_mode":-1,"veiled_address_pattern":"","move_to_inbox":"content:\/\/com.android.email.provider\/uifolder\/133","show_images":1,"welcome_tour_shown_version":0}})
+D/Email   (24393): Settings.equals(com.android.mail.providers.Settings@737a67b2)
+D/Email   (24393): Watching content://com.android.email.provider/uifolder/133, at position 0.
+D/Email   (24393): ContactResolver  > batch   3
+D/Email   (24393): [BackgroundAsyncTask] <<< [7de7fde#com.android.emailcommon.utility.DataCollectUtils.startRecord[36]#com.android.mail.ui.AbstractActivityController.setAccount[2855]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [d86148c#com.android.email.provider.EmailProvider.setServicesEnabledAsync[7573]#com.android.email2.ui.MailActivityEmail.onCreate[116]]
+D/Email   (24393): getCapabilities() for 21 (protocol imap): 0x104061  0 5 6 14 20 
+D/Email   (24393): getConversationListSwipeActionInteger swipeEnabled true, archive false
+D/Email   (24393): ContactResolver -- failed  tclval001@163.com
+D/Email   (24393): ContactResolver -- failed  tclval001@163.com
+D/Email   (24393): ContactResolver  > batch   4
+D/Email   (24393): UiQuery Folder 133 unread 6
+D/Email   (24393): [BackgroundAsyncTask] >>> [286645bf#com.android.mail.ui.ActionBarController.updateAccount[162]#com.android.mail.ui.ActionBarController.access$000[47]]
+D/Email   (24393): EmailProvider#call(set_current_account, content://com.android.email.provider/uiaccount/21, Bundle[{account={"name":"tclval001@163.com","type":"com.android.email","senderName":"tclval001","accountManagerName":"tclval001@163.com","accountId":"tclval001@163.com","providerVersion":1,"accountUri":"content:\/\/com.android.email.provider\/uiaccount\/21","capabilities":28328033,"folderListUri":"content:\/\/com.android.email.provider\/uifolders\/21","fullFolderListUri":"content:\/\/com.android.email.provider\/uifullfolders\/21","allFolderListUri":"content:\/\/com.android.email.provider\/uiallfolders\/21","searchUri":"content:\/\/com.android.email.provider\/uisearch\/21","accountFromAddresses":"","expungeMessageUri":"","undoUri":"content:\/\/com.android.email.provider\/uiundo","accountSettingsIntentUri":"content:\/\/ui.email.android.com\/settings?account=21","helpIntentUri":"","sendFeedbackIntentUri":"","reauthenticationUri":"auth:\/\/com.android.email.ACCOUNT_SETTINGS\/incoming\/?ACCOUNT_ID=21","syncStatus":0,"composeUri":"content:\/\/ui.email2.android.com\/compose?account=21","mimeType":"application\/email-ls","recentFolderListUri":"content:\/\/com.android.email.provider\/uirecentfolders\/21","color":-15186385,"defaultRecentFolderListUri":"content:\/\/com.android.email.provider\/uidefaultrecentfolders\/21","manualSyncUri":"","viewProxyUri":"","accountCookieUri":"","updateSettingsUri":"content:\/\/com.android.email.provider\/uiacctsettings","enableMessageTransforms":1,"syncAuthority":"com.android.email.provider","quickResponseUri":"content:\/\/com.android.email.provider\/quickresponse\/account\/21","settingsFragmentClass":"com.android.email.activity.setup.AccountSettingsFragment","securityHold":0,"accountSecurityUri":"auth:\/\/com.android.email.ACCOUNT_SECURITY\/?ACCOUNT_ID=21&SHOW_DIALOG=true","settings":{"signature":"Sent from my Vodacom Tab","auto_advance":3,"snap_headers":0,"reply_behavior":0,"conversation_list_icon":1,"confirm_delete":false,"confirm_archive":false,"confirm_send":false,"default_inbox":"content:\/\/com.android.email.provider\/uifolder\/133","default_inbox_name":"INBOX","force_reply_from_default":false,"max_attachment_size":0,"swipe":1,"importance_markers_enabled":false,"show_chevrons_enabled":false,"setup_intent_uri":"","conversation_view_mode":-1,"veiled_address_pattern":"","move_to_inbox":"content:\/\/com.android.email.provider\/uifolder\/133","show_images":1,"welcome_tour_shown_version":0}}}])
+D/Email   (24393): Unhandled (but expected) Content provider method: set_current_account
+D/Email   (24393): [BackgroundAsyncTask] <<< [286645bf#com.android.mail.ui.ActionBarController.updateAccount[162]#com.android.mail.ui.ActionBarController.access$000[47]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [8286924#com.android.emailcommon.utility.DataCollectUtils.startRecord[36]#com.android.email2.ui.MailActivityEmail.onResume[215]]
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): UiQuery Folder 133 unread 6
+D/Email   (24393): [BackgroundAsyncTask] <<< [8286924#com.android.emailcommon.utility.DataCollectUtils.startRecord[36]#com.android.email2.ui.MailActivityEmail.onResume[215]]
+D/Email   (24393): ContactResolver  > batch   2
+D/Email   (24393): AbstractActivityController.setFolder(Inbox)
+D/Email   (24393): Postpone the LOADER_FOLDER_CURSOR
+D/Email   (24393): ConversationListLoaderCallbacks.onCreateLoader uri content://com.android.email.provider/uimessages/133
+D/Email   (24393): [SearchMail] onQueryTextChange []
+I/Email   (24393): TPC.setCurrentConv w/ new conv. new=[conversation id=531, subject=ffff] old=null newPeek=false
+I/Email   (24393): showConversation [conversation id=531, subject=ffff]
+I/Email   (24393): IN TPC.showConv, oldMode=[mode=Conversation list] conv=[conversation id=531, subject=ffff]
+D/Email   (24393): IN register(List)Observer: com.android.mail.browse.ConversationPagerAdapter$ListObserver@211762aa before=0 after=1
+D/Email   (24393): IN register(CurrentFolder)Observer: com.android.mail.browse.ConversationPagerAdapter$1@3080fe9b before=2 after=3
+D/Email   (24393): [BackgroundAsyncTask] >>> [3ee0ff76#com.mediatek.email.attachment.AttachmentAutoClearController.recordConversationMsgIdAsync[70]#com.android.email.browse.ConversationPagerAdapterEmail.getConversationViewFragment[24]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [3ee0ff76#com.mediatek.email.attachment.AttachmentAutoClearController.recordConversationMsgIdAsync[70]#com.android.email.browse.ConversationPagerAdapterEmail.getConversationViewFragment[24]]
+D/Email   (24393): UiQuery Folder 133 unread 6
+D/Email   (24393): getAccountId = tclval001@163.com for email tclval001@163.com
+D/Email   (24393): onCreate in ConversationViewFragment (this=(ConversationViewFragment{1ee6e977 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]))
+D/Email   (24393):  EmailConversationCursor : mailbox.mUiSyncStatus : 0, System.currentTimeMillis() - mailbox.mSyncTime : 47773, mailbox.mSyncInterval: 0, mailbox.mUiLastSyncResult: 16,mailbox.mServerId : INBOX
+D/Email   (24393): ConversationViewFragment#onUserVisibleHintChanged(), userVisible = true
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.ConversationListFragment$1@11266f57 before=5 after=6
+D/Email   (24393): getAccountId = tclval001@163.com for email tclval001@163.com
+D/Email   (24393): getAccountId = tclval001@163.com for email tclval001@163.com
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.AnimatedAdapter$3@11b7fa40 before=6 after=7
+D/Email   (24393): IN register(CurrentFolder)Observer: com.android.mail.ui.ConversationListFragment$4@3b1f171f before=3 after=4
+D/Email   (24393): IN register(List)Observer: com.android.mail.ui.ConversationListFragment$ConversationCursorObserver@26427a6c before=1 after=2
+D/Email   (24393): setSwipeAction.swipeSetting : 1
+W/Email   (24393): Method called on the UI thread
+W/Email   (24393): java.lang.Throwable
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.warnIfUiThread(EmailContent.java:221)
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.restoreContentWithId(EmailContent.java:259)
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.restoreContentWithId(EmailContent.java:253)
+W/Email   (24393): 	at com.android.emailcommon.provider.Mailbox.restoreMailboxWithId(Mailbox.java:494)
+W/Email   (24393): 	at com.android.emailcommon.provider.Mailbox.restoreMailboxOfType(Mailbox.java:723)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.getLastUpdateTimeString(ConversationListFragment.java:1141)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.onFolderUpdated(ConversationListFragment.java:1109)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.showList(ConversationListFragment.java:887)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.onActivityCreated(ConversationListFragment.java:469)
+W/Email   (24393): 	at android.app.Fragment.performActivityCreated(Fragment.java:2077)
+W/Email   (24393): 	at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:917)
+W/Email   (24393): 	at android.app.FragmentManagerImpl.moveToState(FragmentManager.java:1072)
+W/Email   (24393): 	at android.app.BackStackRecord.run(BackStackRecord.java:852)
+W/Email   (24393): 	at android.app.FragmentManagerImpl.execPendingActions(FragmentManager.java:1478)
+W/Email   (24393): 	at android.app.FragmentManagerImpl.executePendingTransactions(FragmentManager.java:488)
+W/Email   (24393): 	at com.android.mail.utils.FragmentStatePagerAdapter2.finishUpdate(FragmentStatePagerAdapter2.java:153)
+W/Email   (24393): 	at android.support.v4.view.ViewPager.populate(ViewPager.java:1085)
+W/Email   (24393): 	at android.support.v4.view.ViewPager.populate(ViewPager.java:931)
+W/Email   (24393): 	at android.support.v4.view.ViewPager.setAdapter(ViewPager.java:457)
+W/Email   (24393): 	at com.android.mail.browse.ConversationPagerController.show(ConversationPagerController.java:182)
+W/Email   (24393): 	at com.android.mail.ui.TwoPaneController.showCurrentConversationInPager(TwoPaneController.java:503)
+W/Email   (24393): 	at com.android.mail.ui.TwoPaneController.onConversationVisibilityChanged(TwoPaneController.java:491)
+W/Email   (24393): 	at com.android.mail.ui.TwoPaneController.showConversation(TwoPaneController.java:616)
+W/Email   (24393): 	at com.android.mail.ui.TwoPaneController.showConversationWithPeek(TwoPaneController.java:564)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController.showConversation(AbstractActivityController.java:3126)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController.showConversation(AbstractActivityController.java:3116)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController$FolderLoads.onLoadFinished(AbstractActivityController.java:4308)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController$FolderLoads.onLoadFinished(AbstractActivityController.java:4130)
+W/Email   (24393): 	at android.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:488)
+W/Email   (24393): 	at android.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:456)
+W/Email   (24393): 	at android.content.Loader.deliverResult(Loader.java:144)
+W/Email   (24393): 	at com.android.mail.content.ObjectCursorLoader.deliverResult(ObjectCursorLoader.java:145)
+W/Email   (24393): 	at com.android.mail.content.ObjectCursorLoader.deliverResult(ObjectCursorLoader.java:37)
+W/Email   (24393): 	at android.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:265)
+W/Email   (24393): 	at android.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:92)
+W/Email   (24393): 	at android.os.AsyncTask.finish(AsyncTask.java:636)
+W/Email   (24393): 	at android.os.AsyncTask.access$500(AsyncTask.java:177)
+W/Email   (24393): 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:653)
+W/Email   (24393): 	at android.os.Handler.dispatchMessage(Handler.java:111)
+W/Email   (24393): 	at android.os.Looper.loop(Looper.java:194)
+W/Email   (24393): 	at android.app.ActivityThread.main(ActivityThread.java:5637)
+W/Email   (24393): 	at java.lang.reflect.Method.invoke(Native Method)
+W/Email   (24393): 	at java.lang.reflect.Method.invoke(Method.java:372)
+W/Email   (24393): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:960)
+W/Email   (24393): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+D/Email   (24393): CLF.checkSyncStatus done syncing
+D/Email   (24393): updateFooterStatus with unknown status: 0
+D/Email   (24393): IN CVF.onActivityCreated, this=(ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]) visible=true
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.AbstractConversationViewFragment$1@3af42b3a before=7 after=8
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): [SearchMail] enterLocalSearch failed for mConvListContext is null or current is not local search, mConvListContext: [ Folder: [com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}] isLocalSearch: [false] Query: [null] Field: [null]]
+D/Email   (24393): recalculateListFolders current size [0], cursor.size [16] 
+D/Email   (24393): Checking if all folder list contains 
+D/Email   (24393): Cursor for  seems reasonably valid
+D/Email   (24393): Add inboxes heads, inbox size [1]
+D/Email   (24393): Add remaining heads, folder size [15]
+D/Email   (24393): [BackgroundAsyncTask] >>> [35aa77b6#com.android.mail.ui.FolderListFragment.onLoadFinished[759]#com.android.mail.ui.FolderListFragment.onLoadFinished[111]]
+D/Email   (24393): AbstractActivityController.onLoadFinished(): mAccount = content://com.android.email.provider/uiaccount/21
+D/Email   (24393): Settings.equals(com.android.mail.providers.Settings@737a67b2)
+D/Email   (24393): [BackgroundAsyncTask] <<< [35aa77b6#com.android.mail.ui.FolderListFragment.onLoadFinished[759]#com.android.mail.ui.FolderListFragment.onLoadFinished[111]]
+D/Email   (24393): AAC.perhapsEnterWaitMode inWaitingMode [false], isSyncRequired [false], inbox [com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}]
+D/Email   (24393): ContactResolver >> batch start
+D/Email   (24393): IN AAC.ConversationCursor.onLoadFinished, data={com.android.mail.browse.ConversationCursor@2c38cd80 mName=Inbox mDeferSync=false mRefreshRequired=false mRefreshReady=false mRefreshTask=null mPaused=false count=71 mDeletedCount=0 mUnderlying=com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper@15053a03 mCacheMap={}} loader=ConversationCursorLoader{16d29cb7 id=10} this=com.android.mail.ui.AbstractActivityController$ConversationListLoaderCallbacks@ff6ac24
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): ContactResolver -- failed  tclval001@163.com
+D/Email   (24393): ContactResolver -- failed  tclval001@163.com
+D/Email   (24393): CLF.checkSyncStatus done syncing
+D/Email   (24393): Changes to account 21, folder: 133, unreadCount: 0, unseenCount: 0
+D/Email   (24393): ____________________________onConversationUpdated, headerview: null
+D/Email   (24393): AAC.ConversationCursor.onLoadFinished, count [71]
+D/Email   (24393): [BackgroundAsyncTask] >>> [6046690#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+I/Email   (24393): SHOWCONV: CVF is user-visible, immediately loading conversation ((ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]))
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): onCreateLoader for MessageLoader messageListUri[content://com.android.email.provider/uimessage/531]
+D/Email   (24393): [BackgroundAsyncTask] <<< [6046690#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702302829/531
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702646255/531
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702302829/531
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702646255/531
+D/Email   (24393): FolderListFragment.getView vip count : 0
+D/Email   (24393): ContactResolver  > batch   1
+D/Email   (24393): ContactResolver  > batch   2
+D/Email   (24393): ContactResolver  > batch   3
+D/Email   (24393): ContactResolver  > batch   4
+D/Email   (24393): ContactResolver  > batch   5
+D/Email   (24393): ContactResolver  > batch   6
+D/Email   (24393): ContactResolver  > batch   7
+D/Email   (24393): ContactResolver  > batch   8
+D/Email   (24393): ContactResolver  > batch   9
+D/Email   (24393): [BackgroundAsyncTask] >>> [38d892da#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [38d892da#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): FolderListFragment.updateVipMessageCount count : 0
+D/Email   (24393): Start the pending loaders --- start
+D/Email   (24393): Start the LOADER_FOLDER_CURSOR, folder : com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}
+D/Email   (24393): LOADER_FOLDER_CURSOR created
+D/Email   (24393): Start the LOADER_RECENT_FOLDERS
+D/Email   (24393): LOADER_RECENT_FOLDERS created
+D/Email   (24393): Start the LOADER_ACCOUNT_UPDATE_CURSOR
+D/Email   (24393): LOADER_ACCOUNT_UPDATE_CURSOR created
+D/Email   (24393): Start the pending loaders --- end
+D/Email   (24393): ContactResolver  > batch   0
+D/Email   (24393): FolderListFragment.getView vip count : 0
+D/Email   (24393): getCapabilities() for 21 (protocol imap): 0x104061  0 5 6 14 20 
+D/Email   (24393): getConversationListSwipeActionInteger swipeEnabled true, archive false
+D/Email   (24393): [BackgroundAsyncTask] >>> [8060894#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [8060894#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): LOADED CONVERSATION= conv='[conversation id=531, subject=ffff]' status=2 messages:
+D/Email   (24393): [Message #0 hash=-219511639 uri=content://com.android.email.provider/uimessage/531 id=531 serverId=1403851249 from='"Weiwei, HUANG(SCD TAB SWD-SZ-TCT)" <weiwei.huang@tcl.com>' draftType=0 sendingState=0 read=false starred=false attUris=[]]
+I/Email   (24393): CONV RENDER: initial render. ((ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]))
+D/Email   (24393): IN renderMessageBodies, fragment=(ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff])
+D/Email   (24393): UiQuery Folder 133 unread 6
+D/Email   (24393): Message.tokenizeAddresses address: "Weiwei, HUANG(SCD TAB SWD-SZ-TCT)" <weiwei.huang@tcl.com>
+D/Email   (24393): Message.tokenizeAddresses address: tclval001@163.com
+D/Email   (24393): setReplyOrReplyAllVisible defaultReplyAll = false, mReplyButton = android.widget.ImageView{6aee2c7 VFED..C. .....AI. 0,0-0,0 #7f0e007a app:id/reply}, mReplyAllButton = android.widget.ImageView{e7960f4 VFED..C. .....AI. 0,0-0,0 #7f0e013e app:id/reply_all}
+D/Email   (24393): _________________ MessageFooterViewEx bind hasAttachment: false
+D/Email   (24393): _________________ MessageFooterViewEx bind mPartialLoaded: false
+D/Email   (24393): _________________ MessageFooterViewEx render id:531 state:0
+D/Email   (24393): Gone download remain button
+D/Email   (24393): rendered conversation of 6840 bytes, buffer capacity=131072, docBaseUri x-thread://-51661170/531
+D/Email   (24393): ContactResolver >> batch start
+D/Email   (24393): onReceive:action = com.android.mail.action.update_notification
+D/Email   (24393): processBroadcastIntent
+D/Email   (24393): [BackgroundAsyncTask] >>> [13975ff0#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): recalculateListFolders current size [0], cursor.size [16] 
+D/Email   (24393): Checking if all folder list contains 
+D/Email   (24393): Cursor for  seems reasonably valid
+D/Email   (24393): Add inboxes heads, inbox size [1]
+D/Email   (24393): [BackgroundAsyncTask] <<< [13975ff0#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): Add remaining heads, folder size [15]
+D/Email   (24393): setSwipeAction.swipeSetting : 1
+W/Email   (24393): Method called on the UI thread
+W/Email   (24393): java.lang.Throwable
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.warnIfUiThread(EmailContent.java:221)
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.restoreContentWithId(EmailContent.java:259)
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.restoreContentWithId(EmailContent.java:253)
+W/Email   (24393): 	at com.android.emailcommon.provider.Mailbox.restoreMailboxWithId(Mailbox.java:494)
+W/Email   (24393): 	at com.android.emailcommon.provider.Mailbox.restoreMailboxOfType(Mailbox.java:723)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.getLastUpdateTimeString(ConversationListFragment.java:1141)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.onFolderUpdated(ConversationListFragment.java:1109)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment$4.onChanged(ConversationListFragment.java:402)
+W/Email   (24393): 	at com.android.mail.providers.FolderObserver.onChanged(FolderObserver.java:70)
+W/Email   (24393): 	at android.database.DataSetObservable.notifyChanged(DataSetObservable.java:37)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController$FolderLoads.onLoadFinished(AbstractActivityController.java:4212)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController$FolderLoads.onLoadFinished(AbstractActivityController.java:4130)
+W/Email   (24393): 	at android.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:488)
+W/Email   (24393): 	at android.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:456)
+W/Email   (24393): 	at android.content.Loader.deliverResult(Loader.java:144)
+W/Email   (24393): 	at com.android.mail.content.ObjectCursorLoader.deliverResult(ObjectCursorLoader.java:145)
+W/Email   (24393): 	at com.android.mail.content.ObjectCursorLoader.deliverResult(ObjectCursorLoader.java:37)
+W/Email   (24393): 	at android.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:265)
+W/Email   (24393): 	at android.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:92)
+W/Email   (24393): 	at android.os.AsyncTask.finish(AsyncTask.java:636)
+W/Email   (24393): 	at android.os.AsyncTask.access$500(AsyncTask.java:177)
+W/Email   (24393): 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:653)
+W/Email   (24393): 	at android.os.Handler.dispatchMessage(Handler.java:111)
+W/Email   (24393): 	at android.os.Looper.loop(Looper.java:194)
+W/Email   (24393): 	at android.app.ActivityThread.main(ActivityThread.java:5637)
+W/Email   (24393): 	at java.lang.reflect.Method.invoke(Native Method)
+W/Email   (24393): 	at java.lang.reflect.Method.invoke(Method.java:372)
+W/Email   (24393): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:960)
+W/Email   (24393): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+D/Email   (24393): CLF.checkSyncStatus done syncing
+D/Email   (24393): ____________________________onConversationUpdated, headerview: com.android.mail.browse.ConversationViewHeader{1526a332 V.E..... ......I. 0,0-0,0 #7f0e0158 app:id/conversation_header}
+D/Email   (24393): CVH. onConversationUpdated for conversation: [conversation id=531, subject=ffff]
+D/Email   (24393): FolderListFragment.setSelectedFolder(folder) called!, com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}
+D/Email   (24393): AbstractActivityController.onLoadFinished(): mAccount = content://com.android.email.provider/uiaccount/21
+D/Email   (24393): Settings.equals(com.android.mail.providers.Settings@582f751b)
+D/Email   (24393): AAC.perhapsEnterWaitMode inWaitingMode [false], isSyncRequired [false], inbox [com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}]
+D/Email   (24393): onHandleIntent start:action = broadcast_receiver
+D/Email   (24393): onHandleIntent:broadcastAction = com.android.mail.action.update_notification
+D/Email   (24393): onHandleIntent end = broadcast_receiver
+D/Email   (24393): ContactResolver -- failed  weiwei.huang@tcl.com
+D/Email   (24393): FolderListFragment.getView vip count : 0
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): ContactResolver -- failed  tclval002@163.com
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): ContactResolver -- failed  changqing.pi@tcl.com
+D/Email   (24393): [BackgroundAsyncTask] >>> [56eec6#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [56eec6#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): ContactResolver  > batch   0
+D/Email   (24393): getCapabilities() for 21 (protocol imap): 0x104061  0 5 6 14 20 
+D/Email   (24393): getConversationListSwipeActionInteger swipeEnabled true, archive false
+D/Email   (24393): UiQuery Folder 133 unread 6
+D/Email   (24393): UiQuery Folder 133 unread 6
+D/Email   (24393):  EmailConversationCursor : mailbox.mUiSyncStatus : 0, System.currentTimeMillis() - mailbox.mSyncTime : 48850, mailbox.mSyncInterval: 0, mailbox.mUiLastSyncResult: 16,mailbox.mServerId : INBOX
+D/Email   (24393): [BackgroundAsyncTask] >>> [128261dd#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.resumeCaching[485]#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.onStateChanged[590]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [128261dd#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.resumeCaching[485]#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.onStateChanged[590]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [20f2c23#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [20f2c23#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+E/Email   (24393): JS: Uncaught ReferenceError: setMessageHeaderSpacerHeight is not defined (:1) f=(ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff])
+D/Email   (24393): IN CVF.onPageFinished, url=x-thread://-51661170/531 fragment=(ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]) wv=com.android.mail.browse.ConversationWebView{278fab04 V.ED..CL ........ 0,0-800,1098 #7f0e0154 app:id/conversation_webview} t=586ms
+D/Email   (24393): setReplyOrReplyAllVisible defaultReplyAll = false, mReplyButton = android.widget.ImageView{6aee2c7 VFED..C. .....AI. 0,0-0,0 #7f0e007a app:id/reply}, mReplyAllButton = android.widget.ImageView{e7960f4 GFED..C. .....AI. 0,0-0,0 #7f0e013e app:id/reply_all}
+D/Email   (24393): MessageHeaderView registerContentObserver for VIP member >>>>>
+D/Email   (24393): [BackgroundAsyncTask] >>> [9d3c777#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [9d3c777#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [2e0f805a#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [2e0f805a#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [3551428b#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+I/Email   (24393): IN CVF.onContentReady, f=(ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]) vis=true t=680ms
+D/Email   (24393): [BackgroundAsyncTask] <<< [3551428b#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [3a0f7c67#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [3a0f7c67#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): onProgressDismiss go() - isUserVisible() = true
+D/Email   (24393): AbstractConversationViewFragment#onConversationSeen()
+D/Email   (24393): onConversationSeen() - mSuppressMarkingViewed = false
+D/Email   (24393): onConversationSeen() - mConversation.isViewed() = false, cursor null = false, cursor.isConversationRead() = false
+D/Email   (24393): markConversationsRead(targets=[conversation id=531, subject=ffff])
+D/Email   (24393): performing markConversationsRead
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): [BackgroundAsyncTask] >>> [3c3a12bd#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): [BackgroundAsyncTask] <<< [3c3a12bd#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): CLF.checkSyncStatus done syncing
+D/Email   (24393): ____________________________onConversationUpdated, headerview: com.android.mail.browse.ConversationViewHeader{1526a332 V.E..... ........ 0,0-800,117 #7f0e0158 app:id/conversation_header}
+D/Email   (24393): CVH. onConversationUpdated for conversation: [conversation id=531, subject=ffff]
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): ____________________________onConversationUpdated, headerview: com.android.mail.browse.ConversationViewHeader{1526a332 V.E..... .......D 0,0-800,117 #7f0e0158 app:id/conversation_header}
+D/Email   (24393): CVH. onConversationUpdated for conversation: [conversation id=531, subject=ffff]
+D/Email   (24393): EmailProvider : applyBatch : beginTransaction : operations 1
+D/Email   (24393): Update: uri: content://com.android.email.provider/uimessage/531?seq=1, values: suppress_undo=true seen=true conversationInfo=[B@f298a14 read=true viewed=true
+D/Email   (24393): uiUpdate: [content://com.android.email.provider/uimessage/531?seq=1]
+D/Email   (24393): [BackgroundAsyncTask] >>> [119dc0b2#com.mediatek.email.attachment.AttachmentAutoClearController.recordConversationMsgIdAsync[70]#com.android.email.browse.ConversationPagerAdapterEmail.getConversationViewFragment[24]]
+D/Email   (24393): getAccountId = tclval001@163.com for email tclval001@163.com
+D/Email   (24393): onCreate in ConversationViewFragment (this=(ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html]))
+D/Email   (24393): [BackgroundAsyncTask] <<< [119dc0b2#com.mediatek.email.attachment.AttachmentAutoClearController.recordConversationMsgIdAsync[70]#com.android.email.browse.ConversationPagerAdapterEmail.getConversationViewFragment[24]]
+D/Email   (24393): uiUpdateMessage id 531 mk 133, set FlagRead -1,
+D/Email   (24393): Update: uri: content://com.android.email.provider/syncedMessage/531?is_uiprovider=true, values: flagSeen=1 flagRead=1
+D/Email   (24393): EP update done id 531
+D/Email   (24393): Update Message uri content://com.android.email.provider/syncedMessage/531?is_uiprovider=true 
+D/Email   (24393): notfiyVirtualMailbox accountId 21, type 9 
+D/Email   (24393): notfiyVirtualMailbox accountId 21, type 10 
+D/Email   (24393): notfiyVirtualMailbox accountId 21, type 11 
+D/Email   (24393): notfiyVirtualMailbox accountId 268435456, type 9 
+D/Email   (24393): notfiyVirtualMailbox accountId 268435456, type 10 
+D/Email   (24393): notfiyVirtualMailbox accountId 268435456, type 11 
+D/Email   (24393):  Update Message with flagloaded false or flags false
+D/Email   (24393): EmailProvider : applyBatch : notifyAllChange(): notify:[18]
+D/Email   (24393): EmailProvider : applyBatch : endTransaction : [82]ms
+D/Email   (24393): IN CVF.onActivityCreated, this=(ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html]) visible=false
+D/Email   (24393): IN register(Account)Observer: com.android.mail.ui.AbstractConversationViewFragment$1@274b6827 before=8 after=9
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): [BackgroundAsyncTask] >>> [2a016ad4#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [2a016ad4#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): setReplyOrReplyAllVisible defaultReplyAll = false, mReplyButton = android.widget.ImageView{6aee2c7 VFED..C. .....A.. 544,11-608,75 #7f0e007a app:id/reply}, mReplyAllButton = android.widget.ImageView{e7960f4 GFED..C. .....AI. 0,0-0,0 #7f0e013e app:id/reply_all}
+I/Email   (24393): refresh! vip member observer onChange 
+I/Email   (24393): SHOWCONV: CVF is not visible, but no reason to wait. loading now. ((ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html]))
+D/Email   (24393): onCreateLoader for MessageLoader messageListUri[content://com.android.email.provider/uimessage/529]
+D/Email   (24393): [BackgroundAsyncTask] >>> [2adc6f72#com.android.mail.browse.ConversationCursor.refresh[1177]#com.android.mail.ui.AbstractActivityController.onRefreshRequired[3710]]
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702302829/529
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702302829/531
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702646255/529
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702646255/531
+D/Email   (24393): UiQuery Folder 133 unread 5
+D/Email   (24393): [BackgroundAsyncTask] >>> [dfc5fc3#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [dfc5fc3#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): UiQuery Folder 133 unread 5
+D/Email   (24393): UiQuery Folder 133 unread 5
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702302829/529
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702302829/531
+D/Email   (24393): setSwipeAction.swipeSetting : 1
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702646255/531
+D/Email   (24393): EmailProvider.openFile: content://com.android.email.provider/account%3A1702646255/529
+D/Email   (24393): [BackgroundAsyncTask] >>> [2d746040#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [2d746040#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+W/Email   (24393): Method called on the UI thread
+W/Email   (24393): java.lang.Throwable
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.warnIfUiThread(EmailContent.java:221)
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.restoreContentWithId(EmailContent.java:259)
+W/Email   (24393): 	at com.android.emailcommon.provider.EmailContent.restoreContentWithId(EmailContent.java:253)
+W/Email   (24393): 	at com.android.emailcommon.provider.Mailbox.restoreMailboxWithId(Mailbox.java:494)
+W/Email   (24393): 	at com.android.emailcommon.provider.Mailbox.restoreMailboxOfType(Mailbox.java:723)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.getLastUpdateTimeString(ConversationListFragment.java:1141)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment.onFolderUpdated(ConversationListFragment.java:1109)
+W/Email   (24393): 	at com.android.mail.ui.ConversationListFragment$4.onChanged(ConversationListFragment.java:402)
+W/Email   (24393): 	at com.android.mail.providers.FolderObserver.onChanged(FolderObserver.java:70)
+W/Email   (24393): 	at android.database.DataSetObservable.notifyChanged(DataSetObservable.java:37)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController$FolderLoads.onLoadFinished(AbstractActivityController.java:4212)
+W/Email   (24393): 	at com.android.mail.ui.AbstractActivityController$FolderLoads.onLoadFinished(AbstractActivityController.java:4130)
+W/Email   (24393): 	at android.app.LoaderManagerImpl$LoaderInfo.callOnLoadFinished(LoaderManager.java:488)
+W/Email   (24393): 	at android.app.LoaderManagerImpl$LoaderInfo.onLoadComplete(LoaderManager.java:456)
+W/Email   (24393): 	at android.content.Loader.deliverResult(Loader.java:144)
+W/Email   (24393): 	at com.android.mail.content.ObjectCursorLoader.deliverResult(ObjectCursorLoader.java:145)
+W/Email   (24393): 	at com.android.mail.content.ObjectCursorLoader.deliverResult(ObjectCursorLoader.java:37)
+W/Email   (24393): 	at android.content.AsyncTaskLoader.dispatchOnLoadComplete(AsyncTaskLoader.java:265)
+W/Email   (24393): 	at android.content.AsyncTaskLoader$LoadTask.onPostExecute(AsyncTaskLoader.java:92)
+W/Email   (24393): 	at android.os.AsyncTask.finish(AsyncTask.java:636)
+W/Email   (24393): 	at android.os.AsyncTask.access$500(AsyncTask.java:177)
+W/Email   (24393): 	at android.os.AsyncTask$InternalHandler.handleMessage(AsyncTask.java:653)
+W/Email   (24393): 	at android.os.Handler.dispatchMessage(Handler.java:111)
+W/Email   (24393): 	at android.os.Looper.loop(Looper.java:194)
+W/Email   (24393): 	at android.app.ActivityThread.main(ActivityThread.java:5637)
+W/Email   (24393): 	at java.lang.reflect.Method.invoke(Native Method)
+W/Email   (24393): 	at java.lang.reflect.Method.invoke(Method.java:372)
+W/Email   (24393): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:960)
+W/Email   (24393): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+D/Email   (24393):  EmailConversationCursor : mailbox.mUiSyncStatus : 0, System.currentTimeMillis() - mailbox.mSyncTime : 50070, mailbox.mSyncInterval: 0, mailbox.mUiLastSyncResult: 16,mailbox.mServerId : INBOX
+D/Email   (24393): CLF.checkSyncStatus done syncing
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): ____________________________onConversationUpdated, headerview: com.android.mail.browse.ConversationViewHeader{1526a332 V.E..... ........ 0,0-800,117 #7f0e0158 app:id/conversation_header}
+D/Email   (24393): CVH. onConversationUpdated for conversation: [conversation id=531, subject=ffff]
+D/Email   (24393): FolderListFragment.setSelectedFolder(folder) called!, com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): [BackgroundAsyncTask] <<< [2adc6f72#com.android.mail.browse.ConversationCursor.refresh[1177]#com.android.mail.ui.AbstractActivityController.onRefreshRequired[3710]]
+D/Email   (24393): FolderListFragment.getView vip count : 0
+D/Email   (24393): [BackgroundAsyncTask] >>> [2f8664e9#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [2f8664e9#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): LOADED CONVERSATION= conv='[conversation id=529, subject=html]' status=2 messages:
+D/Email   (24393): [Message #0 hash=-219512352 uri=content://com.android.email.provider/uimessage/529 id=529 serverId=1403851247 from='"Changqing, PI(SCD TAB VAL-SZ-TCT)" <changqing.pi@tcl.com>' draftType=0 sendingState=0 read=true starred=false attUris=[]]
+I/Email   (24393): CONV RENDER: initial render. ((ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html]))
+D/Email   (24393): IN renderMessageBodies, fragment=(ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html])
+D/Email   (24393): [BackgroundAsyncTask] >>> [242e256e#com.android.mail.ui.FolderListFragment$4.run[436]#com.android.mail.utils.Throttle$MyTimerTask$HandlerRunnable.run[170]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [242e256e#com.android.mail.ui.FolderListFragment$4.run[436]#com.android.mail.utils.Throttle$MyTimerTask$HandlerRunnable.run[170]]
+D/Email   (24393): Message.tokenizeAddresses address: "Changqing, PI(SCD TAB VAL-SZ-TCT)" <changqing.pi@tcl.com>
+D/Email   (24393): Message.tokenizeAddresses address: "Changqing, PI(SCD TAB VAL-SZ-TCT)" <changqing.pi@tcl.com>,tclval001@163.com,tclval002@163.com,tclval888@163.com
+D/Email   (24393): setReplyOrReplyAllVisible defaultReplyAll = false, mReplyButton = android.widget.ImageView{395ebfcd VFED..C. .....AI. 0,0-0,0 #7f0e007a app:id/reply}, mReplyAllButton = android.widget.ImageView{31565082 VFED..C. .....AI. 0,0-0,0 #7f0e013e app:id/reply_all}
+D/Email   (24393): _________________ MessageFooterViewEx bind hasAttachment: false
+D/Email   (24393): _________________ MessageFooterViewEx bind mPartialLoaded: false
+D/Email   (24393): _________________ MessageFooterViewEx render id:529 state:0
+D/Email   (24393): Gone download remain button
+D/Email   (24393): rendered conversation of 13112 bytes, buffer capacity=131072, docBaseUri x-thread://-51661170/529
+D/Email   (24393): LOADED CONVERSATION= conv='[conversation id=531, subject=ffff]' status=2 messages:
+D/Email   (24393): [Message #0 hash=-219511639 uri=content://com.android.email.provider/uimessage/531 id=531 serverId=1403851249 from='"Weiwei, HUANG(SCD TAB SWD-SZ-TCT)" <weiwei.huang@tcl.com>' draftType=0 sendingState=0 read=true starred=false attUris=[]]
+I/Email   (24393): CONV RENDER: uninteresting update, ignoring this conversation update ((ConversationViewFragment{1ee6e977 #2 id=0x7f0e014a} conv=[conversation id=531, subject=ffff]))
+D/Email   (24393): Received refresh ready callback for folder 133
+D/Email   (24393): [BackgroundAsyncTask] >>> [1efe91c7#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): [BackgroundAsyncTask] <<< [1efe91c7#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): CLF.checkSyncStatus done syncing
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): ____________________________onConversationUpdated, headerview: com.android.mail.browse.ConversationViewHeader{1526a332 V.E..... ........ 0,0-800,117 #7f0e0158 app:id/conversation_header}
+D/Email   (24393): CVH. onConversationUpdated for conversation: [conversation id=531, subject=ffff]
+D/Email   (24393): recalculateListFolders current size [0], cursor.size [16] 
+D/Email   (24393): Checking if all folder list contains content://com.android.email.provider/uifolder/133
+D/Email   (24393): Cursor for content://com.android.email.provider/uifolder/133 seems reasonably valid
+D/Email   (24393): Found content://com.android.email.provider/uifolder/133 !
+D/Email   (24393): Add inboxes heads, inbox size [1]
+D/Email   (24393): Add remaining heads, folder size [15]
+D/Email   (24393): recalculateListFolders current size [0], cursor.size [16] 
+D/Email   (24393): Checking if all folder list contains content://com.android.email.provider/uifolder/133
+D/Email   (24393): Cursor for content://com.android.email.provider/uifolder/133 seems reasonably valid
+D/Email   (24393): Found content://com.android.email.provider/uifolder/133 !
+D/Email   (24393): Add inboxes heads, inbox size [1]
+D/Email   (24393): Add remaining heads, folder size [15]
+D/Email   (24393): [BackgroundAsyncTask] >>> [1660fbdb#com.android.mail.ui.FolderListFragment.onLoadFinished[759]#com.android.mail.ui.FolderListFragment.onLoadFinished[111]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [1660fbdb#com.android.mail.ui.FolderListFragment.onLoadFinished[759]#com.android.mail.ui.FolderListFragment.onLoadFinished[111]]
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): FolderListFragment.getView vip count : 0
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): [BackgroundAsyncTask] >>> [1ae91d8e#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [1ae91d8e#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): FolderListFragment.updateVipMessageCount count : 0
+D/Email   (24393): FolderListFragment.updateVipMessageCount count : 0
+D/Email   (24393): FolderListFragment.getView vip count : 0
+D/Email   (24393): [BackgroundAsyncTask] >>> [291ca1bc#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [291ca1bc#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): !!!notifyEmailUnreadNumber: send broadcast to laucher : unreadCount = 5
+E/Email   (24393): JS: Uncaught ReferenceError: setMessageHeaderSpacerHeight is not defined (:1) f=(ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html])
+D/Email   (24393): setReplyOrReplyAllVisible defaultReplyAll = false, mReplyButton = android.widget.ImageView{395ebfcd VFED..C. .....AI. 0,0-0,0 #7f0e007a app:id/reply}, mReplyAllButton = android.widget.ImageView{31565082 GFED..C. .....AI. 0,0-0,0 #7f0e013e app:id/reply_all}
+D/Email   (24393): MessageHeaderView registerContentObserver for VIP member >>>>>
+D/Email   (24393): [BackgroundAsyncTask] >>> [17f01da8#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [17f01da8#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): IN CVF.onPageFinished, url=x-thread://-51661170/529 fragment=(ConversationViewFragment{c8d7803 #3 id=0x7f0e014a} conv=[conversation id=529, subject=html]) wv=com.android.mail.browse.ConversationWebView{100407ac V.ED..CL ......ID 0,0-800,1098 #7f0e0154 app:id/conversation_webview} t=216ms
+D/Email   (24393): [BackgroundAsyncTask] >>> [24987fa7#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [24987fa7#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [2dfd6c54#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [2dfd6c54#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): onProgressDismiss go() - isUserVisible() = false
+D/Email   (24393): [BackgroundAsyncTask] >>> [28e0e7fd#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [28e0e7fd#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [19200cf2#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.resumeCaching[485]#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.onStateChanged[590]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [19200cf2#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.resumeCaching[485]#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.onStateChanged[590]]
+D/Email   (24393): IN unregister(List)Observer: com.android.mail.browse.ConversationPagerAdapter$ListObserver@211762aa before=2 after=1
+D/Email   (24393): IN unregister(CurrentFolder)Observer: com.android.mail.browse.ConversationPagerAdapter$1@3080fe9b before=4 after=3
+D/Email   (24393): [BackgroundAsyncTask] >>> [3da0ca6d#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+I/Email   (24393): TPC.setCurrentConv w/ new conv. new=null old=[conversation id=531, subject=ffff] newPeek=false
+D/Email   (24393): [BackgroundAsyncTask] <<< [3da0ca6d#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): [SearchMail] onQueryTextChange []
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): [SearchMail] EmailActionBarView onPrepareOptionsMenu SEARCH_RESULTS_LIST
+D/Email   (24393): [SearchMail] enterLocalSearch failed for mConvListContext is null or current is not local search, mConvListContext: [ Folder: [com.android.mail.providers.Folder@ae6950c3{id=133, uri=content://com.android.email.provider/uifolder/133, name=Inbox, count=128, parent=, type=2}] isLocalSearch: [false] Query: [null] Field: [null]]
+D/Email   (24393): Notifying conversation Uri 133 twice
+D/Email   (24393): [BackgroundAsyncTask] >>> [2d670b38#com.android.mail.browse.ConversationCursor.refresh[1177]#com.android.mail.ui.AbstractActivityController.onRefreshRequired[3710]]
+D/Email   (24393): UiQuery Folder 133 unread 5
+D/Email   (24393):  EmailConversationCursor : mailbox.mUiSyncStatus : 0, System.currentTimeMillis() - mailbox.mSyncTime : 51758, mailbox.mSyncInterval: 0, mailbox.mUiLastSyncResult: 16,mailbox.mServerId : INBOX
+D/Email   (24393): Received refresh ready callback for folder 133
+D/Email   (24393): [BackgroundAsyncTask] <<< [2d670b38#com.android.mail.browse.ConversationCursor.refresh[1177]#com.android.mail.ui.AbstractActivityController.onRefreshRequired[3710]]
+D/Email   (24393): [BackgroundAsyncTask] >>> [394f6076#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+D/Email   (24393): [BackgroundAsyncTask] <<< [394f6076#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): CLF.checkSyncStatus done syncing
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.AbstractConversationViewFragment$1@3af42b3a before=9 after=8
+D/Email   (24393): MessageHeaderView unregisterContentObserver for VIP member <<<<<
+D/Email   (24393): IN unregister(Account)Observer: com.android.mail.ui.AbstractConversationViewFragment$1@274b6827 before=8 after=7
+D/Email   (24393): MessageHeaderView unregisterContentObserver for VIP member <<<<<
+D/Email   (24393): [BackgroundAsyncTask] >>> [c1da2e4#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): Update: uri: content://com.android.email.provider/message, values: flagSeen=true
+I/Email   (24393): Conversation: applying cached value to col=seen val=1
+I/Email   (24393): Conversation: applying cached value to col=conversationInfo val=[B@f298a14
+I/Email   (24393): Conversation: applying cached value to col=read val=1
+D/Email   (24393): [BackgroundAsyncTask] <<< [c1da2e4#com.android.mail.utils.Utils.setConversationCursorVisibility[878]#com.android.mail.ui.AbstractActivityController.informCursorVisiblity[1326]]
+D/Email   (24393): ActionBarView.onPrepareOptionsMenu().
+D/Email   (24393): [SearchMail] EmailActionBarView onPrepareOptionsMenu SEARCH_RESULTS_LIST
+D/Email   (24393): [BackgroundAsyncTask] >>> [1098034d#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.resumeCaching[485]#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.onStateChanged[590]]
+D/Email   (24393): [BackgroundAsyncTask] <<< [1098034d#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.resumeCaching[485]#com.android.mail.browse.ConversationCursor$UnderlyingCursorWrapper.onStateChanged[590]]
