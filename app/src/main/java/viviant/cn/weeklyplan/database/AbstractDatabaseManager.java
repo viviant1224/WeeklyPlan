@@ -12,7 +12,7 @@ import viviant.cn.weeklyplan.bean.DaoSession;
 /**
  * Created by weiwei.huang on 16-4-29.
  */
-public class AbstractDatabaseManager implements IDatabase{
+public abstract class AbstractDatabaseManager<M, K> implements IDatabase<M, K>{
 
     private static final String DEFAULT_DATABASE_NAME = "weeklyplan.db";
 
@@ -22,10 +22,7 @@ public class AbstractDatabaseManager implements IDatabase{
     private static DaoMaster.DevOpenHelper mHelper;
     protected static DaoSession daoSession;
 
-    @Override
-    public boolean insert() {
-        return false;
-    }
+
 
 
     /**
@@ -73,6 +70,22 @@ public class AbstractDatabaseManager implements IDatabase{
      */
     private static SQLiteDatabase getWritableDatabase() {
         return mHelper.getWritableDatabase();
+    }
+
+
+
+    //
+    @Override
+    public boolean insert(@NonNull M m) {
+        try {
+            if (m == null)
+                return false;
+            openWritableDb();
+            getAbstractDao().insert(m);
+        } catch (SQLiteException e) {
+            return false;
+        }
+        return true;
     }
 
 }
