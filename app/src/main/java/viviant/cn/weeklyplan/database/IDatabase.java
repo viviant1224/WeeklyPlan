@@ -14,6 +14,19 @@ public interface IDatabase<M, K> {
      */
     boolean insert(M m);
 
+    /**
+     *
+     * @param m
+     * @return
+     */
+    boolean delete(M m);
+
+
+
+
+    Object getObjectById(String id);
+
+    boolean update(M m);
 
     AbstractDao<M, K> getAbstractDao();
 

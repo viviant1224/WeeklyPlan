@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import viviant.cn.weeklyplan.bean.DaoMaster;
 import viviant.cn.weeklyplan.bean.DaoSession;
+import viviant.cn.weeklyplan.util.StringUtils;
 
 /**
  * Created by weiwei.huang on 16-4-29.
@@ -87,5 +88,34 @@ public abstract class AbstractDatabaseManager<M, K> implements IDatabase<M, K>{
         }
         return true;
     }
+
+    @Override
+    public boolean delete(@NonNull M m) {
+        try {
+            if (m == null)
+                return false;
+            openWritableDb();
+            getAbstractDao().delete(m);
+        } catch (SQLiteException e) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean update(@NonNull M m) {
+        try {
+            if (m == null)
+                return false;
+            openWritableDb();
+            getAbstractDao().update(m);
+        } catch (SQLiteException e) {
+            return false;
+        }
+        return true;
+    }
+
+
+
 
 }
