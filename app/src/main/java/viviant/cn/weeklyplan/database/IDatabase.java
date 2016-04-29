@@ -1,6 +1,8 @@
 package viviant.cn.weeklyplan.database;
 
 
+import java.util.List;
+
 import de.greenrobot.dao.AbstractDao;
 
 /**
@@ -25,6 +27,10 @@ public interface IDatabase<M, K> {
 
 
     Object getObjectById(String id);
+
+    M selectByPrimaryKey(K key);
+
+    List<M> loadAll();
 
     boolean update(M m);
 

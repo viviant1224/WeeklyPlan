@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import viviant.cn.weeklyplan.bean.DaoMaster;
 import viviant.cn.weeklyplan.bean.DaoSession;
 import viviant.cn.weeklyplan.util.StringUtils;
@@ -44,6 +46,13 @@ public abstract class AbstractDatabaseManager<M, K> implements IDatabase<M, K>{
     }
 
     /**
+     * Query for readable DB
+     */
+    protected static void openReadableDb() throws SQLiteException {
+        daoSession = new DaoMaster(getReadableDatabase()).newSession();
+    }
+
+    /**
      * 只关闭helper就好,看源码就知道helper关闭的时候会关闭数据库
      *
      */
@@ -71,6 +80,13 @@ public abstract class AbstractDatabaseManager<M, K> implements IDatabase<M, K>{
      */
     private static SQLiteDatabase getWritableDatabase() {
         return mHelper.getWritableDatabase();
+    }
+
+    /**
+     * @return
+     */
+    private static SQLiteDatabase getReadableDatabase() {
+        return mHelper.getReadableDatabase();
     }
 
 
@@ -114,6 +130,24 @@ public abstract class AbstractDatabaseManager<M, K> implements IDatabase<M, K>{
         }
         return true;
     }
+
+    @Override
+    public M selectByPrimaryKey(@NonNull K key) {
+        try {
+            openReadableDb();
+            return getAbstractDao().load(key);
+        } catch (SQLiteException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<M> loadAll() {
+        openReadableDb();
+        return getAbstractDao().loadAll();
+    }
+
+
 
 
 
