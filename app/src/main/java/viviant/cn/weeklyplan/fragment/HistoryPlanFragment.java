@@ -19,6 +19,12 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
@@ -73,6 +79,11 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
 
     private List<WeekPlan> listItems = null;
 
+    //volley test
+    private static final String URL = "http://www.baidu.com/";
+    private RequestQueue mQueue; // volley的请求队列
+    //volley test end
+
     // TODO: Rename and change types of parameters
     public static HistoryPlanFragment newInstance(String param1, String param2) {
         HistoryPlanFragment fragment = new HistoryPlanFragment();
@@ -98,6 +109,31 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        mQueue = Volley.newRequestQueue(this.getContext());//volley test
+    }
+
+
+    /**
+     * 创建一个请求，这里我们做一个最简单的通过GET方式请求网页源码的操作。请求成功后打印结果。
+     */
+    private void volleyRequest() {
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String arg0) {
+                Toast.makeText(getActivity(), arg0, Toast.LENGTH_LONG).show();
+                Log.d("weiwei", arg0);
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError arg0) {
+                Toast.makeText(getActivity(), arg0.toString(), Toast.LENGTH_LONG).show();
+                Log.d("weiwei", arg0.toString());
+            }
+        });
+        mQueue.add(request);
     }
 
 
@@ -132,6 +168,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getContext(),"onItemclick",Toast.LENGTH_LONG).show();
+                volleyRequest();
             }
         });
 
