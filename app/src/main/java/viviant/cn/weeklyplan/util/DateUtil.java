@@ -20,4 +20,24 @@ public class DateUtil {
         cal.setTime(today);
         return cal.get(Calendar.DAY_OF_WEEK);
     }
+
+    public static int getTimeHour(String time) {
+        return Integer.parseInt(time.split(" ")[1].split(":")[0]);
+    }
+
+    public static int getTimeMinute(String time) {
+        return Integer.parseInt(time.split(" ")[1].split(":")[1]);
+    }
+
+    public static int getTimeMonth(String time) {
+        return Integer.parseInt(time.split(" ")[0].split("-")[1]);
+    }
+
+    public static int getTimeYear(String time) {
+        return Integer.parseInt(time.split(" ")[0].split("-")[0]);
+    }
+
+    public static int getTimeDay(String time) {
+        return Integer.parseInt(time.split(" ")[0].split("-")[2]);
+    }
 }
