@@ -214,6 +214,7 @@ public class MyDaoGenerator {
         planthing.addStringProperty("planthingName").notNull();
         planthing.addStringProperty("planthingDescription");
         planthing.addStringProperty("doDateTime").notNull();
+        planthing.addStringProperty("endDateTime").notNull();
         planthing.addStringProperty("planThingPlace");
         planthing.addBooleanProperty("flagRemind");
         planthing.addStringProperty("remindDate");
