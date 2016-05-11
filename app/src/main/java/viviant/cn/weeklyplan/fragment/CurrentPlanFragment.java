@@ -16,6 +16,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import viviant.cn.weeklyplan.R;
+import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.db.PlanthingDBManager;
+import viviant.cn.weeklyplan.util.DateUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +37,8 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Planthing mPlanthing = null;
 
     private OnCurrentFragmentInteractionListener mListener;
 
@@ -69,156 +74,45 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        mPlanthing = (Planthing)getActivity().getIntent().getSerializableExtra("mPlanthing");
+
+
+        if (mPlanthing != null) {
+            onMonthChange(2016,5);
+        }
     }
+
+    //add by weiwei 0509
+    private List<Planthing> getPlanthings() {
+        return new PlanthingDBManager().loadAll();
+    }
+    //addd by weiwei end
 
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         // Populate the week view with some events.
-        Log.d("weiwei", "newYear : " + newYear + "newMonth : " + newMonth);
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        if (newMonth == DateUtil.getCurrentMonth()) {
+            List<Planthing> planthingList = getPlanthings();
+            for (int i = 0; i< planthingList.size(); i++) {
+                Calendar startTime = DateUtil.getCalendar(planthingList.get(i).getDoDateTime());
+                Calendar endTime = DateUtil.getCalendar(planthingList.get(i).getEndDateTime());
+                WeekViewEvent event = new WeekViewEvent(planthingList.get(i).getId(), getEventTitle(planthingList.get(i)), startTime, endTime);
+                event.setColor(getResources().getColor(R.color.event_color_01));
+                events.add(event);
+            }
+        }
 
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth - 1);
-        startTime.set(Calendar.YEAR, newYear);
-        Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 1);
-        endTime.set(Calendar.MONTH, newMonth - 1);
-        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_01));
-        events.add(event);
-
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 30);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.HOUR_OF_DAY, 4);
-//        endTime.set(Calendar.MINUTE, 30);
-//        endTime.set(Calendar.MONTH, newMonth-1);
-//        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_02));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 4);
-//        startTime.set(Calendar.MINUTE, 20);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.HOUR_OF_DAY, 5);
-//        endTime.set(Calendar.MINUTE, 0);
-//        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_03));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 5);
-//        startTime.set(Calendar.MINUTE, 30);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 2);
-//        endTime.set(Calendar.MONTH, newMonth-1);
-//        event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_02));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 5);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        startTime.add(Calendar.DATE, 1);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        endTime.set(Calendar.MONTH, newMonth - 1);
-//        event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_03));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 15);
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_04));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 1);
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_01));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, startTime.getActualMaximum(Calendar.DAY_OF_MONTH));
-//        startTime.set(Calendar.HOUR_OF_DAY, 15);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_02));
-//        events.add(event);
-//
-//        //AllDay event
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 0);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 23);
-//        event = new WeekViewEvent(7, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_04));
-//        events.add(event);
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 8);
-//        startTime.set(Calendar.HOUR_OF_DAY, 2);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.DAY_OF_MONTH, 10);
-//        endTime.set(Calendar.HOUR_OF_DAY, 23);
-//        event = new WeekViewEvent(8, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_03));
-//        events.add(event);
-//
-//        // All day event until 00:00 next day
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 10);
-//        startTime.set(Calendar.HOUR_OF_DAY, 0);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.SECOND, 0);
-//        startTime.set(Calendar.MILLISECOND, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.DAY_OF_MONTH, 11);
-//        event = new WeekViewEvent(8, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_01));
-//        events.add(event);
 
         return events;
     }
     //add by weiwei end
+
+    private String getEventTitle (Planthing planthing) {
+        return String.format("Event of %s %s", planthing.getPlanthingName(), planthing.getDoDateTime());
+
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
