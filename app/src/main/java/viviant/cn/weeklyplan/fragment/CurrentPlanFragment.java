@@ -1,11 +1,14 @@
 package viviant.cn.weeklyplan.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-
+import android.view.View;
+import android.widget.Toast;
 
 
 import com.alamkanak.weekview.WeekViewEvent;
@@ -15,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.drakeet.materialdialog.MaterialDialog;
+import viviant.cn.weeklyplan.MainActivity;
+import viviant.cn.weeklyplan.PlanInfoActivity;
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
@@ -108,6 +115,62 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
         return events;
     }
     //add by weiwei end
+
+    @Override
+    public void onEventClick(WeekViewEvent event, RectF eventRect) {
+        Planthing mPlanthing = (Planthing)(new PlanthingDBManager().getObjectById(event.getId()+""));
+        Intent mIntent = new Intent(getContext(), PlanInfoActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("mPlanthing", mPlanthing);
+        mIntent.putExtras(mBundle);
+        startActivity(mIntent);
+    }
+
+    @Override
+    public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
+
+        Planthing planthing = (Planthing)(new PlanthingDBManager().getObjectById(event.getId()+""));
+        String message = "time : " + planthing.getDoDateTime() + "\n" +
+                "Level : " + planthing.getLevelId() + "\n" +
+                "planthingdesc : " + planthing.getPlanthingDescription();
+
+        final MaterialDialog mMaterialDialog = new MaterialDialog(getContext());
+
+        mMaterialDialog.setTitle(planthing.getPlanthingName())
+                .setMessage(message)
+                .setPositiveButton("update", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        mMaterialDialog.dismiss();
+                    }
+                })
+                .setNegativeButton("delete", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("Are you sure?")
+                                .setContentText("Won't be able to recover this file!")
+                                .setConfirmText("Yes,delete it!")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog
+                                                .setTitleText("delete!")
+                                                .setContentText("Your plan is deleted!")
+                                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                    @Override
+                                                    public void onClick(SweetAlertDialog sDialog) {
+                                                        sDialog.dismiss();
+                                                    }
+                                                })
+                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                        mMaterialDialog.dismiss();
+                                    }
+                                }).show();
+                    }
+                });
+        mMaterialDialog.show();
+    }
 
     private String getEventTitle (Planthing planthing) {
         return String.format("Event of %s %s", planthing.getPlanthingName(), planthing.getDoDateTime());

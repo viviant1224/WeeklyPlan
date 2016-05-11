@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        app:bootstrapSize="xl">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="You can write a plan for your later time,come on!"
+            />
+    </com.beardedhen.androidbootstrap.BootstrapWell>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PlanName : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:bootstrapSize="md"
+            app:bootstrapBrand="info"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PlanDescription : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            app:bootstrapSize="md"
+            app:bootstrapBrand="info"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PlanLevel : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapDropDown
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:bootstrapText="Texysdsd"
+            app:bootstrapBrand="warning"
+            app:roundedCorners="true"
+            app:bootstrapSize="md"
+            app:dropdownResource="@array/bootstrap_dropdown_example_data"
+            app:bootstrapExpandDirection="down"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="role : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapDropDown
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:bootstrapText="Texysdsd"
+            app:bootstrapBrand="warning"
+            app:roundedCorners="true"
+            app:bootstrapSize="md"
+            app:dropdownResource="@array/bootstrap_dropdown_example_data"
+            app:bootstrapExpandDirection="down"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DoTime : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pick_time_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pickTime"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+        <TextView
+            android:id="@+id/time_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time is : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pick_date_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pickTime"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+        <TextView
+            android:id="@+id/date_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time is : "/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EndTime : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pick_time_but_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pickTime"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+        <TextView
+            android:id="@+id/time_textview_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time is : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pick_date_but_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pickTime"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+        <TextView
+            android:id="@+id/date_textview_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time is : "/>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:bootstrapBrand="success"
+            app:buttonMode="checkbox"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="flagRemind"
+                />
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="remindTime : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pick_remindtime_but_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pickTime"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+        <TextView
+            android:id="@+id/remind_time_textview_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time is : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/pick_reminddate_but_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pickTime"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+        <TextView
+            android:id="@+id/reminddate_textview_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time is : "/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/write_plan_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update"
+            app:bootstrapBrand="primary"
+            app:bootstrapSize="md"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="false"
+            />
+
+    </LinearLayout>
+
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/weibo_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="微薄登录"
+        app:bootstrapBrand="primary"
+        app:bootstrapSize="md"
+        app:buttonMode="regular"
+        app:showOutline="false"
+        app:roundedCorners="false"
+        />
+
+
+
+
+
+
+
+</LinearLayout>

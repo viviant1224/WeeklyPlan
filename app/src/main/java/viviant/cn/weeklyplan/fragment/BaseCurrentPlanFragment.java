@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import me.drakeet.materialdialog.MaterialDialog;
+import viviant.cn.weeklyplan.MainActivity;
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.db.UserinfoDBManager;
 import viviant.cn.weeklyplan.util.DateUtil;
@@ -154,18 +156,17 @@ public abstract class BaseCurrentPlanFragment extends Fragment implements   Week
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(this.getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
+
         Toast.makeText(this.getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onEmptyViewLongPress(Calendar time) {
-        Toast.makeText(this.getActivity(), "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
     }
 
     public WeekView getWeekView() {

@@ -6,3 +6,6 @@
 6、Planthing update
 7、CUrrent event（事件处理）
 8、icon and UI
+
+设置闹钟提醒即可，不要设置提醒时间
+
