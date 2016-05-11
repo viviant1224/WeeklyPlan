@@ -1,13 +1,11 @@
 package viviant.cn.weeklyplan;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.fragment.CurrentPlanFragment;
 import viviant.cn.weeklyplan.fragment.HistoryPlanFragment;
 import viviant.cn.weeklyplan.fragment.RoleFragment;
@@ -61,10 +60,25 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(),WritePlanActivity.class);
+
+                startActivity(intent);
             }
         });
+        fragmentManager = getSupportFragmentManager();
+
+        Planthing mPlanthing = (Planthing)getIntent().getSerializableExtra("mPlanthing");
+
+
+        if (mPlanthing != null) {
+
+            CurrentPlanFragment currentPlanFragment = new CurrentPlanFragment();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.main_content, currentPlanFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -75,7 +89,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        fragmentManager = getSupportFragmentManager();
+
     }
 
     @Override

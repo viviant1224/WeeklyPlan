@@ -22,7 +22,6 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import viviant.cn.weeklyplan.R;
-import viviant.cn.weeklyplan.bean.Userinfo;
 import viviant.cn.weeklyplan.db.UserinfoDBManager;
 import viviant.cn.weeklyplan.util.DateUtil;
 
@@ -162,14 +161,6 @@ public abstract class BaseCurrentPlanFragment extends Fragment implements   Week
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
         Toast.makeText(this.getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
 
-        Userinfo userinfo = new Userinfo();
-        userinfo.setAddress("address");
-        userinfo.setFlagLogout(false);
-        userinfo.setFlagVip(true);
-        userinfo.setRegisterDate("asdasd");
-        userinfo.setSex("男");
-        userinfo.setUsername("asdasdadasd");
-        new UserinfoDBManager().insert(userinfo);
     }
 
     @Override
