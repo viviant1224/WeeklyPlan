@@ -4,6 +4,8 @@ import android.app.Application;
 import android.util.Log;
 
 import viviant.cn.weeklyplan.database.AbstractDatabaseManager;
+import viviant.cn.weeklyplan.database.InsertTagLevelRoleDatabase;
+import viviant.cn.weeklyplan.preference.WeeklyPlanSharePreference;
 
 
 /**
@@ -16,11 +18,27 @@ public class CusApplication extends Application{
         super.onCreate();
         initLogger();
         initOpenHelper();
+
+        if (isFirstTimeOpen()) {
+            Log.d("weiwei", "is first");
+            InsertTagLevelRoleDatabase.initDatabase();//注册完账户调用，测试阶段，提前调用
+            WeeklyPlanSharePreference.saveFirstOpenData(getApplicationContext());
+        } else {
+            Log.d("weiwei", "not first");
+        }
     }
 
     private void initOpenHelper() {
         AbstractDatabaseManager.initOpenHelper(getApplicationContext());
     }
+
+    private boolean isFirstTimeOpen() {
+        return WeeklyPlanSharePreference.loadFirstOpenData(getApplicationContext());
+    }
+
+
+
+
 
 
     /**

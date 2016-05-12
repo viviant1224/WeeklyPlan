@@ -28,6 +28,14 @@
         <item>Sat</item>
     </string-array>
 
+
+    <string-array name="dropdown_level">
+        <item>important and emergency</item>
+        <item>normal</item>
+        <item>info</item>
+        <item>didnssdasd</item>
+    </string-array>
+
     <array name="bootstrap_dropdown_example_data">
         <item>First item</item>
         <item>Second item</item>

@@ -77,17 +77,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            app:bootstrapText="Texysdsd"
+            app:bootstrapText="Level"
             app:bootstrapBrand="warning"
             app:roundedCorners="true"
             app:bootstrapSize="md"
-            app:dropdownResource="@array/bootstrap_dropdown_example_data"
+            app:dropdownResource="@array/dropdown_level"
             app:bootstrapExpandDirection="down"/>
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="role : "/>
+
+        <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:bootstrapBrand="warning"
+            app:buttonMode="checkbox"
+            >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="student"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="father"
+                />
+
+        </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
         <com.beardedhen.androidbootstrap.BootstrapDropDown
             android:layout_width="wrap_content"
@@ -231,46 +255,6 @@
                 />
         </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="remindTime : "/>
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/pick_remindtime_but_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="pickTime"
-            app:bootstrapBrand="info"
-            app:bootstrapSize="md"
-            app:buttonMode="regular"
-            app:showOutline="false"
-            app:roundedCorners="false"
-            />
-
-        <TextView
-            android:id="@+id/remind_time_textview_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="time is : "/>
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/pick_reminddate_but_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="pickTime"
-            app:bootstrapBrand="info"
-            app:bootstrapSize="md"
-            app:buttonMode="regular"
-            app:showOutline="false"
-            app:roundedCorners="false"
-            />
-
-        <TextView
-            android:id="@+id/reminddate_textview_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="time is : "/>
 
     </LinearLayout>
 
@@ -307,6 +291,27 @@
         app:buttonMode="regular"
         app:showOutline="false"
         app:roundedCorners="false"
+        />
+
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/send_notification_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send notification"
+        app:bootstrapBrand="primary"
+        app:bootstrapSize="md"
+        app:buttonMode="regular"
+        app:showOutline="false"
+        app:roundedCorners="false"
+        />
+
+    <Spinner
+        android:id="@+id/plan_level"
+        android:layout_marginTop="40px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         />
 
 

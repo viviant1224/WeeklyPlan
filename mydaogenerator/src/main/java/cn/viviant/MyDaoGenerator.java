@@ -251,6 +251,15 @@ public class MyDaoGenerator {
 
 
 
+        //add by weiwei.huang 20160511 begin
+
+        Property planthingId = tag.addLongProperty("planthingId").getProperty();
+        ToMany planthingToTags = planthing.addToMany(tag, planthingId);
+        planthingToTags.setName("tags"); // Optional
+
+        //add by weiwei.huang 20160511 end
+
+
 
     }
 

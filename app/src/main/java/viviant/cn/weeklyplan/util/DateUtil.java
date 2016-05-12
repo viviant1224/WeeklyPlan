@@ -67,4 +67,12 @@ public class DateUtil {
         cal.setTime(today);
         return cal.get(Calendar.MONTH) + 1;
     }
+
+    public static String getCurrentTime() {
+        Date date  = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateTime = sdf.format(date);
+        return dateTime;
+    }
+
 }

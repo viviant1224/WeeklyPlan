@@ -1,12 +1,17 @@
 package viviant.cn.weeklyplan;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -14,10 +19,14 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import viviant.cn.weeklyplan.bean.Level;
 import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.db.LevelDBManager;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
 
 /**
@@ -39,6 +48,12 @@ public class WritePlanActivity extends AppCompatActivity implements
 
     private BootstrapButton weiboLogin;
 
+    private BootstrapButton sendNotificationButton;
+
+    private Spinner planLevelSpinner;
+    private ArrayAdapter<CharSequence> adapteLevel=null;
+    private List<CharSequence> dataLevel=null;//定义一个集合数据
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +67,27 @@ public class WritePlanActivity extends AppCompatActivity implements
         dateView = (TextView)findViewById(R.id.date_textview);
         pickDateBut = (BootstrapButton)findViewById(R.id.pick_date_but);
         weiboLogin = (BootstrapButton)findViewById(R.id.weibo_login_button);
+        sendNotificationButton = (BootstrapButton)findViewById(R.id.send_notification_button);
+        planLevelSpinner = (Spinner)findViewById(R.id.plan_level);
+        planLevelSpinner.setPrompt("Level Select");
+
+        dataLevel = new ArrayList<CharSequence>();
+        List<Level> levelList = new LevelDBManager().loadAll();
+        for (int i = 0;i < levelList.size(); i++) {
+            dataLevel.add(levelList.get(i).getLevelName());
+        }
+
+
+
+        adapteLevel = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item,dataLevel);
+        adapteLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        planLevelSpinner.setAdapter(this.adapteLevel);
 
         writePlanBut.setOnClickListener(new butOnClickListener());
         pickTimeBut.setOnClickListener(new butOnClickListener());
         pickDateBut.setOnClickListener(new butOnClickListener());
         weiboLogin.setOnClickListener(new butOnClickListener());
+        sendNotificationButton.setOnClickListener(new butOnClickListener());
     }
 
     private class butOnClickListener implements View.OnClickListener {
@@ -159,11 +190,39 @@ public class WritePlanActivity extends AppCompatActivity implements
                 case R.id.weibo_login_button:
 
                     break;
+                case R.id.send_notification_button:
+                    NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext());
 
+
+                    mBuilder.setContentTitle("测试标题")//设置通知栏标题
+                            .setContentText("测试内容")
+                    .setContentIntent(getDefalutIntent(Notification.FLAG_AUTO_CANCEL)) //设置通知栏点击意图
+//  .setNumber(number) //设置通知集合的数量
+                        .setTicker("测试通知来啦") //通知首次出现在通知栏，带上升动画效果的
+                        .setWhen(System.currentTimeMillis())//通知产生的时间，会在通知信息里显示，一般是系统获取到的时间
+                        .setPriority(Notification.PRIORITY_DEFAULT) //设置该通知优先级
+//  .setAutoCancel(true)//设置这个标志当用户单击面板就可以让通知将自动取消
+                        .setOngoing(false)//ture，设置他为一个正在进行的通知。他们通常是用来表示一个后台任务,用户积极参与(如播放音乐)或以某种方式正在等待,因此占用设备(如一个文件下载,同步操作,主动网络连接)
+                        .setDefaults(Notification.DEFAULT_VIBRATE)//向通知添加声音、闪灯和振动效果的最简单、最一致的方式是使用当前的用户默认设置，使用defaults属性，可以组合
+                                //Notification.DEFAULT_ALL  Notification.DEFAULT_SOUND 添加声音 // requires VIBRATE permission
+                        .setSmallIcon(R.drawable.ic_launcher);//设置通知小ICON
+
+                    Notification notification = mBuilder.build();
+                    notification.flags = Notification.FLAG_AUTO_CANCEL;
+
+                    mNotificationManager.notify(1, mBuilder.build());
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    public PendingIntent getDefalutIntent(int flags){
+        Intent intent = new Intent(getBaseContext(),MainActivity.class);
+        PendingIntent pendingIntent= PendingIntent.getActivity(this, 1, intent, flags);
+        return pendingIntent;
     }
 
     @Override

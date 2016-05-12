@@ -10,7 +10,6 @@ import java.util.List;
 
 import viviant.cn.weeklyplan.bean.DaoMaster;
 import viviant.cn.weeklyplan.bean.DaoSession;
-import viviant.cn.weeklyplan.util.StringUtils;
 
 /**
  * Created by weiwei.huang on 16-4-29.
