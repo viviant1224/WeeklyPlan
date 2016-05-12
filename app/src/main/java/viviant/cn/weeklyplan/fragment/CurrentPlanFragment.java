@@ -96,7 +96,17 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                 Calendar startTime = DateUtil.getCalendar(planthingList.get(i).getDoDateTime());
                 Calendar endTime = DateUtil.getCalendar(planthingList.get(i).getEndDateTime());
                 WeekViewEvent event = new WeekViewEvent(planthingList.get(i).getId(), getEventTitle(planthingList.get(i)), startTime, endTime);
-                event.setColor(getResources().getColor(R.color.event_color_01));
+                switch (planthingList.get(i).getState()) {
+                    case 0:
+                        event.setColor(getResources().getColor(R.color.event_color_01));
+                        break;
+                    case 1:
+                        event.setColor(getResources().getColor(R.color.event_color_03));
+                        break;
+                    default:
+                        event.setColor(getResources().getColor(R.color.event_color_01));
+                        break;
+                }
                 events.add(event);
             }
         }
@@ -131,9 +141,51 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                 .setMessage(message)
                 .setCanceledOnTouchOutside(true)
                 .setPositiveButton("compelet", new View.OnClickListener() {
+
                     @Override
                     public void onClick(View v) {
-//                        mMaterialDialog.dismiss();
+
+                        new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("Are you sure?")
+                                .setContentText("Won't be able to recover this file!")
+                                .setConfirmText("yes, compelet it")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        planthing.setState(1);
+                                        boolean updateSuccess = new PlanthingData().updatePlanthing(planthing);
+                                        if (updateSuccess) {
+                                            event.setColor(getResources().getColor(R.color.event_color_02));
+                                            getWeekView().notifyDatasetChanged();
+                                            sDialog
+                                                    .setTitleText("update!")
+                                                    .setContentText("Your plan is updated!")
+                                                    .setConfirmText("ok")
+                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                        @Override
+                                                        public void onClick(SweetAlertDialog sDialog) {
+                                                            sDialog.dismiss();
+                                                        }
+                                                    })
+                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                            mMaterialDialog.dismiss();
+                                        } else {
+                                            sDialog
+                                                    .setTitleText("update failed!")
+                                                    .setContentText("something is wrong!")
+                                                    .setConfirmText("ok")
+                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                        @Override
+                                                        public void onClick(SweetAlertDialog sDialog) {
+                                                            sDialog.dismiss();
+                                                        }
+                                                    })
+                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                            mMaterialDialog.dismiss();
+                                        }
+
+                                    }
+                                }).show();
                     }
                 })
                 .setNegativeButton("delete", new View.OnClickListener() {

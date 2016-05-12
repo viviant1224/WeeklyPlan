@@ -12,3 +12,14 @@
 
 V1.0不能自定义角色、标签
 
+
+
+planthing:
+state:
+
+0: normal
+
+1: compelet
+
+2: delete
+

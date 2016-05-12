@@ -48,7 +48,7 @@ public class WritePlanActivity extends AppCompatActivity implements
 
     private BootstrapButton pickDateBut;
 
-    private BootstrapButton weiboLogin;
+//    private BootstrapButton weiboLogin;
 
     private BootstrapButton sendNotificationButton;
 
@@ -60,7 +60,7 @@ public class WritePlanActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.write_plan);
+        setContentView(R.layout.write_plan_table);
         writePlanBut = (BootstrapButton)findViewById(R.id.write_plan_button);
 
         timeView = (TextView)findViewById(R.id.time_textview);
@@ -68,7 +68,7 @@ public class WritePlanActivity extends AppCompatActivity implements
 
         dateView = (TextView)findViewById(R.id.date_textview);
         pickDateBut = (BootstrapButton)findViewById(R.id.pick_date_but);
-        weiboLogin = (BootstrapButton)findViewById(R.id.weibo_login_button);
+//        weiboLogin = (BootstrapButton)findViewById(R.id.weibo_login_button);
         sendNotificationButton = (BootstrapButton)findViewById(R.id.send_notification_button);
         planLevelSpinner = (Spinner)findViewById(R.id.plan_level);
         planLevelSpinner.setPrompt("Level Select");
@@ -88,7 +88,7 @@ public class WritePlanActivity extends AppCompatActivity implements
         writePlanBut.setOnClickListener(new butOnClickListener());
         pickTimeBut.setOnClickListener(new butOnClickListener());
         pickDateBut.setOnClickListener(new butOnClickListener());
-        weiboLogin.setOnClickListener(new butOnClickListener());
+//        weiboLogin.setOnClickListener(new butOnClickListener());
         sendNotificationButton.setOnClickListener(new butOnClickListener());
     }
 
@@ -189,9 +189,9 @@ public class WritePlanActivity extends AppCompatActivity implements
                     dpd.setTitle("Date time");
                     dpd.show(getFragmentManager(), "Datepickerdialog");
                     break;
-                case R.id.weibo_login_button:
-
-                    break;
+//                case R.id.weibo_login_button:
+//
+//                    break;
                 case R.id.send_notification_button:
                     NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext());
@@ -233,13 +233,13 @@ public class WritePlanActivity extends AppCompatActivity implements
         String minuteString = minute < 10 ? "0"+minute : ""+minute;
         String secondString = second < 10 ? "0"+second : ""+second;
         String time = "You picked the following time: "+hourString+"h"+minuteString+"m"+secondString+"s";
-        timeView.setText(time);
+        pickTimeBut.setText(time);
     }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         String date = "You picked the following date: "+dayOfMonth+"/"+(++monthOfYear)+"/"+year;
-        dateView.setText(date);
+        pickDateBut.setText(date);
     }
 
 }

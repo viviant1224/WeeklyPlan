@@ -28,4 +28,8 @@ public class PlanthingData {
     public boolean deletePlanthing(long id) {
         return PlanthingDBManager.getPlanthingDBManager().delete(getPlanthingById(id));
     }
+
+    public boolean updatePlanthing(Planthing planthing) {
+        return PlanthingDBManager.getPlanthingDBManager().update(planthing);
+    }
 }
