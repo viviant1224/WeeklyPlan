@@ -48,8 +48,9 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     private String mParam2;
 
     Planthing mPlanthing = null;
-
     private OnCurrentFragmentInteractionListener mListener;
+
+    List<WeekViewEvent> events = null;
 
 
 
@@ -88,7 +89,7 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         // Populate the week view with some events.
-        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        events = new ArrayList<WeekViewEvent>();
         if (newMonth == DateUtil.getCurrentMonth()) {
             List<Planthing> planthingList = new PlanthingData().getPlanthings();
             for (int i = 0; i< planthingList.size(); i++) {
@@ -120,12 +121,16 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
         String message = "time : " + planthing.getDoDateTime() + "\n" +
                 "Level : " + planthing.getLevelId() + "\n" +
                 "planthingdesc : " + planthing.getPlanthingDescription();
+        showPlanthingDialog(planthing, message, event);
+    }
+
+    private void showPlanthingDialog(final Planthing planthing, String message, final WeekViewEvent event) {
 
         final MaterialDialog mMaterialDialog = new MaterialDialog(getContext());
-
         mMaterialDialog.setTitle(planthing.getPlanthingName())
                 .setMessage(message)
-                .setPositiveButton("update", new View.OnClickListener() {
+                .setCanceledOnTouchOutside(true)
+                .setPositiveButton("compelet", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 //                        mMaterialDialog.dismiss();
@@ -137,21 +142,41 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                         new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
                                 .setTitleText("Are you sure?")
                                 .setContentText("Won't be able to recover this file!")
-                                .setConfirmText("Yes,delete it!")
+                                .setConfirmText("yes, delete it")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog
-                                                .setTitleText("delete!")
-                                                .setContentText("Your plan is deleted!")
-                                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                                    @Override
-                                                    public void onClick(SweetAlertDialog sDialog) {
-                                                        sDialog.dismiss();
-                                                    }
-                                                })
-                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                        mMaterialDialog.dismiss();
+                                        boolean success = new PlanthingData().deletePlanthing(planthing.getId());
+                                        if (success) {
+                                            events.remove(event);
+                                            getWeekView().notifyDatasetChanged();
+                                            sDialog
+                                                    .setTitleText("delete!")
+                                                    .setContentText("Your plan is deleted!")
+                                                    .setConfirmText("ok")
+                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                        @Override
+                                                        public void onClick(SweetAlertDialog sDialog) {
+                                                            sDialog.dismiss();
+                                                        }
+                                                    })
+                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                            mMaterialDialog.dismiss();
+                                        } else {
+                                            sDialog
+                                                    .setTitleText("delete failed!")
+                                                    .setContentText("something is wrong!")
+                                                    .setConfirmText("ok")
+                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                        @Override
+                                                        public void onClick(SweetAlertDialog sDialog) {
+                                                            sDialog.dismiss();
+                                                        }
+                                                    })
+                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                            mMaterialDialog.dismiss();
+                                        }
+
                                     }
                                 }).show();
                     }

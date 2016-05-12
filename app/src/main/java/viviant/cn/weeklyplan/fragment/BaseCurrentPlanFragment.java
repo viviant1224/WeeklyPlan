@@ -150,9 +150,6 @@ public abstract class BaseCurrentPlanFragment extends Fragment implements   Week
         });
     }
 
-    protected String getEventTitle(Calendar time) {
-        return String.format("Event of %02d:%02d %s/%d", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), time.get(Calendar.MONTH)+1, time.get(Calendar.DAY_OF_MONTH));
-    }
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
@@ -160,9 +157,6 @@ public abstract class BaseCurrentPlanFragment extends Fragment implements   Week
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-
-        Toast.makeText(this.getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
-
     }
 
     @Override

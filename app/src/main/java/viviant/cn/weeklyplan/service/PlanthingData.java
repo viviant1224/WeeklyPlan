@@ -24,4 +24,8 @@ public class PlanthingData {
     public Planthing getPlanthingById(long id) {
         return (Planthing)(PlanthingDBManager.getPlanthingDBManager().getObjectById(id+""));
     }
+
+    public boolean deletePlanthing(long id) {
+        return PlanthingDBManager.getPlanthingDBManager().delete(getPlanthingById(id));
+    }
 }
