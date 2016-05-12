@@ -26,8 +26,10 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import viviant.cn.weeklyplan.bean.Level;
 import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.db.LevelDBManager;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
+import viviant.cn.weeklyplan.service.PlanthingData;
 
 /**
  * Created by weiwei.huang on 16-5-5.
@@ -110,13 +112,13 @@ public class WritePlanActivity extends AppCompatActivity implements
                                     mPlanthing.setPlanthingName("planthingnameVCX");
                                     mPlanthing.setState(0);
                                     mPlanthing.setLevelId(1);
-                                    mPlanthing.setDoDateTime("2016-05-10 16:36");
-                                    mPlanthing.setEndDateTime("2016-05-10 19:56");
+                                    mPlanthing.setDoDateTime("2016-05-12 16:36");
+                                    mPlanthing.setEndDateTime("2016-05-12 19:56");
                                     mPlanthing.setFlagRemind(true);
                                     mPlanthing.setRoleId(2);
                                     mPlanthing.setTagId(2);
                                     mPlanthing.setUserinfoPId(1);
-                                    boolean isSuccess = new PlanthingDBManager().insert(mPlanthing);
+                                    boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
                                     if (isSuccess) {
                                         sDialog
                                                 .setTitleText("Commit!")
@@ -126,7 +128,7 @@ public class WritePlanActivity extends AppCompatActivity implements
                                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                                         Intent mIntent = new Intent(WritePlanActivity.this, MainActivity.class);
                                         Bundle mBundle = new Bundle();
-                                        mBundle.putSerializable("mPlanthing", mPlanthing);
+                                        mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
                                         mIntent.putExtras(mBundle);
                                         startActivity(mIntent);
                                     } else {

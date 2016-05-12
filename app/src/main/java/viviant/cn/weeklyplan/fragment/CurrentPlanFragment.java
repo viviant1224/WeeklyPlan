@@ -24,7 +24,9 @@ import viviant.cn.weeklyplan.MainActivity;
 import viviant.cn.weeklyplan.PlanInfoActivity;
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
+import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.util.DateUtil;
 
 /**
@@ -81,27 +83,14 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        mPlanthing = (Planthing)getActivity().getIntent().getSerializableExtra("mPlanthing");
-
-
-        if (mPlanthing != null) {
-            onMonthChange(2016,5);
-        }
     }
-
-    //add by weiwei 0509
-    private List<Planthing> getPlanthings() {
-        return new PlanthingDBManager().loadAll();
-    }
-    //addd by weiwei end
 
     @Override
     public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         // Populate the week view with some events.
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
         if (newMonth == DateUtil.getCurrentMonth()) {
-            List<Planthing> planthingList = getPlanthings();
+            List<Planthing> planthingList = new PlanthingData().getPlanthings();
             for (int i = 0; i< planthingList.size(); i++) {
                 Calendar startTime = DateUtil.getCalendar(planthingList.get(i).getDoDateTime());
                 Calendar endTime = DateUtil.getCalendar(planthingList.get(i).getEndDateTime());
@@ -110,18 +99,16 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                 events.add(event);
             }
         }
-
-
         return events;
     }
     //add by weiwei end
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Planthing mPlanthing = (Planthing)(new PlanthingDBManager().getObjectById(event.getId()+""));
+        Planthing mPlanthing = (Planthing)(PlanthingDBManager.getPlanthingDBManager().getObjectById(event.getId() + ""));
         Intent mIntent = new Intent(getContext(), PlanInfoActivity.class);
         Bundle mBundle = new Bundle();
-        mBundle.putSerializable("mPlanthing", mPlanthing);
+        mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
         mIntent.putExtras(mBundle);
         startActivity(mIntent);
     }
@@ -129,7 +116,7 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
 
-        Planthing planthing = (Planthing)(new PlanthingDBManager().getObjectById(event.getId()+""));
+        Planthing planthing = new PlanthingData().getPlanthingById(event.getId());
         String message = "time : " + planthing.getDoDateTime() + "\n" +
                 "Level : " + planthing.getLevelId() + "\n" +
                 "planthingdesc : " + planthing.getPlanthingDescription();

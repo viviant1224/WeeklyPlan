@@ -9,6 +9,19 @@ import viviant.cn.weeklyplan.database.AbstractDatabaseManager;
  */
 public class PlanthingDBManager extends AbstractDatabaseManager<Planthing, String> {
 
+    private volatile static PlanthingDBManager planthingDBManager;
+    private PlanthingDBManager (){}
+    public static PlanthingDBManager getPlanthingDBManager() {
+        if (planthingDBManager == null) {
+            synchronized (PlanthingDBManager.class) {
+                if (planthingDBManager == null) {
+                    planthingDBManager = new PlanthingDBManager();
+                }
+            }
+        }
+        return planthingDBManager;
+    }
+
     @Override
     public AbstractDao getAbstractDao() {
         return daoSession.getPlanthingDao();

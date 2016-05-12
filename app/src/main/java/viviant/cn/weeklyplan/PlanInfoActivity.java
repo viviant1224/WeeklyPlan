@@ -93,7 +93,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
                                     mPlanthing.setRoleId(2);
                                     mPlanthing.setTagId(2);
                                     mPlanthing.setUserinfoPId(1);
-                                    boolean isSuccess = new PlanthingDBManager().insert(mPlanthing);
+                                    boolean isSuccess = PlanthingDBManager.getPlanthingDBManager().insert(mPlanthing);
                                     if (isSuccess) {
                                         sDialog
                                                 .setTitleText("Commit!")

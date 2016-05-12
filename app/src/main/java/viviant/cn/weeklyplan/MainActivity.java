@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.fragment.CurrentPlanFragment;
 import viviant.cn.weeklyplan.fragment.HistoryPlanFragment;
 import viviant.cn.weeklyplan.fragment.RoleFragment;
@@ -67,11 +68,10 @@ public class MainActivity extends AppCompatActivity
         });
         fragmentManager = getSupportFragmentManager();
 
-        Planthing mPlanthing = (Planthing)getIntent().getSerializableExtra("mPlanthing");
 
 
+        Planthing mPlanthing = (Planthing)getIntent().getSerializableExtra(Constants.INTENT_PLAN_THING);
         if (mPlanthing != null) {
-
             CurrentPlanFragment currentPlanFragment = new CurrentPlanFragment();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.main_content, currentPlanFragment);
