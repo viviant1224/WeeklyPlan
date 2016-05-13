@@ -15,20 +15,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.borax12.materialdaterangepicker.date.DatePickerDialog;
+import com.borax12.materialdaterangepicker.time.RadialPickerLayout;
+import com.borax12.materialdaterangepicker.time.TimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import viviant.cn.weeklyplan.bean.Level;
 import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.bean.Role;
 import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.db.LevelDBManager;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
+import viviant.cn.weeklyplan.db.RoleDBManager;
 import viviant.cn.weeklyplan.service.PlanthingData;
 
 /**
@@ -40,55 +45,88 @@ public class WritePlanActivity extends AppCompatActivity implements
 
     private BootstrapButton writePlanBut;
 
-    private TextView timeView;
 
     private BootstrapButton pickTimeBut;
-
-    private TextView dateView;
-
     private BootstrapButton pickDateBut;
 
 //    private BootstrapButton weiboLogin;
 
+    private BootstrapEditText planthingName;
+    private BootstrapEditText planthingDesc;
+
     private BootstrapButton sendNotificationButton;
 
+    private Spinner planRoleSpinner;
+    private ArrayAdapter<Role> adapterRole = null;
+    private List<Role> dataRole = null;
+
     private Spinner planLevelSpinner;
-    private ArrayAdapter<CharSequence> adapteLevel=null;
-    private List<CharSequence> dataLevel=null;//定义一个集合数据
+    private ArrayAdapter<Level> adapteLevel=null;
+    private List<Level> dataLevel=null;//定义一个集合数据
+
+
+    private int startYear;
+    private int startMonth;
+    private int startDay;
+    private int startHour;
+    private int startMinute;
+
+
+
+    private int endYear;
+    private int endMonth;
+    private int endDay;
+    private int endHour;
+    private int endMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.write_plan_table);
+        setContentView(R.layout.write_plan);
         writePlanBut = (BootstrapButton)findViewById(R.id.write_plan_button);
 
-        timeView = (TextView)findViewById(R.id.time_textview);
+        planthingName = (BootstrapEditText)findViewById(R.id.planthing_name);
+        planthingDesc = (BootstrapEditText)findViewById(R.id.planthing_desc);
+
         pickTimeBut = (BootstrapButton)findViewById(R.id.pick_time_but);
 
-        dateView = (TextView)findViewById(R.id.date_textview);
         pickDateBut = (BootstrapButton)findViewById(R.id.pick_date_but);
 //        weiboLogin = (BootstrapButton)findViewById(R.id.weibo_login_button);
         sendNotificationButton = (BootstrapButton)findViewById(R.id.send_notification_button);
+
+
+        planRoleSpinner = (Spinner)findViewById(R.id.plan_role);
+        planRoleSpinner.setPrompt("Role Select");
+        dataRole = new ArrayList<Role>();
+        List<Role> roleList = new RoleDBManager().loadAll();
+        for (int j = 0;j < roleList.size(); j++) {
+            dataRole.add(roleList.get(j));
+        }
+        adapterRole = new ArrayAdapter<Role>(this, android.R.layout.simple_spinner_item,dataRole);
+        adapterRole.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        planRoleSpinner.setAdapter(this.adapterRole);
+        //如果取TEXT值则可以直接取:Sp.getSelectedItem.ToString()或者:((CItem)Sp.getSelectedItem). GetValue() ;
+
+       // 如果去Value值则可以这样取:((CItem)Sp.getSelectedItem).GetID();http://blog.csdn.net/shichg/article/details/8103845
+
+
         planLevelSpinner = (Spinner)findViewById(R.id.plan_level);
         planLevelSpinner.setPrompt("Level Select");
-
-        dataLevel = new ArrayList<CharSequence>();
+        dataLevel = new ArrayList<Level>();
         List<Level> levelList = new LevelDBManager().loadAll();
         for (int i = 0;i < levelList.size(); i++) {
-            dataLevel.add(levelList.get(i).getLevelName());
+            dataLevel.add(levelList.get(i));
         }
-
-
-
-        adapteLevel = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item,dataLevel);
+        adapteLevel = new ArrayAdapter<Level>(this, android.R.layout.simple_spinner_item, dataLevel);
         adapteLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         planLevelSpinner.setAdapter(this.adapteLevel);
+
+
 
         writePlanBut.setOnClickListener(new butOnClickListener());
         pickTimeBut.setOnClickListener(new butOnClickListener());
         pickDateBut.setOnClickListener(new butOnClickListener());
-//        weiboLogin.setOnClickListener(new butOnClickListener());
         sendNotificationButton.setOnClickListener(new butOnClickListener());
     }
 
@@ -107,15 +145,19 @@ public class WritePlanActivity extends AppCompatActivity implements
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
 
+                                    Level level = (Level)planLevelSpinner.getSelectedItem();
+
+                                    Role role = (Role)planRoleSpinner.getSelectedItem();
+
                                     Planthing mPlanthing = new Planthing();
-                                    mPlanthing.setPlanthingDescription("desc1");
-                                    mPlanthing.setPlanthingName("planthingnameVCX");
+                                    mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
+                                    mPlanthing.setPlanthingName(planthingName.getText().toString());
                                     mPlanthing.setState(0);
-                                    mPlanthing.setLevelId(1);
-                                    mPlanthing.setDoDateTime("2016-05-12 16:36");
-                                    mPlanthing.setEndDateTime("2016-05-12 19:56");
+                                    mPlanthing.setLevelId(level.getId());
+                                    mPlanthing.setDoDateTime(getStartTime());
+                                    mPlanthing.setEndDateTime(getEndTime());
                                     mPlanthing.setFlagRemind(true);
-                                    mPlanthing.setRoleId(2);
+                                    mPlanthing.setRoleId(role.getId());
                                     mPlanthing.setTagId(2);
                                     mPlanthing.setUserinfoPId(1);
                                     boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
@@ -155,17 +197,7 @@ public class WritePlanActivity extends AppCompatActivity implements
                     tpd.setThemeDark(false);
                     tpd.vibrate(false);
                     tpd.dismissOnPause(false);
-                    tpd.enableSeconds(false);
-//                    if (modeCustomAccentTime.isChecked()) {
-//                    getResources(R.color.colorPrimary)
-                        tpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
-//                    }
-//                    if (titleTime.isChecked()) {
-                        tpd.setTitle("StartTime");
-//                    }
-//                    if (limitTimes.isChecked()) {
-//                        tpd.setTimeInterval(2, 5, 10);
-//                    }
+                    tpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
                     tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialogInterface) {
@@ -184,9 +216,7 @@ public class WritePlanActivity extends AppCompatActivity implements
                     dpd.setThemeDark(false);
                     dpd.vibrate(false);
                     dpd.dismissOnPause(false);
-                    dpd.showYearPickerFirst(false);
                     dpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
-                    dpd.setTitle("Date time");
                     dpd.show(getFragmentManager(), "Datepickerdialog");
                     break;
 //                case R.id.weibo_login_button:
@@ -227,19 +257,47 @@ public class WritePlanActivity extends AppCompatActivity implements
         return pendingIntent;
     }
 
+
+
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
-        String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
-        String minuteString = minute < 10 ? "0"+minute : ""+minute;
-        String secondString = second < 10 ? "0"+second : ""+second;
-        String time = "You picked the following time: "+hourString+"h"+minuteString+"m"+secondString+"s";
-        pickTimeBut.setText(time);
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth,int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
+
+        startYear = year;
+        startMonth = monthOfYear;
+        startDay = dayOfMonth;
+
+        endDay = dayOfMonthEnd;
+        endMonth = monthOfYearEnd;
+        endYear = yearEnd;
+//        String date = "You picked the following date: From- "+dayOfMonth+"/"+(++monthOfYear)+"/"+year+" To "+dayOfMonthEnd+"/"+(++monthOfYearEnd)+"/"+yearEnd;
+//        pickDateBut.setText(date);
     }
 
     @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = "You picked the following date: "+dayOfMonth+"/"+(++monthOfYear)+"/"+year;
-        pickDateBut.setText(date);
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
+        String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
+        String minuteString = minute < 10 ? "0"+minute : ""+minute;
+        String hourStringEnd = hourOfDayEnd < 10 ? "0"+hourOfDayEnd : ""+hourOfDayEnd;
+        String minuteStringEnd = minuteEnd < 10 ? "0"+minuteEnd : ""+minuteEnd;
+        String time = "You picked the following time: From - "+hourOfDay+"h"+minute+" To - "+hourOfDayEnd+"h"+minuteEnd;
+
+        startHour = hourOfDay;
+        startMinute = minute;
+
+        endHour = hourOfDayEnd;
+        endMinute = minuteEnd;
+
+        pickTimeBut.setText(time);
     }
+
+    private String getEndTime() {
+        return endYear + "-" + endMonth + "-" + endDay + " " + endHour + ":" + endMinute;
+    }
+
+    private String getStartTime() {
+        return startYear + "-" + startMonth + "-" + startDay + " " + startHour + ":" + startMinute;
+    }
+
+
 
 }

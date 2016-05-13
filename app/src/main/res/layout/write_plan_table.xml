@@ -39,7 +39,7 @@
                         android:text="PlanName : "/>
 
                     <com.beardedhen.androidbootstrap.BootstrapEditText
-                        android:layout_width="300dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:bootstrapSize="md"
                         app:bootstrapBrand="info"/>
@@ -56,7 +56,7 @@
                         android:text="PlanDescription : "/>
 
                     <com.beardedhen.androidbootstrap.BootstrapEditText
-                        android:layout_width="300dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="5"
                         app:bootstrapSize="md"
