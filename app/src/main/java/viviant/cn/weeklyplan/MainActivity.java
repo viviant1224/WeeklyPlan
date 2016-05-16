@@ -20,13 +20,16 @@ import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.fragment.CurrentPlanFragment;
 import viviant.cn.weeklyplan.fragment.HistoryPlanFragment;
+import viviant.cn.weeklyplan.fragment.PlanChartFragment;
 import viviant.cn.weeklyplan.fragment.RoleFragment;
 import viviant.cn.weeklyplan.fragment.TagFragment;
+import viviant.cn.weeklyplan.fragment.TrashPlanFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,HistoryPlanFragment.OnFragmentInteractionListener
-            ,RoleFragment.OnRoleFragmentInteractionListener,TagFragment.OnTagFragmentInteractionListener
-            ,CurrentPlanFragment.OnCurrentFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener,HistoryPlanFragment.OnFragmentInteractionListener,
+            RoleFragment.OnRoleFragmentInteractionListener,TrashPlanFragment.OnTrashPlanFragmentInteractionListener,
+            TagFragment.OnTagFragmentInteractionListener,CurrentPlanFragment.OnCurrentFragmentInteractionListener,
+            PlanChartFragment.OnPlanChartFragmentInteractionListener{
 
     FragmentManager fragmentManager;
 
@@ -49,6 +52,18 @@ public class MainActivity extends AppCompatActivity
     public void onCurrentFragmentInteraction(Uri uri) {
 
     }
+
+    @Override
+    public void OnPlanChartFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void OnTrashPlanFragmentInteraction(String uri) {
+
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,10 +151,10 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.main_content, currentPlanFragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-        } else if (id == R.id.nav_history) {
-            HistoryPlanFragment historyPlanFragment = new HistoryPlanFragment();
+        } else if (id == R.id.plan_chart) {
+            PlanChartFragment planChartFragment = new PlanChartFragment();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.main_content, historyPlanFragment);
+            fragmentTransaction.replace(R.id.main_content, planChartFragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_role) {
@@ -156,6 +171,12 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_trash) {
+
+            TrashPlanFragment trashPlanFragment = new TrashPlanFragment();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.main_content, trashPlanFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_share) {
 
