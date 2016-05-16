@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".WritePlanActivity" />
         <activity android:name=".PlanInfoActivity" />
+        <activity android:name=".SettingActivity" />
     </application>
 
 </manifest>
