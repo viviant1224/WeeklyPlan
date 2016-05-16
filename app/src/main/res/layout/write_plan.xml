@@ -134,15 +134,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="isRemind : "/>
+
+
                 <com.beardedhen.androidbootstrap.BootstrapButtonGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:bootstrapBrand="warning"
+                    app:showOutline="true"
                     app:buttonMode="checkbox"
                     >
 
                     <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/flag_remind"
+                        app:roundedCorners="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="flagRemind"
@@ -185,6 +190,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tag : "/>
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                <GridLayout
+                    android:id="@+id/grid_layout"
+                    android:layout_width="300dp"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:columnCount="5">
+                </GridLayout>
+
+                </HorizontalScrollView>
+
+
 
             </TableRow>
 

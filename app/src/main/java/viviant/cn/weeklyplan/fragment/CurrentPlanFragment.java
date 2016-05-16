@@ -23,8 +23,10 @@ import me.drakeet.materialdialog.MaterialDialog;
 import viviant.cn.weeklyplan.MainActivity;
 import viviant.cn.weeklyplan.PlanInfoActivity;
 import viviant.cn.weeklyplan.R;
+import viviant.cn.weeklyplan.bean.Level;
 import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.constant.Constants;
+import viviant.cn.weeklyplan.db.LevelDBManager;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
 import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.util.DateUtil;
@@ -96,17 +98,32 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                 Calendar startTime = DateUtil.getCalendar(planthingList.get(i).getDoDateTime());
                 Calendar endTime = DateUtil.getCalendar(planthingList.get(i).getEndDateTime());
                 WeekViewEvent event = new WeekViewEvent(planthingList.get(i).getId(), getEventTitle(planthingList.get(i)), startTime, endTime);
-                switch (planthingList.get(i).getState()) {
-                    case 0:
-                        event.setColor(getResources().getColor(R.color.event_color_01));
-                        break;
-                    case 1:
-                        event.setColor(getResources().getColor(R.color.event_color_03));
-                        break;
-                    default:
-                        event.setColor(getResources().getColor(R.color.event_color_01));
-                        break;
+
+                if (planthingList.get(i).getState() == 1) {
+                    event.setColor(getResources().getColor(R.color.event_color_03));
+                } else {
+                    switch (Integer.parseInt(planthingList.get(i).getLevelId() + "")) {
+                        case 1:
+                            event.setColor(getResources().getColor(R.color.event_color_01));
+                            break;
+                        case 2:
+                            event.setColor(getResources().getColor(R.color.event_color_04));
+                            break;
+                        case 3:
+                            event.setColor(getResources().getColor(R.color.event_color_05));
+                            break;
+                        case 4:
+                            event.setColor(getResources().getColor(R.color.event_color_05));
+                            break;
+                        case 5:
+                            event.setColor(getResources().getColor(R.color.colorAccent));
+                            break;
+                        default:
+                            event.setColor(getResources().getColor(R.color.event_color_01));
+                            break;
+                    }
                 }
+
                 events.add(event);
             }
         }
@@ -128,8 +145,9 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
 
         Planthing planthing = new PlanthingData().getPlanthingById(event.getId());
+        Level level = (Level)(new LevelDBManager().getObjectById((planthing.getLevelId()+"")));
         String message = "time : " + planthing.getDoDateTime() + "\n" +
-                "Level : " + planthing.getLevelId() + "\n" +
+                "Level : " + level.getLevelName() + "\n" +
                 "planthingdesc : " + planthing.getPlanthingDescription();
         showPlanthingDialog(planthing, message, event);
     }
