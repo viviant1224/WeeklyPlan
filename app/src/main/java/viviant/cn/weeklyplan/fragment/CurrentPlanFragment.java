@@ -136,7 +136,7 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
         Planthing mPlanthing = (Planthing)(PlanthingDBManager.getPlanthingDBManager().getObjectById(event.getId() + ""));
         Intent mIntent = new Intent(getContext(), PlanInfoActivity.class);
         Bundle mBundle = new Bundle();
-        mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
+        mBundle.putSerializable(Constants.INTENT_PLAN_THING_UPDATE, mPlanthing);
         mIntent.putExtras(mBundle);
         startActivity(mIntent);
     }
@@ -148,7 +148,9 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
         Level level = (Level)(new LevelDBManager().getObjectById((planthing.getLevelId()+"")));
         String message = "time : " + planthing.getDoDateTime() + "\n" +
                 "Level : " + level.getLevelName() + "\n" +
-                "planthingdesc : " + planthing.getPlanthingDescription();
+                "planthingdesc : " + planthing.getPlanthingDescription() + "\n" +
+                "isRemind" + planthing.getFlagRemind();
+
         showPlanthingDialog(planthing, message, event);
     }
 

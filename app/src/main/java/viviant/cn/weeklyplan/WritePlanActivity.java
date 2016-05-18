@@ -17,9 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
@@ -66,7 +69,7 @@ public class WritePlanActivity extends AppCompatActivity implements
     private BootstrapEditText planthingDesc;
 
     private BootstrapButton sendNotificationButton;
-    private BootstrapButton flagRemindBtn;
+    private Switch flagRemindBtn;
 
     private Spinner planRoleSpinner;
     private ArrayAdapter<Role> adapterRole = null;
@@ -75,6 +78,9 @@ public class WritePlanActivity extends AppCompatActivity implements
     private Spinner planLevelSpinner;
     private ArrayAdapter<Level> adapteLevel=null;
     private List<Level> dataLevel=null;//定义一个集合数据
+
+
+    private List<Tag> tagList = null;
 
 
     private int startYear;
@@ -102,13 +108,11 @@ public class WritePlanActivity extends AppCompatActivity implements
 
         planthingName = (BootstrapEditText)findViewById(R.id.planthing_name);
         planthingDesc = (BootstrapEditText)findViewById(R.id.planthing_desc);
-        flagRemindBtn = (BootstrapButton)findViewById(R.id.flag_remind);
-
-
-
-
+        flagRemindBtn = (Switch)findViewById(R.id.flag_remind);
 
         pickTimeBut = (BootstrapButton)findViewById(R.id.pick_time_but);
+
+
 
         pickDateBut = (BootstrapButton)findViewById(R.id.pick_date_but);
 //        weiboLogin = (BootstrapButton)findViewById(R.id.weibo_login_button);
@@ -150,6 +154,8 @@ public class WritePlanActivity extends AppCompatActivity implements
 
     private void createTags() {
         GridLayout layout = (GridLayout)findViewById(R.id.grid_layout);
+        tagList = new ArrayList<Tag>();
+
         List<Tag> tagList = new TagDBManager().loadAll();
 
         for (int i = 0;i < tagList.size(); i++) {
@@ -223,7 +229,7 @@ public class WritePlanActivity extends AppCompatActivity implements
                                         mPlanthing.setLevelId(level.getId());
                                         mPlanthing.setDoDateTime(getStartTime());
                                         mPlanthing.setEndDateTime(getEndTime());
-                                        mPlanthing.setFlagRemind(flagRemindBtn.isMustBeSelected());
+                                        mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
                                         mPlanthing.setRoleId(role.getId());
                                         mPlanthing.setTagId(2);
                                         mPlanthing.setUserinfoPId(1);

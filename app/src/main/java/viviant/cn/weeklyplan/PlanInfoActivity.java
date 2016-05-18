@@ -9,64 +9,60 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.borax12.materialdaterangepicker.date.DatePickerDialog;
 import com.borax12.materialdaterangepicker.time.RadialPickerLayout;
 import com.borax12.materialdaterangepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
+import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.constant.Constants;
+
 public class PlanInfoActivity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener
 {
-    private TextView dateTextView;
-    private TextView timeTextView;
+
+
+    private BootstrapEditText planName;
+    private BootstrapEditText planDesc;
+    private Planthing mPlanthing = null;
+
+    private BootstrapButton dateButton;
+    private BootstrapButton timeButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
-
         // Find our View instances
-        dateTextView = (TextView)findViewById(R.id.date_textview);
-        timeTextView = (TextView)findViewById(R.id.time_textview);
-        BootstrapButton dateButton = (BootstrapButton)findViewById(R.id.pick_date_but);
-        BootstrapButton timeButton = (BootstrapButton)findViewById(R.id.pick_time_but);
 
-        // Show a datepicker when the dateButton is clicked
-        dateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = DatePickerDialog.newInstance(
-                        PlanInfoActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
-            }
-        });
 
-        timeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                TimePickerDialog tpd = TimePickerDialog.newInstance(
-                        PlanInfoActivity.this,
-                        now.get(Calendar.HOUR_OF_DAY),
-                        now.get(Calendar.MINUTE),
-                        false
-                );
-                tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        Log.d("TimePicker", "Dialog was cancelled");
-                    }
-                });
-                tpd.show(getFragmentManager(), "Timepickerdialog");
-            }
-        });
+        mPlanthing = (Planthing)getIntent().getSerializableExtra(Constants.INTENT_PLAN_THING_UPDATE);
+
+
+        getView();
+        setViewInfo();
+
+
+    }
+
+    private void getView() {
+        dateButton = (BootstrapButton)findViewById(R.id.pick_date_but_update);
+        timeButton = (BootstrapButton)findViewById(R.id.pick_time_but_update);
+        planName = (BootstrapEditText)findViewById(R.id.planthing_name_update);
+        planDesc = (BootstrapEditText)findViewById(R.id.planthing_desc_update);
+    }
+
+
+    private void setViewInfo() {
+        if (mPlanthing != null) {
+            planName.setText(mPlanthing.getPlanthingName());
+            planDesc.setText(mPlanthing.getPlanthingDescription());
+        }
+
+
     }
 
     @Override
@@ -80,7 +76,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth,int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
         String date = "You picked the following date: From- "+dayOfMonth+"/"+(++monthOfYear)+"/"+year+" To "+dayOfMonthEnd+"/"+(++monthOfYearEnd)+"/"+yearEnd;
-        dateTextView.setText(date);
+        dateButton.setText(date);
     }
 
     @Override
@@ -91,7 +87,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
         String minuteStringEnd = minuteEnd < 10 ? "0"+minuteEnd : ""+minuteEnd;
         String time = "You picked the following time: From - "+hourString+"h"+minuteString+" To - "+hourStringEnd+"h"+minuteStringEnd;
 
-        timeTextView.setText(time);
+        timeButton.setText(time);
     }
 }
 

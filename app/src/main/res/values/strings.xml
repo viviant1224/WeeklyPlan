@@ -17,6 +17,18 @@
     <string name="trash">Trash</string>
     <string name="others">Others</string>
     <string name="share">Share</string>
+    <string name="write_planthing_info">You can write a plan for your later time,come on!</string>
+    <string name="plan_name">Plan Name :</string>
+    <string name="plan_desc">Plan Description : </string>
+    <string name="plan_time">Plan Time : </string>
+    <string name="plan_date">Plan Date : </string>
+    <string name="is_remind">Is Remind : </string>
+    <string name="commit">Commit</string>
+    <string name="plan_level">Plan Level : </string>
+    <string name="plan_role">Plan Role : </string>
+    <string name="plan_Tag">Plan Tag : </string>
+    <string name="select_time">Select Plan Time : </string>
+    <string name="select_date">Select Plan Date : </string>
 
     <string-array name="week">
         <item>Sun</item>

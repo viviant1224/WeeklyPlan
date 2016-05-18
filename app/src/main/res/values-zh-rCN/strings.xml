@@ -13,6 +13,18 @@
     <string name="trash">回收箱</string>
     <string name="others">其他</string>
     <string name="share">分享</string>
+    <string name="write_planthing_info">您可以写一份关于您的计划，抓紧行动吧！</string>
+    <string name="plan_name">计划名 :</string>
+    <string name="plan_desc">计划描述 : </string>
+    <string name="plan_time">计划时间 : </string>
+    <string name="plan_date">计划日期 : </string>
+    <string name="is_remind">是否提醒 : </string>
+    <string name="commit">提交</string>
+    <string name="plan_level">计划级别 : </string>
+    <string name="plan_role">计划中扮演角色 : </string>
+    <string name="plan_Tag">计划标签 : </string>
+    <string name="select_time">选择计划时间 ： </string>
+    <string name="select_date">选择计划日期 ： </string>
 
     <string-array name="week">
         <item>周日</item>

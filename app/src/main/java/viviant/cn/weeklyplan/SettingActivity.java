@@ -18,20 +18,12 @@ import java.util.Calendar;
  * Created by weiwei.huang on 16-5-16.
  */
 public class SettingActivity extends AppCompatActivity {
-    private TextView dateTextView;
-    private TextView timeTextView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
-
-        // Find our View instances
-        dateTextView = (TextView)findViewById(R.id.date_textview);
-        timeTextView = (TextView)findViewById(R.id.time_textview);
-        BootstrapButton dateButton = (BootstrapButton)findViewById(R.id.pick_date_but);
-        BootstrapButton timeButton = (BootstrapButton)findViewById(R.id.pick_time_but);
     }
 
 }

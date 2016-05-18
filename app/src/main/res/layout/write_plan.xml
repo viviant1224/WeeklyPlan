@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="You can write a plan for your later time,come on!"
+            android:text="@string/write_planthing_info"
             />
     </com.beardedhen.androidbootstrap.BootstrapWell>
     <ScrollView
@@ -36,7 +36,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PlanName : "/>
+                    android:text="@string/plan_name"/>
 
                 <com.beardedhen.androidbootstrap.BootstrapEditText
                     android:id="@+id/planthing_name"
@@ -54,7 +54,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PlanDescription : "/>
+                    android:text="@string/plan_desc"/>
 
                 <com.beardedhen.androidbootstrap.BootstrapEditText
                     android:id="@+id/planthing_desc"
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time : "/>
+                    android:text="@string/plan_time"/>
                 <com.beardedhen.androidbootstrap.BootstrapButtonGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                     android:id="@+id/pick_time_but"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="pickTime"
+                    android:text="@string/select_time"
                     app:bootstrapSize="md"
                     app:buttonMode="regular"
                     app:showOutline="false"
@@ -104,7 +104,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date : "/>
+                    android:text="@string/plan_date"/>
                 <com.beardedhen.androidbootstrap.BootstrapButtonGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                     android:id="@+id/pick_date_but"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="pickTime"
+                    android:text="@string/select_date"
                     app:bootstrapSize="md"
                     app:buttonMode="regular"
                     app:showOutline="false"
@@ -133,26 +133,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="isRemind : "/>
+                    android:text="@string/is_remind"/>
 
-
-                <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:bootstrapBrand="warning"
-                    app:showOutline="true"
-                    app:buttonMode="checkbox"
-                    >
-
-                    <com.beardedhen.androidbootstrap.BootstrapButton
-                        android:id="@+id/flag_remind"
-                        app:roundedCorners="true"
+                    android:orientation="horizontal">
+                    <Switch
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="flagRemind"
+                        android:id="@+id/flag_remind"
                         />
-                </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+                </LinearLayout>
+
+
 
 
 
@@ -166,7 +161,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="level : "/>
+                    android:text="@string/plan_level"/>
 
                 <Spinner
                     android:id="@+id/plan_level"
@@ -183,7 +178,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Role : "/>
+                    android:text="@string/plan_role"/>
 
                 <Spinner
                     android:id="@+id/plan_role"
@@ -201,7 +196,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tag : "/>
+                    android:text="@string/plan_Tag"/>
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -226,7 +221,7 @@
                 android:id="@+id/write_plan_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Commit"
+                android:text="@string/commit"
                 app:bootstrapBrand="primary"
                 app:bootstrapSize="md"
                 app:buttonMode="regular"
