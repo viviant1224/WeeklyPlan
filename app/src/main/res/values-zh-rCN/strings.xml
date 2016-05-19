@@ -23,8 +23,10 @@
     <string name="plan_level">计划级别 : </string>
     <string name="plan_role">计划中扮演角色 : </string>
     <string name="plan_Tag">计划标签 : </string>
-    <string name="select_time">选择计划时间 ： </string>
-    <string name="select_date">选择计划日期 ： </string>
+    <string name="select_time">选择计划时间</string>
+    <string name="select_date">选择计划日期</string>
+    <string name="select_time_for_but">从 : %1$s 到 : %2$s</string>
+    <string name="select_date_for_but">From : %1$s  To : %2$s</string>
 
     <string-array name="week">
         <item>周日</item>

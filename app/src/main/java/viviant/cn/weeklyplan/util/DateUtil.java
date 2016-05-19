@@ -3,6 +3,7 @@ package viviant.cn.weeklyplan.util;
 
 import android.util.Log;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +23,24 @@ public class DateUtil {
         Date today = new Date();
         cal.setTime(today);
         return cal.get(Calendar.DAY_OF_WEEK);
+    }
+
+    public static boolean compareDate(String DATE1, String DATE2) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        try {
+            Date dt1 = df.parse(DATE1);
+            Date dt2 = df.parse(DATE2);
+            if (dt1.getTime() > dt2.getTime()) {
+                return false;
+            } else if (dt1.getTime() < dt2.getTime()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return false;
     }
 
     public static int getTimeHour(String time) {
@@ -70,7 +89,7 @@ public class DateUtil {
 
     public static String getCurrentTime() {
         Date date  = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String dateTime = sdf.format(date);
         return dateTime;
     }

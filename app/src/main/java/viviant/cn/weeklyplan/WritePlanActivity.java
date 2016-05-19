@@ -49,6 +49,7 @@ import viviant.cn.weeklyplan.db.PlanthingDBManager;
 import viviant.cn.weeklyplan.db.RoleDBManager;
 import viviant.cn.weeklyplan.db.TagDBManager;
 import viviant.cn.weeklyplan.service.PlanthingData;
+import viviant.cn.weeklyplan.util.DateUtil;
 
 /**
  * Created by weiwei.huang on 16-5-5.
@@ -81,6 +82,7 @@ public class WritePlanActivity extends AppCompatActivity implements
 
 
     private List<Tag> tagList = null;
+
 
 
     private int startYear;
@@ -156,15 +158,16 @@ public class WritePlanActivity extends AppCompatActivity implements
         GridLayout layout = (GridLayout)findViewById(R.id.grid_layout);
         tagList = new ArrayList<Tag>();
 
-        List<Tag> tagList = new TagDBManager().loadAll();
+        final List<Tag> tagList = new TagDBManager().loadAll();
 
         for (int i = 0;i < tagList.size(); i++) {
-            BootstrapButton bbtn = new BootstrapButton(this);
+            final BootstrapButton bbtn = new BootstrapButton(this);
             bbtn.setButtonMode(ButtonMode.CHECKBOX);
             bbtn.setShowOutline(true);
             bbtn.setText(tagList.get(i).getTagName());
             bbtn.setId(Integer.parseInt(tagList.get(i).getId() + ""));
-            bbtn.setBootstrapBrand(getRandomBootstrapBrand ());
+            bbtn.setBootstrapBrand(getRandomBootstrapBrand());
+
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins(10,10,10,10);
             bbtn.setLayoutParams(params);
@@ -172,6 +175,7 @@ public class WritePlanActivity extends AppCompatActivity implements
             layout.addView(bbtn);
         }
     }
+
 
     private static BootstrapBrand getRandomBootstrapBrand () {
         List<BootstrapBrand> bootstrapBrandList = new ArrayList<BootstrapBrand>();
@@ -210,54 +214,69 @@ public class WritePlanActivity extends AppCompatActivity implements
                 case R.id.write_plan_button:
 
                     if (checkoutInfo()) {
-                        new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Are you sure?")
-                                .setContentText("Won't be able to recover this file!")
-                                .setConfirmText("Yes,Commit it!")
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
+                        if (checkDateAndTime()) {
+                            new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
+                                    .setTitleText("Are you sure?")
+                                    .setContentText("Won't be able to recover this file!")
+                                    .setConfirmText("Yes,Commit it!")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
 
-                                        Level level = (Level)planLevelSpinner.getSelectedItem();
+                                            Level level = (Level)planLevelSpinner.getSelectedItem();
 
-                                        Role role = (Role)planRoleSpinner.getSelectedItem();
+                                            Role role = (Role)planRoleSpinner.getSelectedItem();
 
-                                        Planthing mPlanthing = new Planthing();
-                                        mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
-                                        mPlanthing.setPlanthingName(planthingName.getText().toString());
-                                        mPlanthing.setState(0);
-                                        mPlanthing.setLevelId(level.getId());
-                                        mPlanthing.setDoDateTime(getStartTime());
-                                        mPlanthing.setEndDateTime(getEndTime());
-                                        mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
-                                        mPlanthing.setRoleId(role.getId());
-                                        mPlanthing.setTagId(2);
-                                        mPlanthing.setUserinfoPId(1);
-                                        boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
-                                        if (isSuccess) {
-                                            sDialog
-                                                    .setTitleText("Commit!")
-                                                    .setContentText("Your plan is in databases!")
-                                                    .setConfirmText("OK")
-                                                    .setConfirmClickListener(null)
-                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                            Intent mIntent = new Intent(WritePlanActivity.this, MainActivity.class);
-                                            Bundle mBundle = new Bundle();
-                                            mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
-                                            mIntent.putExtras(mBundle);
-                                            startActivity(mIntent);
-                                        } else {
-                                            sDialog
-                                                    .setTitleText("Failed!")
-                                                    .setContentText("Your plan isn't in databases!")
-                                                    .setConfirmText("OK")
-                                                    .setConfirmClickListener(null)
-                                                    .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                            Planthing mPlanthing = new Planthing();
+                                            mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
+                                            mPlanthing.setPlanthingName(planthingName.getText().toString());
+                                            mPlanthing.setState(0);
+                                            mPlanthing.setLevelId(level.getId());
+                                            mPlanthing.setDoDateTime(getStartTime());
+                                            mPlanthing.setEndDateTime(getEndTime());
+                                            mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
+                                            mPlanthing.setRoleId(role.getId());
+                                            mPlanthing.setTagId(2);
+                                            mPlanthing.setUserinfoPId(1);
+                                            boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
+                                            if (isSuccess) {
+                                                sDialog
+                                                        .setTitleText("Commit!")
+                                                        .setContentText("Your plan is in databases!")
+                                                        .setConfirmText("OK")
+                                                        .setConfirmClickListener(null)
+                                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                                Intent mIntent = new Intent(WritePlanActivity.this, MainActivity.class);
+                                                Bundle mBundle = new Bundle();
+                                                mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
+                                                mIntent.putExtras(mBundle);
+                                                startActivity(mIntent);
+                                            } else {
+                                                sDialog
+                                                        .setTitleText("Failed!")
+                                                        .setContentText("Your plan isn't in databases!")
+                                                        .setConfirmText("OK")
+                                                        .setConfirmClickListener(null)
+                                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                            }
+
                                         }
+                                    })
+                                    .show();
+                        } else {
+                            new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
+                                    .setTitleText("Time select isn't correct!")
+                                    .setContentText("start Time must less endTime And startTime must bigger than currentTime")
+                                    .setConfirmText("ok")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+                                            sDialog.dismiss();
+                                        }
+                                    })
+                                    .show();
+                        }
 
-                                    }
-                                })
-                                .show();
                     } else {
                         new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
                                 .setTitleText("Warnning?")
@@ -356,8 +375,13 @@ public class WritePlanActivity extends AppCompatActivity implements
         endMonth = monthOfYearEnd;
         endYear = yearEnd;
         hasCheckDate = true;
-//        String date = "You picked the following date: From- "+dayOfMonth+"/"+(++monthOfYear)+"/"+year+" To "+dayOfMonthEnd+"/"+(++monthOfYearEnd)+"/"+yearEnd;
-//        pickDateBut.setText(date);
+
+
+        String butDate = getBaseContext().getString(R.string.select_date_for_but);
+        String fromDate = "" + year+ "-" + monthOfYear + "-" + dayOfMonth;
+        String toDate = "" + yearEnd+ "-" + monthOfYearEnd + "-" + dayOfMonthEnd;
+        butDate = String.format(butDate, fromDate, toDate);
+        pickDateBut.setText(butDate);
     }
 
     @Override
@@ -366,7 +390,11 @@ public class WritePlanActivity extends AppCompatActivity implements
         String minuteString = minute < 10 ? "0"+minute : ""+minute;
         String hourStringEnd = hourOfDayEnd < 10 ? "0"+hourOfDayEnd : ""+hourOfDayEnd;
         String minuteStringEnd = minuteEnd < 10 ? "0"+minuteEnd : ""+minuteEnd;
-        String time = "You picked the following time: From - "+hourOfDay+"h"+minute+" To - "+hourOfDayEnd+"h"+minuteEnd;
+
+        String butTime = getBaseContext().getString(R.string.select_time_for_but);
+        String fromTime = "" + hourOfDay+ " :" + minute;
+        String toTime = "" + hourStringEnd+ " :" + minuteEnd;
+        butTime = String.format(butTime, fromTime, toTime);
 
         startHour = hourOfDay;
         startMinute = minute;
@@ -375,7 +403,7 @@ public class WritePlanActivity extends AppCompatActivity implements
         endMinute = minuteEnd;
         hasCheckTime = true;
 
-        pickTimeBut.setText(time);
+        pickTimeBut.setText(butTime);
     }
 
     private boolean checkoutInfo() {
@@ -385,7 +413,17 @@ public class WritePlanActivity extends AppCompatActivity implements
             flag = true;
         }
         return flag;
+    }
 
+    private boolean checkDateAndTime() {
+        boolean flag = false;
+
+        String endTime = getEndTime();
+        String startTime = getStartTime();
+
+        flag = DateUtil.compareDate(startTime, endTime) && DateUtil.compareDate(DateUtil.getCurrentTime(), startTime);
+
+        return flag;
     }
 
     private String getEndTime() {

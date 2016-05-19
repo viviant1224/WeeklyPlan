@@ -27,8 +27,10 @@
     <string name="plan_level">Plan Level : </string>
     <string name="plan_role">Plan Role : </string>
     <string name="plan_Tag">Plan Tag : </string>
-    <string name="select_time">Select Plan Time : </string>
-    <string name="select_date">Select Plan Date : </string>
+    <string name="select_time">Select Plan Time</string>
+    <string name="select_date">Select Plan Date</string>
+    <string name="select_time_for_but">From : %1$s  To : %2$s</string>
+    <string name="select_date_for_but">From : %1$s  To : %2$s</string>
 
     <string-array name="week">
         <item>Sun</item>

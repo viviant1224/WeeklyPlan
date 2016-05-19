@@ -14,6 +14,7 @@ import com.borax12.materialdaterangepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
+
 /**
  * Created by weiwei.huang on 16-5-16.
  */
@@ -24,6 +25,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
+
     }
 
 }
