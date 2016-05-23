@@ -40,7 +40,7 @@
 
                 <com.beardedhen.androidbootstrap.BootstrapEditText
                     android:id="@+id/planthing_name"
-                    android:layout_width="300dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     app:bootstrapSize="md"
                     app:bootstrapBrand="info"/>
@@ -58,7 +58,7 @@
 
                 <com.beardedhen.androidbootstrap.BootstrapEditText
                     android:id="@+id/planthing_desc"
-                    android:layout_width="300dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:lines="5"
                     app:bootstrapSize="md"
@@ -204,7 +204,7 @@
 
                 <GridLayout
                     android:id="@+id/grid_layout"
-                    android:layout_width="300dp"
+                    android:layout_width="200dp"
                     android:layout_height="fill_parent"
                     android:orientation="horizontal"
                     android:columnCount="5">
