@@ -48,6 +48,7 @@ import viviant.cn.weeklyplan.db.LevelDBManager;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
 import viviant.cn.weeklyplan.db.RoleDBManager;
 import viviant.cn.weeklyplan.db.TagDBManager;
+import viviant.cn.weeklyplan.service.NotificationUtil;
 import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.util.DateUtil;
 
@@ -100,6 +101,7 @@ public class WritePlanActivity extends AppCompatActivity implements
     private int endDay;
     private int endHour;
     private int endMinute;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -251,6 +253,9 @@ public class WritePlanActivity extends AppCompatActivity implements
                                                 mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
                                                 mIntent.putExtras(mBundle);
                                                 startActivity(mIntent);
+                                                if (flagRemindBtn.isChecked()) {
+                                                    NotificationUtil.setNotification(getBaseContext(),mPlanthing);
+                                                }
                                             } else {
                                                 sDialog
                                                         .setTitleText("Failed!")

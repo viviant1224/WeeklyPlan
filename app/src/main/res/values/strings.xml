@@ -31,6 +31,9 @@
     <string name="select_date">Select Plan Date</string>
     <string name="select_time_for_but">From : %1$s  To : %2$s</string>
     <string name="select_date_for_but">From : %1$s  To : %2$s</string>
+    <string name="update">Update</string>
+
+
 
     <string-array name="week">
         <item>Sun</item>

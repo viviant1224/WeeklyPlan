@@ -94,4 +94,17 @@ public class DateUtil {
         return dateTime;
     }
 
+    public static Long translateDateTime(String time) {
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            Date date =sdf.parse(time);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            return calendar.getTimeInMillis();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

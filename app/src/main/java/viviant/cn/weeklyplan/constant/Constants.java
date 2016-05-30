@@ -19,6 +19,7 @@ public class Constants {
 
     public static final String INTENT_PLAN_THING = "mPlanthing";
     public static final String INTENT_PLAN_THING_UPDATE = "mPlanthingUpdate";
+    public static final String NOTIFICATION_PLAN_THING = "mPlanthingNotification";
 
     /**
      * 程序隐藏根目录
