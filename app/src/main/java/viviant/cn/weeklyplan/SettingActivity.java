@@ -17,6 +17,8 @@ import com.borax12.materialdaterangepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
+import viviant.cn.weeklyplan.preference.WeeklyPlanSharePreference;
+
 
 /**
  * Created by weiwei.huang on 16-5-16.
@@ -35,11 +37,17 @@ public class SettingActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
         findViews();
+        boolean isOpenNotification = WeeklyPlanSharePreference.loadNotification(getApplicationContext());
+
+        if (isOpenNotification) {
+            notificationSwitch.setChecked(true);
+        }
     }
 
     private class onButtonClickListener implements View.OnClickListener{
@@ -48,9 +56,15 @@ public class SettingActivity extends AppCompatActivity {
             switch(v.getId()) {
                 case R.id.notification_switch:
                     if (notificationSwitch.isChecked()) {
-                        setNotificationDisable();
-                    } else {
+
                         setNotificationEnable();
+                        WeeklyPlanSharePreference.setNotificationSwitch(getApplicationContext(), true);
+
+                    } else {
+                        setNotificationDisable();
+
+                        WeeklyPlanSharePreference.setNotificationSwitch(getApplicationContext(), false);
+
                     }
                     break;
                 case R.id.is_send_by_email:

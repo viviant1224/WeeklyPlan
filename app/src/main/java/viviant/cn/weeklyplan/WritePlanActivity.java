@@ -48,6 +48,7 @@ import viviant.cn.weeklyplan.db.LevelDBManager;
 import viviant.cn.weeklyplan.db.PlanthingDBManager;
 import viviant.cn.weeklyplan.db.RoleDBManager;
 import viviant.cn.weeklyplan.db.TagDBManager;
+import viviant.cn.weeklyplan.preference.WeeklyPlanSharePreference;
 import viviant.cn.weeklyplan.service.NotificationUtil;
 import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.util.DateUtil;
@@ -254,7 +255,7 @@ public class WritePlanActivity extends AppCompatActivity implements
                                                 mIntent.putExtras(mBundle);
                                                 startActivity(mIntent);
                                                 if (flagRemindBtn.isChecked()) {
-                                                    NotificationUtil.setNotification(getBaseContext(),mPlanthing);
+                                                    NotificationUtil.setNotification(getApplicationContext(),mPlanthing);
                                                 }
                                             } else {
                                                 sDialog
