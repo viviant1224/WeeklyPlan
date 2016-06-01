@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,19 @@ import org.eazegraph.lib.models.StackedBarModel;
 import org.eazegraph.lib.models.ValueLinePoint;
 import org.eazegraph.lib.models.ValueLineSeries;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 import viviant.cn.weeklyplan.R;
+import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.bean.Role;
+import viviant.cn.weeklyplan.db.PlanthingDBManager;
+import viviant.cn.weeklyplan.db.RoleDBManager;
+import viviant.cn.weeklyplan.model.Plan;
+import viviant.cn.weeklyplan.util.ColorUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,15 +124,8 @@ public class PlanChartFragment extends Fragment {
         mStackedBarChart.startAnimation();
 
 
-        PieChart mPieChart = (PieChart) view.findViewById(R.id.piechart);
 
-        mPieChart.addPieSlice(new PieModel("Freetime", 15, Color.parseColor("#FE6DA8")));
-        mPieChart.addPieSlice(new PieModel("Sleep", 25, Color.parseColor("#56B7F1")));
-        mPieChart.addPieSlice(new PieModel("Work", 35, Color.parseColor("#CDA67F")));
-        mPieChart.addPieSlice(new PieModel("Eating", 9, Color.parseColor("#FED70E")));
-
-        mPieChart.startAnimation();
-
+        showRoleByGroup(view);
 
 
 
@@ -145,6 +151,33 @@ public class PlanChartFragment extends Fragment {
         mCubicValueLineChart.startAnimation();
 
         return view;
+    }
+
+    private void showRoleByGroup(View view) {
+        PieChart mPieChart = (PieChart) view.findViewById(R.id.piechart);
+
+        List<Role> roleList = new RoleDBManager().loadAll();
+
+        Map<String,Integer> planGroupByRole = new HashMap<String,Integer>();
+
+        List<Planthing> planList = PlanthingDBManager.getPlanthingDBManager().loadAll();
+
+
+        for (int i = 0; i < roleList.size(); i++ ) {
+            int count = 0;
+            for (int j = 0; j < planList.size(); j++ ) {
+                if (planList.get(j).getRoleId() == roleList.get(i).getId()) {
+                    count++;
+                }
+            }
+            planGroupByRole.put(roleList.get(i).getRoleName(), count);
+        }
+
+        for (Map.Entry<String, Integer> entry : planGroupByRole.entrySet()) {
+            mPieChart.addPieSlice(new PieModel(entry.getKey(), entry.getValue(), Color.parseColor(ColorUtil.getRandomColor())));
+        }
+
+        mPieChart.startAnimation();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
