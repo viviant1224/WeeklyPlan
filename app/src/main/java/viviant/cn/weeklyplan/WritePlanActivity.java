@@ -1,28 +1,16 @@
 package viviant.cn.weeklyplan;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.ButtonMode;
@@ -33,9 +21,7 @@ import com.borax12.materialdaterangepicker.time.TimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -45,13 +31,13 @@ import viviant.cn.weeklyplan.bean.Role;
 import viviant.cn.weeklyplan.bean.Tag;
 import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.db.LevelDBManager;
-import viviant.cn.weeklyplan.db.PlanthingDBManager;
 import viviant.cn.weeklyplan.db.RoleDBManager;
 import viviant.cn.weeklyplan.db.TagDBManager;
-import viviant.cn.weeklyplan.preference.WeeklyPlanSharePreference;
 import viviant.cn.weeklyplan.service.NotificationUtil;
 import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.util.DateUtil;
+
+
 
 /**
  * Created by weiwei.huang on 16-5-5.
@@ -66,7 +52,6 @@ public class WritePlanActivity extends AppCompatActivity implements
     private BootstrapButton pickTimeBut;
     private BootstrapButton pickDateBut;
 
-//    private BootstrapButton weiboLogin;
 
     private BootstrapEditText planthingName;
     private BootstrapEditText planthingDesc;
@@ -110,21 +95,14 @@ public class WritePlanActivity extends AppCompatActivity implements
 
         setContentView(R.layout.write_plan);
         writePlanBut = (BootstrapButton)findViewById(R.id.write_plan_button);
-
         planthingName = (BootstrapEditText)findViewById(R.id.planthing_name);
         planthingDesc = (BootstrapEditText)findViewById(R.id.planthing_desc);
         flagRemindBtn = (Switch)findViewById(R.id.flag_remind);
-
         pickTimeBut = (BootstrapButton)findViewById(R.id.pick_time_but);
-
-
-
         pickDateBut = (BootstrapButton)findViewById(R.id.pick_date_but);
-//        weiboLogin = (BootstrapButton)findViewById(R.id.weibo_login_button);
         sendNotificationButton = (BootstrapButton)findViewById(R.id.send_notification_button);
-
-
         planRoleSpinner = (Spinner)findViewById(R.id.plan_role);
+
         planRoleSpinner.setPrompt("Role Select");
         dataRole = new ArrayList<Role>();
         List<Role> roleList = new RoleDBManager().loadAll();
@@ -146,11 +124,7 @@ public class WritePlanActivity extends AppCompatActivity implements
         adapteLevel = new ArrayAdapter<Level>(this, android.R.layout.simple_spinner_item, dataLevel);
         adapteLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         planLevelSpinner.setAdapter(this.adapteLevel);
-
         createTags();
-
-
-
         writePlanBut.setOnClickListener(new butOnClickListener());
         pickTimeBut.setOnClickListener(new butOnClickListener());
         pickDateBut.setOnClickListener(new butOnClickListener());
@@ -160,9 +134,7 @@ public class WritePlanActivity extends AppCompatActivity implements
     private void createTags() {
         GridLayout layout = (GridLayout)findViewById(R.id.grid_layout);
         tagList = new ArrayList<Tag>();
-
         final List<Tag> tagList = new TagDBManager().loadAll();
-
         for (int i = 0;i < tagList.size(); i++) {
             final BootstrapButton bbtn = new BootstrapButton(this);
             bbtn.setButtonMode(ButtonMode.CHECKBOX);
@@ -207,167 +179,142 @@ public class WritePlanActivity extends AppCompatActivity implements
         return bootstrapBrandList.get(i);
     }
 
+    private void writePlanthing() {
+        if (checkoutInfo()) {
+            if (checkDateAndTime()) {
+                new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("Won't be able to recover this file!")
+                        .setConfirmText("Yes,Commit it!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
 
-    private class
-            butOnClickListener implements View.OnClickListener {
+                                Level level = (Level)planLevelSpinner.getSelectedItem();
+                                Role role = (Role)planRoleSpinner.getSelectedItem();
+                                Planthing mPlanthing = new Planthing();
+                                mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
+                                mPlanthing.setPlanthingName(planthingName.getText().toString());
+                                mPlanthing.setState(0);
+                                mPlanthing.setLevelId(level.getId());
+                                mPlanthing.setDoDateTime(getStartTime());
+                                mPlanthing.setEndDateTime(getEndTime());
+                                mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
+                                mPlanthing.setRoleId(role.getId());
+                                mPlanthing.setTagId(2);
+                                mPlanthing.setUserinfoPId(1);
+                                boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
+                                if (isSuccess) {
+                                    sDialog
+                                            .setTitleText("Commit!")
+                                            .setContentText("Your plan is in databases!")
+                                            .setConfirmText("OK")
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                    Intent mIntent = new Intent(WritePlanActivity.this, MainActivity.class);
+                                    Bundle mBundle = new Bundle();
+                                    mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
+                                    mIntent.putExtras(mBundle);
+                                    startActivity(mIntent);
+                                    if (flagRemindBtn.isChecked()) {
+                                        NotificationUtil.setNotification(getApplicationContext(),mPlanthing);
+                                    }
+                                } else {
+                                    sDialog
+                                            .setTitleText("Failed!")
+                                            .setContentText("Your plan isn't in databases!")
+                                            .setConfirmText("OK")
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                }
+
+                            }
+                        })
+                        .show();
+            } else {
+                new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Time select isn't correct!")
+                        .setContentText("start Time must less endTime And startTime must bigger than currentTime")
+                        .setConfirmText("ok")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+
+        } else {
+            new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Warnning?")
+                    .setContentText("some column must be comeplete!")
+                    .setConfirmText("ok")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismiss();
+                        }
+                    })
+                    .show();
+        }
+    }
+
+    private void pickTime() {
+        Calendar now = Calendar.getInstance();
+        TimePickerDialog tpd = TimePickerDialog.newInstance(
+                WritePlanActivity.this,
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                true//is use 24mode
+        );
+        tpd.setThemeDark(false);
+        tpd.vibrate(false);
+        tpd.dismissOnPause(false);
+        tpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
+        tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+
+            }
+        });
+        tpd.show(getFragmentManager(), "Timepickerdialog");
+    }
+
+    private void pickDate() {
+        Calendar now = Calendar.getInstance();
+        DatePickerDialog dpd = DatePickerDialog.newInstance(
+                WritePlanActivity.this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.setThemeDark(false);
+        dpd.vibrate(false);
+        dpd.dismissOnPause(false);
+        dpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
+        dpd.show(getFragmentManager(), "Datepickerdialog");
+    }
+
+    private class butOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            Calendar now = Calendar.getInstance();
+
             switch (v.getId()) {
                 case R.id.write_plan_button:
-
-                    if (checkoutInfo()) {
-                        if (checkDateAndTime()) {
-                            new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                    .setTitleText("Are you sure?")
-                                    .setContentText("Won't be able to recover this file!")
-                                    .setConfirmText("Yes,Commit it!")
-                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sDialog) {
-
-                                            Level level = (Level)planLevelSpinner.getSelectedItem();
-
-                                            Role role = (Role)planRoleSpinner.getSelectedItem();
-
-                                            Planthing mPlanthing = new Planthing();
-                                            mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
-                                            mPlanthing.setPlanthingName(planthingName.getText().toString());
-                                            mPlanthing.setState(0);
-                                            mPlanthing.setLevelId(level.getId());
-                                            mPlanthing.setDoDateTime(getStartTime());
-                                            mPlanthing.setEndDateTime(getEndTime());
-                                            mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
-                                            mPlanthing.setRoleId(role.getId());
-                                            mPlanthing.setTagId(2);
-                                            mPlanthing.setUserinfoPId(1);
-                                            boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
-                                            if (isSuccess) {
-                                                sDialog
-                                                        .setTitleText("Commit!")
-                                                        .setContentText("Your plan is in databases!")
-                                                        .setConfirmText("OK")
-                                                        .setConfirmClickListener(null)
-                                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                                Intent mIntent = new Intent(WritePlanActivity.this, MainActivity.class);
-                                                Bundle mBundle = new Bundle();
-                                                mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
-                                                mIntent.putExtras(mBundle);
-                                                startActivity(mIntent);
-                                                if (flagRemindBtn.isChecked()) {
-                                                    NotificationUtil.setNotification(getApplicationContext(),mPlanthing);
-                                                }
-                                            } else {
-                                                sDialog
-                                                        .setTitleText("Failed!")
-                                                        .setContentText("Your plan isn't in databases!")
-                                                        .setConfirmText("OK")
-                                                        .setConfirmClickListener(null)
-                                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                            }
-
-                                        }
-                                    })
-                                    .show();
-                        } else {
-                            new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                    .setTitleText("Time select isn't correct!")
-                                    .setContentText("start Time must less endTime And startTime must bigger than currentTime")
-                                    .setConfirmText("ok")
-                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sDialog) {
-                                            sDialog.dismiss();
-                                        }
-                                    })
-                                    .show();
-                        }
-
-                    } else {
-                        new SweetAlertDialog(WritePlanActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Warnning?")
-                                .setContentText("some column must be comeplete!")
-                                .setConfirmText("ok")
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismiss();
-                                    }
-                                })
-                                .show();
-                    }
+                    writePlanthing();
                     break;
                 case R.id.pick_time_but:
-
-                    TimePickerDialog tpd = TimePickerDialog.newInstance(
-                            WritePlanActivity.this,
-                            now.get(Calendar.HOUR_OF_DAY),
-                            now.get(Calendar.MINUTE),
-                            true//is use 24mode
-                    );
-                    tpd.setThemeDark(false);
-                    tpd.vibrate(false);
-                    tpd.dismissOnPause(false);
-                    tpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
-                    tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialogInterface) {
-                            Log.d("TimePicker", "Dialog was cancelled");
-                        }
-                    });
-                    tpd.show(getFragmentManager(), "Timepickerdialog");
+                    pickTime();
                     break;
                 case R.id.pick_date_but:
-                    DatePickerDialog dpd = DatePickerDialog.newInstance(
-                            WritePlanActivity.this,
-                            now.get(Calendar.YEAR),
-                            now.get(Calendar.MONTH),
-                            now.get(Calendar.DAY_OF_MONTH)
-                    );
-                    dpd.setThemeDark(false);
-                    dpd.vibrate(false);
-                    dpd.dismissOnPause(false);
-                    dpd.setAccentColor(getResources().getColor(R.color.colorPrimary));
-                    dpd.show(getFragmentManager(), "Datepickerdialog");
-                    break;
-//                case R.id.weibo_login_button:
-//
-//                    break;
-                case R.id.send_notification_button:
-                    NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext());
-
-
-                    mBuilder.setContentTitle("测试标题")//设置通知栏标题
-                            .setContentText("测试内容")
-                    .setContentIntent(getDefalutIntent(Notification.FLAG_AUTO_CANCEL)) //设置通知栏点击意图
-//  .setNumber(number) //设置通知集合的数量
-                        .setTicker("测试通知来啦") //通知首次出现在通知栏，带上升动画效果的
-                        .setWhen(System.currentTimeMillis())//通知产生的时间，会在通知信息里显示，一般是系统获取到的时间
-                        .setPriority(Notification.PRIORITY_DEFAULT) //设置该通知优先级
-//  .setAutoCancel(true)//设置这个标志当用户单击面板就可以让通知将自动取消
-                        .setOngoing(false)//ture，设置他为一个正在进行的通知。他们通常是用来表示一个后台任务,用户积极参与(如播放音乐)或以某种方式正在等待,因此占用设备(如一个文件下载,同步操作,主动网络连接)
-                        .setDefaults(Notification.DEFAULT_VIBRATE)//向通知添加声音、闪灯和振动效果的最简单、最一致的方式是使用当前的用户默认设置，使用defaults属性，可以组合
-                                //Notification.DEFAULT_ALL  Notification.DEFAULT_SOUND 添加声音 // requires VIBRATE permission
-                        .setSmallIcon(R.drawable.ic_launcher);//设置通知小ICON
-
-                    Notification notification = mBuilder.build();
-                    notification.flags = Notification.FLAG_AUTO_CANCEL;
-
-                    mNotificationManager.notify(1, mBuilder.build());
+                    pickDate();
                     break;
                 default:
                     break;
             }
         }
     }
-
-    public PendingIntent getDefalutIntent(int flags){
-        Intent intent = new Intent(getBaseContext(),MainActivity.class);
-        PendingIntent pendingIntent= PendingIntent.getActivity(this, 1, intent, flags);
-        return pendingIntent;
-    }
-
 
 
     @Override
@@ -384,8 +331,8 @@ public class WritePlanActivity extends AppCompatActivity implements
 
 
         String butDate = getBaseContext().getString(R.string.select_date_for_but);
-        String fromDate = "" + year+ "-" + monthOfYear + "-" + dayOfMonth;
-        String toDate = "" + yearEnd+ "-" + monthOfYearEnd + "-" + dayOfMonthEnd;
+        String fromDate = "" + year+ "-" + (monthOfYear+1) + "-" + dayOfMonth;
+        String toDate = "" + yearEnd+ "-" + (monthOfYearEnd+1) + "-" + dayOfMonthEnd;
         butDate = String.format(butDate, fromDate, toDate);
         pickDateBut.setText(butDate);
     }

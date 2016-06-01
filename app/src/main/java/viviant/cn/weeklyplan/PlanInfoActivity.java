@@ -64,7 +64,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener{
 
-    private BootstrapButton writePlanBut;
+    private BootstrapButton updatePlanBut;
 
 
     private BootstrapButton pickTimeBut;
@@ -108,14 +108,21 @@ public class PlanInfoActivity extends AppCompatActivity implements
 
     private Planthing mPlanthing;
 
-    private Button mButton1;//add by weiwei test
+    private String timeDateStart;
+    private String timeDateEnd;
+
+    private int levelIndex;
+    private int roleIndex;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_plan);
-        writePlanBut = (BootstrapButton)findViewById(R.id.write_plan_button);
+
+        mPlanthing = (Planthing)getIntent().getSerializableExtra(Constants.INTENT_PLAN_THING_UPDATE);
+        updatePlanBut = (BootstrapButton)findViewById(R.id.update_plan_button);
 
         planthingName = (BootstrapEditText)findViewById(R.id.planthing_name_update);
         planthingDesc = (BootstrapEditText)findViewById(R.id.planthing_desc_update);
@@ -135,6 +142,9 @@ public class PlanInfoActivity extends AppCompatActivity implements
         List<Role> roleList = new RoleDBManager().loadAll();
         for (int j = 0;j < roleList.size(); j++) {
             dataRole.add(roleList.get(j));
+            if (mPlanthing.getRoleId() == roleList.get(j).getId()) {
+                roleIndex = j;
+            }
         }
         adapterRole = new ArrayAdapter<Role>(this, android.R.layout.simple_spinner_item,dataRole);
         adapterRole.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -147,6 +157,9 @@ public class PlanInfoActivity extends AppCompatActivity implements
         List<Level> levelList = new LevelDBManager().loadAll();
         for (int i = 0;i < levelList.size(); i++) {
             dataLevel.add(levelList.get(i));
+            if (mPlanthing.getLevelId() == levelList.get(i).getId()) {
+                levelIndex = i;
+            }
         }
         adapteLevel = new ArrayAdapter<Level>(this, android.R.layout.simple_spinner_item, dataLevel);
         adapteLevel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -156,25 +169,24 @@ public class PlanInfoActivity extends AppCompatActivity implements
 
 
 
-        writePlanBut.setOnClickListener(new butOnClickListener());
-        pickTimeBut.setOnClickListener(new butOnClickListener());
-        pickDateBut.setOnClickListener(new butOnClickListener());
+        updatePlanBut.setOnClickListener(new butOnClickListener());
+//        pickTimeBut.setOnClickListener(new butOnClickListener());
+//        pickDateBut.setOnClickListener(new butOnClickListener());
 
-        mPlanthing = (Planthing)getIntent().getSerializableExtra(Constants.INTENT_PLAN_THING_UPDATE);
+
 
         setViewInfo();
 
 
-        //add by weiwei test begin
-        mButton1 = (Button)findViewById(R.id.normal_button);
-        mButton1.setOnClickListener(new View.OnClickListener() {
+        if (mPlanthing.getState() == 1) {
+            planthingName.setEnabled(false);
+            planthingDesc.setEnabled(false);
+            updatePlanBut.setEnabled(false);
+            flagRemindBtn.setEnabled(false);
+            planLevelSpinner.setEnabled(false);
+            planRoleSpinner.setEnabled(false);
 
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        //add by weiwei test end
+        }
     }
 
 
@@ -182,6 +194,29 @@ public class PlanInfoActivity extends AppCompatActivity implements
         if (mPlanthing != null) {
             planthingName.setText(mPlanthing.getPlanthingName());
             planthingDesc.setText(mPlanthing.getPlanthingDescription());
+
+
+            timeDateStart = mPlanthing.getDoDateTime();
+            timeDateEnd = mPlanthing.getEndDateTime();
+
+            String[] timeDateStartArrays = timeDateStart.split(" ");
+            String[] timeDateEndArrays = timeDateEnd.split(" ");
+
+
+            String butTime = getBaseContext().getString(R.string.select_time_for_but);
+            butTime = String.format(butTime, timeDateStartArrays[1], timeDateEndArrays[1]);
+
+            String butDate = getBaseContext().getString(R.string.select_time_for_but);
+            butDate = String.format(butDate, timeDateStartArrays[0], timeDateEndArrays[0]);
+
+            pickTimeBut.setText(butTime);
+            pickDateBut.setText(butDate);
+
+            flagRemindBtn.setChecked(mPlanthing.getFlagRemind());
+
+            planLevelSpinner.setSelection(levelIndex);
+            planRoleSpinner.setSelection(roleIndex);
+
         }
 
 
@@ -247,11 +282,10 @@ public class PlanInfoActivity extends AppCompatActivity implements
                 case R.id.write_plan_button:
 
                     if (checkoutInfo()) {
-                        if (checkDateAndTime()) {
                             new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
                                     .setTitleText("Are you sure?")
                                     .setContentText("Won't be able to recover this file!")
-                                    .setConfirmText("Yes,Commit it!")
+                                    .setConfirmText("Yes,Update it!")
                                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                         @Override
                                         public void onClick(SweetAlertDialog sDialog) {
@@ -260,22 +294,19 @@ public class PlanInfoActivity extends AppCompatActivity implements
 
                                             Role role = (Role)planRoleSpinner.getSelectedItem();
 
-                                            Planthing mPlanthing = new Planthing();
                                             mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
                                             mPlanthing.setPlanthingName(planthingName.getText().toString());
                                             mPlanthing.setState(0);
                                             mPlanthing.setLevelId(level.getId());
-                                            mPlanthing.setDoDateTime(getStartTime());
-                                            mPlanthing.setEndDateTime(getEndTime());
                                             mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
                                             mPlanthing.setRoleId(role.getId());
                                             mPlanthing.setTagId(2);
                                             mPlanthing.setUserinfoPId(1);
-                                            boolean isSuccess = new PlanthingData().insertPlanthing(mPlanthing);
+                                            boolean isSuccess = new  PlanthingData().updatePlanthing(mPlanthing);
                                             if (isSuccess) {
                                                 sDialog
-                                                        .setTitleText("Commit!")
-                                                        .setContentText("Your plan is in databases!")
+                                                        .setTitleText("Updated!")
+                                                        .setContentText("Your plan is updated!")
                                                         .setConfirmText("OK")
                                                         .setConfirmClickListener(null)
                                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
@@ -287,7 +318,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
                                             } else {
                                                 sDialog
                                                         .setTitleText("Failed!")
-                                                        .setContentText("Your plan isn't in databases!")
+                                                        .setContentText("Your plan isn't updated!")
                                                         .setConfirmText("OK")
                                                         .setConfirmClickListener(null)
                                                         .changeAlertType(SweetAlertDialog.ERROR_TYPE);
@@ -296,19 +327,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
                                         }
                                     })
                                     .show();
-                        } else {
-                            new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                    .setTitleText("Time select isn't correct!")
-                                    .setContentText("start Time must less endTime And startTime must bigger than currentTime")
-                                    .setConfirmText("ok")
-                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sDialog) {
-                                            sDialog.dismiss();
-                                        }
-                                    })
-                                    .show();
-                        }
+
 
                     } else {
                         new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
@@ -324,7 +343,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
                                 .show();
                     }
                     break;
-                case R.id.pick_time_but:
+                case R.id.pick_time_but_update:
 
                     TimePickerDialog tpd = TimePickerDialog.newInstance(
                             PlanInfoActivity.this,
@@ -344,7 +363,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
                     });
                     tpd.show(getFragmentManager(), "Timepickerdialog");
                     break;
-                case R.id.pick_date_but:
+                case R.id.pick_date_but_update:
                     DatePickerDialog dpd = DatePickerDialog.newInstance(
                             PlanInfoActivity.this,
                             now.get(Calendar.YEAR),
@@ -415,8 +434,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
 
     private boolean checkoutInfo() {
         boolean flag = false;
-        if (planthingName.getText().toString().trim().length() != 0 && planthingDesc.getText().toString().trim().length() != 0&&
-                hasCheckTime && hasCheckDate) {
+        if (planthingName.getText().toString().trim().length() != 0 && planthingDesc.getText().toString().trim().length() != 0) {
             flag = true;
         }
         return flag;
