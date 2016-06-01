@@ -218,7 +218,7 @@
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_marginTop="40dp"
-                android:id="@+id/write_plan_button"
+                android:id="@+id/update_plan_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/update"
@@ -229,11 +229,6 @@
                 app:roundedCorners="false"
                 />
 
-            <Button android:id="@+id/normal_button"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设置简单闹铃" />
 
 
         </TableLayout>
