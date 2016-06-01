@@ -32,6 +32,14 @@
     <string name="select_time_for_but">From : %1$s  To : %2$s</string>
     <string name="select_date_for_but">From : %1$s  To : %2$s</string>
     <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_title">Are you sure?</string>
+    <string name="confirm_content">Won\'t be able to recover this file!</string>
+    <string name="confirm_delete">yes, delete it</string>
+
+    <string name="deleted">delete!</string>
+    <string name="deleted_content">Your plan is deleted!</string>
+    <string name="ok">OK</string>
 
 
 

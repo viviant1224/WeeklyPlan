@@ -28,6 +28,13 @@
     <string name="select_time_for_but">从 : %1$s 到 : %2$s</string>
     <string name="select_date_for_but">From : %1$s  To : %2$s</string>
     <string name="update">更新</string>
+    <string name="delete">删除</string>
+    <string name="confirm_title">确定该操作？</string>
+    <string name="confirm_content">该文件将无法恢复！</string>
+    <string name="confirm_delete">确认删除</string>
+    <string name="deleted">已经删除!</string>
+    <string name="deleted_content">您的计划已经删除成功！</string>
+    <string name="ok">好的</string>
 
     <string-array name="week">
         <item>周日</item>
