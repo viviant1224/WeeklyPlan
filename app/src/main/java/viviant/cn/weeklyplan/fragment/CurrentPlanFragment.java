@@ -157,64 +157,67 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     private void showPlanthingDialog(final Planthing planthing, String message, final WeekViewEvent event) {
 
         final MaterialDialog mMaterialDialog = new MaterialDialog(getContext());
+        if (planthing.getState() != 1) {
+            mMaterialDialog.setPositiveButton("compelet", new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Are you sure?")
+                            .setContentText("Won't be able to recover this file!")
+                            .setConfirmText("yes, compelet it")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    planthing.setState(1);
+                                    boolean updateSuccess = new PlanthingData().updatePlanthing(planthing);
+                                    if (updateSuccess) {
+                                        event.setColor(getResources().getColor(R.color.event_color_02));
+                                        getWeekView().notifyDatasetChanged();
+                                        sDialog
+                                                .setTitleText("update!")
+                                                .setContentText("Your plan is updated!")
+                                                .setConfirmText("ok")
+                                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                    @Override
+                                                    public void onClick(SweetAlertDialog sDialog) {
+                                                        sDialog.dismiss();
+                                                    }
+                                                })
+                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                        mMaterialDialog.dismiss();
+                                    } else {
+                                        sDialog
+                                                .setTitleText("update failed!")
+                                                .setContentText("something is wrong!")
+                                                .setConfirmText("ok")
+                                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                    @Override
+                                                    public void onClick(SweetAlertDialog sDialog) {
+                                                        sDialog.dismiss();
+                                                    }
+                                                })
+                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                        mMaterialDialog.dismiss();
+                                    }
+
+                                }
+                            }).show();
+                }
+            });
+        }
+
         mMaterialDialog.setTitle(planthing.getPlanthingName())
                 .setMessage(message)
                 .setCanceledOnTouchOutside(true)
-                .setPositiveButton("compelet", new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-
-                        new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Are you sure?")
-                                .setContentText("Won't be able to recover this file!")
-                                .setConfirmText("yes, compelet it")
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        planthing.setState(1);
-                                        boolean updateSuccess = new PlanthingData().updatePlanthing(planthing);
-                                        if (updateSuccess) {
-                                            event.setColor(getResources().getColor(R.color.event_color_02));
-                                            getWeekView().notifyDatasetChanged();
-                                            sDialog
-                                                    .setTitleText("update!")
-                                                    .setContentText("Your plan is updated!")
-                                                    .setConfirmText("ok")
-                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                                        @Override
-                                                        public void onClick(SweetAlertDialog sDialog) {
-                                                            sDialog.dismiss();
-                                                        }
-                                                    })
-                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                            mMaterialDialog.dismiss();
-                                        } else {
-                                            sDialog
-                                                    .setTitleText("update failed!")
-                                                    .setContentText("something is wrong!")
-                                                    .setConfirmText("ok")
-                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                                        @Override
-                                                        public void onClick(SweetAlertDialog sDialog) {
-                                                            sDialog.dismiss();
-                                                        }
-                                                    })
-                                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                            mMaterialDialog.dismiss();
-                                        }
-
-                                    }
-                                }).show();
-                    }
-                })
-                .setNegativeButton("delete", new View.OnClickListener() {
+                .setNegativeButton(getContext().getString(R.string.delete), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Are you sure?")
-                                .setContentText("Won't be able to recover this file!")
-                                .setConfirmText("yes, delete it")
+                                .setTitleText(getContext().getString(R.string.confirm_title))
+                                .setContentText(getContext().getString(R.string.confirm_content))
+                                .setConfirmText(getContext().getString(R.string.confirm_delete))
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
@@ -223,9 +226,9 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                                             events.remove(event);
                                             getWeekView().notifyDatasetChanged();
                                             sDialog
-                                                    .setTitleText("delete!")
-                                                    .setContentText("Your plan is deleted!")
-                                                    .setConfirmText("ok")
+                                                    .setTitleText(getContext().getString(R.string.deleted))
+                                                    .setContentText(getContext().getString(R.string.deleted_content))
+                                                    .setConfirmText(getContext().getString(R.string.ok))
                                                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                                         @Override
                                                         public void onClick(SweetAlertDialog sDialog) {
