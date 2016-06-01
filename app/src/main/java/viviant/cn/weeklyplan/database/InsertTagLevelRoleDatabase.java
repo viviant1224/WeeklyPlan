@@ -85,6 +85,24 @@ public class InsertTagLevelRoleDatabase {
         role2.setUserinfoRId(1);
         new RoleDBManager().insert(role2);
 
+        Role role3 = new Role();
+        role3.setState(0);
+        role3.setFlagAvailiable(true);
+        role3.setEstablishDate(DateUtil.getCurrentTime());
+        role3.setRoleDescription("friend");
+        role3.setRoleName("friend");
+        role3.setUserinfoRId(1);
+        new RoleDBManager().insert(role3);
+
+        Role role4 = new Role();
+        role4.setState(0);
+        role4.setFlagAvailiable(true);
+        role4.setEstablishDate(DateUtil.getCurrentTime());
+        role4.setRoleDescription("boss");
+        role4.setRoleName("boss");
+        role4.setUserinfoRId(1);
+        new RoleDBManager().insert(role4);
+
     }
 
     private static void insertLevel() {
