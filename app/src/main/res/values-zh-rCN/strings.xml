@@ -16,6 +16,7 @@
     <string name="others">其他</string>
     <string name="share">分享</string>
     <string name="write_planthing_info">您可以写一份关于您的计划，抓紧行动吧！</string>
+    <string name="update_planthing_info">您可以对您的计划作出修改，但是不允许您修改计划的时间！</string>
     <string name="plan_name">计划名 :</string>
     <string name="plan_desc">计划描述 : </string>
     <string name="plan_time">计划时间 : </string>
@@ -37,6 +38,15 @@
     <string name="deleted">已经删除!</string>
     <string name="deleted_content">您的计划已经删除成功！</string>
     <string name="ok">好的</string>
+
+    <string name="notification_ticker">周计划提醒您有待办事项</string>
+
+    <string name="notification_toast">周计划提醒您有待办事项</string>
+
+    <string name="set_notification_success">设置通知成功</string>
+
+    <string name="cancel_notification_success">取消通知成功</string>
+
 
     <string-array name="week">
         <item>周日</item>

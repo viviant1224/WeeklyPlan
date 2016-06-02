@@ -22,6 +22,7 @@
     <string name="others">Others</string>
     <string name="share">Share</string>
     <string name="write_planthing_info">You can write a plan for your later time,come on!</string>
+    <string name="update_planthing_info">You can update your planthing,but you can\'t change your plan time!</string>
     <string name="plan_name">Plan Name :</string>
     <string name="plan_desc">Plan Description : </string>
     <string name="plan_time">Plan Time : </string>
@@ -44,6 +45,13 @@
     <string name="deleted">delete!</string>
     <string name="deleted_content">Your plan is deleted!</string>
     <string name="ok">OK</string>
+
+    <string name="notification_ticker">WeeklyPlan remind you have Plan to do.</string>
+    <string name="notification_toast">WeeklyPlan remind you have Plan to do.</string>
+
+    <string name="set_notification_success">Set Notification Successful.</string>
+
+    <string name="cancel_notification_success">Cancel Notification Successful.</string>
 
 
 
