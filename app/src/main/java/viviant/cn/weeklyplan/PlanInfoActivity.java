@@ -279,7 +279,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
         public void onClick(View v) {
             Calendar now = Calendar.getInstance();
             switch (v.getId()) {
-                case R.id.write_plan_button:
+                case R.id.update_plan_button:
 
                     if (checkoutInfo()) {
                             new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
