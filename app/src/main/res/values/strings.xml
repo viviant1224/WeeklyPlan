@@ -15,6 +15,10 @@
     <string name="tag_lib">Tags</string>
     <string name="role_lib">Roles</string>
     <string name="trash">Trash</string>
+    <string name="planthing_schedule">Planthing Schedule</string>
+    <string name="plan_chart">Planthing Analyse Chart</string>
+
+
     <string name="others">Others</string>
     <string name="share">Share</string>
     <string name="write_planthing_info">You can write a plan for your later time,come on!</string>

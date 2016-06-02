@@ -3,7 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_current" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Current Plan" />
+            android:title="@string/planthing_schedule" />
         <item android:id="@+id/nav_trash" android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/trash" />
         <item android:id="@+id/nav_role" android:icon="@android:drawable/ic_menu_slideshow"
@@ -11,7 +11,7 @@
         <item android:id="@+id/nav_tag" android:icon="@android:drawable/ic_menu_manage"
             android:title="@string/tag_lib" />
         <item android:id="@+id/plan_chart" android:icon="@android:drawable/ic_menu_add"
-            android:title="Plan Chart" />
+            android:title="@string/plan_chart" />
     </group>
 
     <item android:title="@string/others">

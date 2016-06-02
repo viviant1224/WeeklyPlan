@@ -11,6 +11,8 @@
     <string name="tag_lib">标签库</string>
     <string name="role_lib">角色库</string>
     <string name="trash">回收箱</string>
+    <string name="planthing_schedule">计划进度表</string>
+    <string name="plan_chart">计划分析图表</string>
     <string name="others">其他</string>
     <string name="share">分享</string>
     <string name="write_planthing_info">您可以写一份关于您的计划，抓紧行动吧！</string>
