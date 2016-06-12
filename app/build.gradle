@@ -41,15 +41,35 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.beardedhen:androidbootstrap:2.1.0'
     compile 'com.code-troopers.betterpickers:library:2.5.3'
-    compile 'com.diogobernardino:williamchart:2.2'//https://github.com/diogobernardino/WilliamChart
-    compile 'cn.pedant.sweetalert:library:1.3'//https://github.com/pedant/sweet-alert-dialog
-//    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
+    compile 'com.diogobernardino:williamchart:2.2'
+    //https://github.com/diogobernardino/WilliamChart
+    compile 'cn.pedant.sweetalert:library:1.3'
+    //https://github.com/pedant/sweet-alert-dialog
+
+    //    compile 'com.wdullaer:materialdatetimepicker:2.3.0'
+
     //https://github.com/wdullaer/MaterialDateTimePicker
-    compile 'me.drakeet.materialdialog:library:1.3.1'//https://github.com/drakeet/MaterialDialog
+    compile 'me.drakeet.materialdialog:library:1.3.1'
+    //https://github.com/drakeet/MaterialDialog
     compile 'com.borax12.materialdaterangepicker:library:1.6'
     compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
     compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
     compile 'com.nineoldandroids:library:2.4.0'
-//    https://github.com/borax12/MaterialDateRangePicker
+    //    https://github.com/borax12/MaterialDateRangePicker
     compile project(':volley')
+    compile files('src/libs/MobCommons-2016.0426.1819.jar')
+    compile files('src/libs/MobTools-2016.0426.1819.jar')
+    compile files('src/libs/ShareSDK-Core-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Email-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Facebook-2.7.2.jar')
+    compile files('src/libs/ShareSDK-QQ-2.7.2.jar')
+    compile files('src/libs/ShareSDK-QZone-2.7.2.jar')
+    compile files('src/libs/ShareSDK-ShortMessage-2.7.2.jar')
+    compile files('src/libs/ShareSDK-SinaWeibo-2.7.2.jar')
+    compile files('src/libs/ShareSDK-TencentWeibo-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Twitter-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Wechat-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Wechat-Core-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Wechat-Favorite-2.7.2.jar')
+    compile files('src/libs/ShareSDK-Wechat-Moments-2.7.2.jar')
 }

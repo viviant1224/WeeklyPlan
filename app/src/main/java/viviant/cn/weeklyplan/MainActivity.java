@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.constant.Constants;
 import viviant.cn.weeklyplan.fragment.CurrentPlanFragment;
@@ -144,6 +146,22 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+    private void showShare() {
+        ShareSDK.initSDK(this);
+        OnekeyShare oks = new OnekeyShare();
+        oks.disableSSOWhenAuthorize();
+        oks.setTitle(getString(R.string.share));
+        oks.setTitleUrl("http://sharesdk.cn");
+        oks.setText("ssss");
+        oks.setUrl("http://sharesdk.cn");
+        oks.setComment("ssss");
+        oks.setSite(getString(R.string.app_name));
+        oks.setSiteUrl("http://sharesdk.cn");
+
+        oks.show(this);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -184,6 +202,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_share) {
+            showShare();
 
         } else if (id == R.id.nav_setting) {
 
