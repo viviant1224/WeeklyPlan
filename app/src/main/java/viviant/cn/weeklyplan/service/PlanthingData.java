@@ -1,5 +1,6 @@
 package viviant.cn.weeklyplan.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import viviant.cn.weeklyplan.bean.Planthing;
@@ -15,6 +16,36 @@ public class PlanthingData {
     public List<Planthing> getPlanthings() {
         planthingDBManager = PlanthingDBManager.getPlanthingDBManager();
         return planthingDBManager.loadAll();
+    }
+
+    public List<Planthing> getDeletePlanthings() {
+        planthingDBManager = PlanthingDBManager.getPlanthingDBManager();
+
+        List<Planthing> planthingList = planthingDBManager.loadAll();
+        List<Planthing> deletePlanthingList = new ArrayList<Planthing>();
+
+        for (int i = 0; i < planthingList.size(); i++) {
+            if (planthingList.get(i).getState() == 2) {
+                deletePlanthingList.add(planthingList.get(i));
+            }
+        }
+
+        return deletePlanthingList;
+    }
+
+    public List<Planthing> getUnDeletePlanthings() {
+        planthingDBManager = PlanthingDBManager.getPlanthingDBManager();
+
+        List<Planthing> planthingList = planthingDBManager.loadAll();
+        List<Planthing> unDeletePlanthingList = new ArrayList<Planthing>();
+
+        for (int i = 0; i < planthingList.size(); i++) {
+            if (planthingList.get(i).getState() != 2) {
+                unDeletePlanthingList.add(planthingList.get(i));
+            }
+        }
+
+        return unDeletePlanthingList;
     }
 
     public boolean insertPlanthing(Planthing planthing) {

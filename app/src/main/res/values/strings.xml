@@ -54,6 +54,10 @@
     <string name="cancel_notification_success">Cancel Notification Successful.</string>
 
 
+    <string name="event_title">Plan : %1$s \nPlan description: %2$s</string>
+    <string name="today">Today</string>
+    <string name="day_view">DayView</string>
+    <string name="three_day_view">ThreeDayView</string>
 
     <string-array name="week">
         <item>Sun</item>

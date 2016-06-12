@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 
 import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.constant.Constants;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity
             PlanChartFragment.OnPlanChartFragmentInteractionListener{
 
     FragmentManager fragmentManager;
+
+    private RelativeLayout mainContent;
 
     @Override
     public void onFragmentInteraction(String id) {
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mainContent = (RelativeLayout)findViewById(R.id.main_content);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
 
     }

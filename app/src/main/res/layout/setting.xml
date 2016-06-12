@@ -39,7 +39,7 @@
                 android:background="@drawable/list_separator_line"
                 />
 
-            <TableRow
+           <!-- <TableRow
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="10dp"
@@ -59,8 +59,8 @@
                     android:layout_height="wrap_content"
                     />
 
-            </TableRow>
-            <ImageView
+            </TableRow>-->
+           <!-- <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/list_separator_line"
@@ -122,62 +122,62 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/list_separator_line"
-                />
+                />-->
 
-            <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="40dp">
+            <!--<TableRow-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginLeft="40dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black_de"
-                    android:text="短信通知"/>
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/black_de"-->
+                    <!--android:text="短信通知"/>-->
 
-                <Switch
-                    android:id="@+id/is_send_by_mms"
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <!--<Switch-->
+                    <!--android:id="@+id/is_send_by_mms"-->
+                    <!--android:layout_marginLeft="50dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
-            </TableRow>
+            <!--</TableRow>-->
 
 
-            <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="40dp">
+            <!--<TableRow-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginLeft="40dp">-->
 
-                <com.beardedhen.androidbootstrap.BootstrapEditText
-                    android:id="@+id/mms_input"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    app:bootstrapSize="sm"
-                    app:bootstrapBrand="info"/>
+                <!--<com.beardedhen.androidbootstrap.BootstrapEditText-->
+                    <!--android:id="@+id/mms_input"-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:bootstrapSize="sm"-->
+                    <!--app:bootstrapBrand="info"/>-->
 
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/mms_button"
-                    android:layout_marginLeft="50dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="保存"
-                    app:bootstrapBrand="primary"
-                    app:bootstrapSize="sm"
-                    app:buttonMode="regular"
-                    app:showOutline="false"
-                    app:roundedCorners="false" />
+                <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
+                    <!--android:id="@+id/mms_button"-->
+                    <!--android:layout_marginLeft="50dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="保存"-->
+                    <!--app:bootstrapBrand="primary"-->
+                    <!--app:bootstrapSize="sm"-->
+                    <!--app:buttonMode="regular"-->
+                    <!--app:showOutline="false"-->
+                    <!--app:roundedCorners="false" />-->
 
-            </TableRow>
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/list_separator_line"
-                />
+            <!--</TableRow>-->
+            <!--<ImageView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/list_separator_line"-->
+                <!--/>-->
 
 
             <TableRow
@@ -201,6 +201,38 @@
                     android:text="当前版本：V5.23"/>
 
             </TableRow>
+
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_separator_line"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_de"
+                android:text="反馈建议"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="40dp"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_separator_line"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_de"
+                android:text="关于"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="40dp"/>
+
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

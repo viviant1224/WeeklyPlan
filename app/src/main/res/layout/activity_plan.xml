@@ -42,6 +42,8 @@
                     android:id="@+id/planthing_name_update"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
                     app:bootstrapSize="md"
                     app:bootstrapBrand="info"/>
 
@@ -60,6 +62,8 @@
                     android:id="@+id/planthing_desc_update"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
                     android:lines="5"
                     app:bootstrapSize="md"
                     app:bootstrapBrand="info"/>

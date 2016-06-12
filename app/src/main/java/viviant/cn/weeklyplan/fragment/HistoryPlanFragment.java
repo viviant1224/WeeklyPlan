@@ -37,8 +37,10 @@ import java.util.Map;
 
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.adapter.HistroyPlanListViewAdapter;
+import viviant.cn.weeklyplan.bean.Planthing;
 import viviant.cn.weeklyplan.fragment.dummy.DummyContent;
 import viviant.cn.weeklyplan.model.WeekPlan;
+import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.ui.ListFooterViewWeekPlan;
 
 /**
@@ -78,6 +80,8 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
     private HistroyPlanListViewAdapter mAdapter;
 
     private List<WeekPlan> listItems = null;
+
+    private List<Planthing> deletePlanthingList = null;
 
     //volley test
     private static final String URL = "http://www.baidu.com/";
@@ -137,6 +141,12 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
     }
 
 
+    private List<Planthing> getDeletePlanthingList() {
+        deletePlanthingList = new PlanthingData().getDeletePlanthings();
+        return deletePlanthingList;
+    }
+
+
     private List<WeekPlan> getListItems() {
 
         listItems = new ArrayList<WeekPlan>();
@@ -159,9 +169,11 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
         histroyPlanListFootView = (ListFooterViewWeekPlan)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
         swipeMenuListView.addFooterView(histroyPlanListFootView);
         // TODO: Change Adapter to display your content
-        List<WeekPlan> listItems  = getListItems();
-        Log.d("weiwei","---" + listItems.size());
-        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
+//        List<WeekPlan> listItems  = getListItems();
+
+        deletePlanthingList = getDeletePlanthingList();
+        Log.d("weiwei","---" + deletePlanthingList.size());
+        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),deletePlanthingList);
         swipeMenuListView.setAdapter(mAdapter);
 
         swipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -188,7 +200,7 @@ public class HistoryPlanFragment extends Fragment implements AbsListView.OnItemC
                         swipeView.setRefreshing(false);
 //                        double f = Math.random();
 //                        rndNum.setText(String.valueOf(f));
-                        mAdapter = new HistroyPlanListViewAdapter(getContext(),getLastHistoryPlanItem());
+                        mAdapter = new HistroyPlanListViewAdapter(getContext(),getDeletePlanthingList());
                         swipeMenuListView.setAdapter(mAdapter);
                         mAdapter.notifyDataSetChanged();
                     }

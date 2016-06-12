@@ -4,7 +4,6 @@
     <string name="app_name">周计划</string>
     <string name="navigation_drawer_open">drawer_open</string>
     <string name="navigation_drawer_close">drawer_close</string>
-
     <string name="setting">设置</string>
     <string name="databases">历史计划表</string>
     <string name="analysis_plan">图表审阅</string>
@@ -38,15 +37,14 @@
     <string name="deleted">已经删除!</string>
     <string name="deleted_content">您的计划已经删除成功！</string>
     <string name="ok">好的</string>
-
     <string name="notification_ticker">周计划提醒您有待办事项</string>
-
     <string name="notification_toast">周计划提醒您有待办事项</string>
-
     <string name="set_notification_success">设置通知成功</string>
-
     <string name="cancel_notification_success">取消通知成功</string>
-
+    <string name="event_title">计划名: %1$s \n计划详情： %2$s</string>
+    <string name="today">今日</string>
+    <string name="day_view">日视图</string>
+    <string name="three_day_view">三天视图</string>
 
     <string-array name="week">
         <item>周日</item>
@@ -57,7 +55,6 @@
         <item>周五</item>
         <item>周六</item>
     </string-array>
-
 
     <string name="path_search">
        M141,17 A9,9 0 1,1 142,16 L149,23

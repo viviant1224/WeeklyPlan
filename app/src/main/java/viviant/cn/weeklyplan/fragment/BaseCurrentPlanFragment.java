@@ -85,7 +85,7 @@ public abstract class BaseCurrentPlanFragment extends Fragment implements   Week
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        setupDateTimeInterpreter(id == R.id.action_week_view);
+        setupDateTimeInterpreter(id == R.id.action_today);
         switch (id){
             case R.id.action_today:
                 mWeekView.goToToday();
@@ -102,11 +102,11 @@ public abstract class BaseCurrentPlanFragment extends Fragment implements   Week
                     mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
                 }
                 return true;
-            case R.id.action_week_view:
+            case R.id.action_threeday_view:
                 if (mWeekViewType != TYPE_WEEK_VIEW) {
                     item.setChecked(!item.isChecked());
                     mWeekViewType = TYPE_WEEK_VIEW;
-                    mWeekView.setNumberOfVisibleDays(7);
+                    mWeekView.setNumberOfVisibleDays(3);
 
                     // Lets change some dimensions to best fit the view.
                     mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));

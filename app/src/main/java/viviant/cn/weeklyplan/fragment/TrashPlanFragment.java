@@ -1,6 +1,7 @@
 package viviant.cn.weeklyplan.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -35,10 +36,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import viviant.cn.weeklyplan.PlanInfoActivity;
 import viviant.cn.weeklyplan.R;
 import viviant.cn.weeklyplan.adapter.HistroyPlanListViewAdapter;
+import viviant.cn.weeklyplan.bean.Planthing;
+import viviant.cn.weeklyplan.constant.Constants;
+import viviant.cn.weeklyplan.db.PlanthingDBManager;
 import viviant.cn.weeklyplan.fragment.dummy.DummyContent;
 import viviant.cn.weeklyplan.model.WeekPlan;
+import viviant.cn.weeklyplan.service.PlanthingData;
 import viviant.cn.weeklyplan.ui.ListFooterViewWeekPlan;
 
 /**
@@ -77,7 +83,8 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
      */
     private HistroyPlanListViewAdapter mAdapter;
 
-    private List<WeekPlan> listItems = null;
+//    private List<WeekPlan> listItems = null;
+    private List<Planthing> deletePlanthingList = null;
 
     //volley test
     private static final String URL = "http://www.baidu.com/";
@@ -136,16 +143,20 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
         mQueue.add(request);
     }
 
-
-    private List<WeekPlan> getListItems() {
-
-        listItems = new ArrayList<WeekPlan>();
-        for(int i = 0; i < 20; i++) {
-
-            listItems.add(new WeekPlan("time" + i, "desc" + i));
-        }
-        return listItems;
+    private List<Planthing> getDeletePlanthingList() {
+        deletePlanthingList = new PlanthingData().getDeletePlanthings();
+        return deletePlanthingList;
     }
+
+//    private List<WeekPlan> getListItems() {
+//
+//        listItems = new ArrayList<WeekPlan>();
+//        for(int i = 0; i < 20; i++) {
+//
+//            listItems.add(new WeekPlan("time" + i, "desc" + i));
+//        }
+//        return listItems;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -159,16 +170,24 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
         histroyPlanListFootView = (ListFooterViewWeekPlan)inflater.inflate(R.layout.histroyplan_list_foot_view, null);
         swipeMenuListView.addFooterView(histroyPlanListFootView);
         // TODO: Change Adapter to display your content
-        List<WeekPlan> listItems  = getListItems();
-        Log.d("weiwei","---" + listItems.size());
-        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),listItems);
+        deletePlanthingList  = getDeletePlanthingList();
+        Log.d("weiwei","---" + deletePlanthingList.size());
+        mAdapter = new HistroyPlanListViewAdapter(this.getActivity(),deletePlanthingList);
         swipeMenuListView.setAdapter(mAdapter);
 
         swipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(),"onItemclick",Toast.LENGTH_LONG).show();
-                volleyRequest();
+//                Log.d("weiwei","parameter: " + view.getId() + "i :" + i + "l:" + l + "adapterView" + adapterView.getSelectedItemId());
+//                Toast.makeText(getContext(),"onItemclick",Toast.LENGTH_LONG).show();
+//                volleyRequest();
+
+                Planthing mPlanthing = (Planthing)(PlanthingDBManager.getPlanthingDBManager().getObjectById(l + ""));
+                Intent mIntent = new Intent(getContext(), PlanInfoActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable(Constants.INTENT_PLAN_THING_UPDATE, mPlanthing);
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
             }
         });
 
@@ -188,7 +207,7 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
                         swipeView.setRefreshing(false);
 //                        double f = Math.random();
 //                        rndNum.setText(String.valueOf(f));
-                        mAdapter = new HistroyPlanListViewAdapter(getContext(),getLastHistoryPlanItem());
+                        mAdapter = new HistroyPlanListViewAdapter(getContext(),getDeletePlanthingList());
                         swipeMenuListView.setAdapter(mAdapter);
                         mAdapter.notifyDataSetChanged();
                     }
@@ -200,15 +219,15 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
     }
 
 
-    private List<WeekPlan> getLastHistoryPlanItem() {
-
-        listItems = getListItems();
-        for(int i = 0; i < 5; i++) {
-
-            listItems.add(new WeekPlan("$" + i, "%" + i));
-        }
-        return listItems;
-    }
+//    private List<WeekPlan> getLastHistoryPlanItem() {
+//
+//        listItems = getListItems();
+//        for(int i = 0; i < 5; i++) {
+//
+//            listItems.add(new WeekPlan("$" + i, "%" + i));
+//        }
+//        return listItems;
+//    }
 
 
     private void showSwipeListView() {
@@ -225,7 +244,7 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
                 // set item width
                 openItem.setWidth(90);
                 // set item title
-                openItem.setTitle("Open");
+                openItem.setTitle("恢复");
                 // set item title fontsize
                 openItem.setTitleSize(18);
                 // set item title font color
@@ -241,6 +260,8 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
                         0x3F, 0x25)));
                 // set item width
                 deleteItem.setWidth(90);
+
+                deleteItem.setTitle("永久删除");
                 // set a icon
                 deleteItem.setIcon(R.drawable.side_nav_bar);
                 // add to menu
@@ -257,6 +278,7 @@ public class TrashPlanFragment  extends Fragment implements AbsListView.OnItemCl
                 switch (index) {
                     case 0:
                         // open
+                        Log.d("weiwei", "menu :" + swipeMenuListView.getAdapter().getItemId(position));
                         Toast.makeText(getContext(),"open",Toast.LENGTH_LONG).show();
                         break;
                     case 1:

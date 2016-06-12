@@ -56,7 +56,7 @@ public class WritePlanActivity extends AppCompatActivity implements
     private BootstrapEditText planthingName;
     private BootstrapEditText planthingDesc;
 
-    private BootstrapButton sendNotificationButton;
+//    private BootstrapButton sendNotificationButton;
     private Switch flagRemindBtn;
 
     private Spinner planRoleSpinner;
@@ -100,7 +100,7 @@ public class WritePlanActivity extends AppCompatActivity implements
         flagRemindBtn = (Switch)findViewById(R.id.flag_remind);
         pickTimeBut = (BootstrapButton)findViewById(R.id.pick_time_but);
         pickDateBut = (BootstrapButton)findViewById(R.id.pick_date_but);
-        sendNotificationButton = (BootstrapButton)findViewById(R.id.send_notification_button);
+//        sendNotificationButton = (BootstrapButton)findViewById(R.id.send_notification_button);
         planRoleSpinner = (Spinner)findViewById(R.id.plan_role);
 
         planRoleSpinner.setPrompt("Role Select");
@@ -128,7 +128,7 @@ public class WritePlanActivity extends AppCompatActivity implements
         writePlanBut.setOnClickListener(new butOnClickListener());
         pickTimeBut.setOnClickListener(new butOnClickListener());
         pickDateBut.setOnClickListener(new butOnClickListener());
-        sendNotificationButton.setOnClickListener(new butOnClickListener());
+//        sendNotificationButton.setOnClickListener(new butOnClickListener());
     }
 
     private void createTags() {

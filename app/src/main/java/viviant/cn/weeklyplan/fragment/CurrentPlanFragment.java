@@ -93,7 +93,7 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
         // Populate the week view with some events.
         events = new ArrayList<WeekViewEvent>();
         if (newMonth == DateUtil.getCurrentMonth()) {
-            List<Planthing> planthingList = new PlanthingData().getPlanthings();
+            List<Planthing> planthingList = new PlanthingData().getUnDeletePlanthings();
             for (int i = 0; i< planthingList.size(); i++) {
                 Calendar startTime = DateUtil.getCalendar(planthingList.get(i).getDoDateTime());
                 Calendar endTime = DateUtil.getCalendar(planthingList.get(i).getEndDateTime());
@@ -221,8 +221,10 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        boolean success = new PlanthingData().deletePlanthing(planthing.getId());
-                                        if (success) {
+                                        planthing.setState(2);
+                                        boolean deleteSuccess = new PlanthingData().updatePlanthing(planthing);
+//                                        boolean success = new PlanthingData().deletePlanthing(planthing.getId());
+                                        if (deleteSuccess) {
                                             events.remove(event);
                                             getWeekView().notifyDatasetChanged();
                                             sDialog
@@ -260,7 +262,12 @@ public class CurrentPlanFragment extends BaseCurrentPlanFragment{
     }
 
     private String getEventTitle (Planthing planthing) {
-        return String.format("Event of %s %s", planthing.getPlanthingName(), planthing.getDoDateTime());
+
+//        String eventTile = ;
+        return String.format(getString(R.string.event_title), planthing.getPlanthingName(), planthing.getPlanthingDescription());
+
+//        return String.format("Plan : %s \n Plan description: %s", planthing.getPlanthingName(), planthing.getPlanthingDescription());
+//        return planthing.getPlanthingName();
 
     }
 

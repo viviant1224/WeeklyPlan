@@ -3,50 +3,79 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dip"
-        android:layout_marginRight="16dip"
-        android:orientation="horizontal">
+        android:layout_marginRight="16dip">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/plan_state"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dip"
-        android:layout_marginTop="10dip"
-        android:layout_marginBottom="10dip"
-        android:src="@color/colorPrimary">
-    </de.hdodenhof.circleimageview.CircleImageView>
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/plan_state"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="10dip"
+            android:layout_alignParentLeft="true"
+            android:src="@color/colorPrimary">
+        </de.hdodenhof.circleimageview.CircleImageView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginStart="20dip"
-        android:layout_marginTop="10dip">
-
-        <TextView
-            android:id="@+id/plan_time"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="time line"
-            android:layout_weight="1"/>
+            android:orientation="vertical"
+            android:layout_marginLeft="20dip"
+            android:layout_toRightOf="@id/plan_state"
+            android:layout_marginTop="10dip">
 
-        <TextView
-            android:id="@+id/plan_desc"
+            <TextView
+                android:id="@+id/plan_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="time line"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/plan_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="descrip"
+                android:textSize="16sp"
+                android:layout_weight="1"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="descrip"
-            android:layout_weight="1"/>
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dip"
+            android:layout_marginTop="10dip">
+
+            <TextView
+                android:id="@+id/plan_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="time line"
+                android:textSize="16sp"/>
+
+           <!-- <TextView
+                android:id="@+id/plan_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="descrip"
+                android:layout_weight="1"/>
+-->
+        </LinearLayout>
 
 
 
-    </LinearLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

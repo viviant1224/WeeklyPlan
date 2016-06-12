@@ -114,6 +114,8 @@ public class PlanInfoActivity extends AppCompatActivity implements
     private int levelIndex;
     private int roleIndex;
 
+    private boolean previousNotification;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,7 +180,7 @@ public class PlanInfoActivity extends AppCompatActivity implements
         setViewInfo();
 
 
-        if (mPlanthing.getState() == 1) {
+        if (mPlanthing.getState() == 1 || mPlanthing.getState() == 2) {
             planthingName.setEnabled(false);
             planthingDesc.setEnabled(false);
             updatePlanBut.setEnabled(false);
@@ -213,6 +215,8 @@ public class PlanInfoActivity extends AppCompatActivity implements
             pickDateBut.setText(butDate);
 
             flagRemindBtn.setChecked(mPlanthing.getFlagRemind());
+
+            previousNotification = mPlanthing.getFlagRemind();
 
             planLevelSpinner.setSelection(levelIndex);
             planRoleSpinner.setSelection(roleIndex);
@@ -272,79 +276,89 @@ public class PlanInfoActivity extends AppCompatActivity implements
         return bootstrapBrandList.get(i);
     }
 
+    private void updatePlanthing() {
+        if (checkoutInfo()) {
+            new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Are you sure?")
+                    .setContentText("Won't be able to recover this file!")
+                    .setConfirmText("Yes,Update it!")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
 
-    private class
-            butOnClickListener implements View.OnClickListener {
+                            Level level = (Level)planLevelSpinner.getSelectedItem();
+
+                            Role role = (Role)planRoleSpinner.getSelectedItem();
+
+                            mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
+                            mPlanthing.setPlanthingName(planthingName.getText().toString());
+                            mPlanthing.setState(0);
+                            mPlanthing.setLevelId(level.getId());
+                            mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
+                            mPlanthing.setRoleId(role.getId());
+                            mPlanthing.setTagId(2);
+                            mPlanthing.setUserinfoPId(1);
+                            boolean isSuccess = new  PlanthingData().updatePlanthing(mPlanthing);
+                            if (isSuccess) {
+                                sDialog
+                                        .setTitleText("Updated!")
+                                        .setContentText("Your plan is updated!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                Intent mIntent = new Intent(PlanInfoActivity.this, MainActivity.class);
+                                Bundle mBundle = new Bundle();
+                                mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
+                                mIntent.putExtras(mBundle);
+                                startActivity(mIntent);
+
+                                if (previousNotification != flagRemindBtn.isChecked()) {
+                                    if (flagRemindBtn.isChecked()) {
+                                        NotificationUtil.setNotification(getApplicationContext(),mPlanthing);
+                                    } else {
+                                        NotificationUtil.cancelNotification(getApplicationContext(),mPlanthing);
+                                    }
+                                }
+
+                            } else {
+                                sDialog
+                                        .setTitleText("Failed!")
+                                        .setContentText("Your plan isn't updated!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+
+                        }
+                    })
+                    .show();
+
+
+        } else {
+            new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Warnning?")
+                    .setContentText("some column must be comeplete!")
+                    .setConfirmText("ok")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismiss();
+                        }
+                    })
+                    .show();
+        }
+    }
+
+
+    private class butOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Calendar now = Calendar.getInstance();
             switch (v.getId()) {
                 case R.id.update_plan_button:
-
-                    if (checkoutInfo()) {
-                            new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                    .setTitleText("Are you sure?")
-                                    .setContentText("Won't be able to recover this file!")
-                                    .setConfirmText("Yes,Update it!")
-                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sDialog) {
-
-                                            Level level = (Level)planLevelSpinner.getSelectedItem();
-
-                                            Role role = (Role)planRoleSpinner.getSelectedItem();
-
-                                            mPlanthing.setPlanthingDescription(planthingDesc.getText().toString());
-                                            mPlanthing.setPlanthingName(planthingName.getText().toString());
-                                            mPlanthing.setState(0);
-                                            mPlanthing.setLevelId(level.getId());
-                                            mPlanthing.setFlagRemind(flagRemindBtn.isChecked());
-                                            mPlanthing.setRoleId(role.getId());
-                                            mPlanthing.setTagId(2);
-                                            mPlanthing.setUserinfoPId(1);
-                                            boolean isSuccess = new  PlanthingData().updatePlanthing(mPlanthing);
-                                            if (isSuccess) {
-                                                sDialog
-                                                        .setTitleText("Updated!")
-                                                        .setContentText("Your plan is updated!")
-                                                        .setConfirmText("OK")
-                                                        .setConfirmClickListener(null)
-                                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                                Intent mIntent = new Intent(PlanInfoActivity.this, MainActivity.class);
-                                                Bundle mBundle = new Bundle();
-                                                mBundle.putSerializable(Constants.INTENT_PLAN_THING, mPlanthing);
-                                                mIntent.putExtras(mBundle);
-                                                startActivity(mIntent);
-                                            } else {
-                                                sDialog
-                                                        .setTitleText("Failed!")
-                                                        .setContentText("Your plan isn't updated!")
-                                                        .setConfirmText("OK")
-                                                        .setConfirmClickListener(null)
-                                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                            }
-
-                                        }
-                                    })
-                                    .show();
-
-
-                    } else {
-                        new SweetAlertDialog(PlanInfoActivity.this, SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Warnning?")
-                                .setContentText("some column must be comeplete!")
-                                .setConfirmText("ok")
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismiss();
-                                    }
-                                })
-                                .show();
-                    }
+                    updatePlanthing();
                     break;
                 case R.id.pick_time_but_update:
-
                     TimePickerDialog tpd = TimePickerDialog.newInstance(
                             PlanInfoActivity.this,
                             now.get(Calendar.HOUR_OF_DAY),
