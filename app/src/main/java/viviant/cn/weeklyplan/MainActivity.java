@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);//还原图标色彩
         navigationView.setNavigationItemSelectedListener(this);
 
 
